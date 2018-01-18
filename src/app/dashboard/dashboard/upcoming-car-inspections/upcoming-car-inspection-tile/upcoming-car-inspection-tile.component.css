@@ -1,0 +1,62 @@
+.tile, .carousel, .carousel-item, .serviceTile {
+  height: 157px; }
+
+.serviceTile {
+  background: darkgreen; }
+  .serviceTile .tileHeader {
+    padding: 0.16667em;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+  .serviceTile .serviceDate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: 700;
+    padding: 0.5555rem;
+    font-size: 1.1111em; }
+  .serviceTile .serviceUserDate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+    padding: 0.5555em;
+    font-size: 0.7em; }
+  .serviceTile .personData {
+    font-size: 200%;
+    top: calc(50% - 1.1111rem);
+    color: #fff;
+    line-height: 0.5; }
+    .serviceTile .personData span {
+      font-size: 0.8889em;
+      font-weight: 600; }
+
+.tileCaption {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  margin: 0 !important;
+  text-align: center;
+  color: white;
+  font-family: Segoe UI;
+  font-weight: lighter; }
+
+.tileCaptionHeader {
+  position: relative;
+  top: 43%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  margin: 0 !important;
+  text-align: center;
+  color: white;
+  font-family: Segoe UI;
+  font-weight: lighter; }
+
+/*# sourceMappingURL=upcoming-car-inspection-tile.component.css.map */

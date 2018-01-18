@@ -1,11 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardSideColumnComponent} from './dashboard/dashboard-side-column/dashboard-side-column.component';
+import {UpcomingCarInspectionsModule} from './dashboard/upcoming-car-inspections/upcoming-car-inspections.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, UpcomingCarInspectionsModule
   ],
-  declarations: [DashboardComponent]
+  declarations: [DashboardComponent, DashboardSideColumnComponent]
 })
-export class DashboardModule { }
+export class DashboardModule {
+}

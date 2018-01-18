@@ -1,0 +1,10 @@
+.dynamicTile .col-12, .dynamicTile .col-6, .dynamicTile .col-4, .dynamicTile .col-2, .dynamicTile .col-1 {
+  padding: 0.28rem; }
+
+.dynamicTileSection {
+  margin-right: 3.05556rem; }
+
+app-upcoming-car-inspection-tile {
+  padding: 0.28rem; }
+
+/*# sourceMappingURL=upcoming-car-inspection-grid.component.css.map */

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,wGAAyG;EACvG,OAAO,EAAE,OAAO;;AAGlB,mBAAoB;EAClB,YAAY,EAAE,UAAU;;AAG1B,gCAAiC;EAC/B,OAAO,EAAE,OAAO",
+"sources": ["upcoming-car-inspection-grid.component.scss"],
+"names": [],
+"file": "upcoming-car-inspection-grid.component.css"
+}

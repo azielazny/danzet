@@ -1,0 +1,76 @@
+body {
+  font-family: 'Lato', sans-serif;
+  color: #2c3e50; }
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px; } }
+@media (max-width: 1200px) {
+  body {
+    font-size: 16px; } }
+@media (max-width: 992px) {
+  body {
+    font-size: 14px; } }
+@media (max-width: 768px) {
+  body {
+    font-size: 12px; } }
+@media (max-width: 576px) {
+  body {
+    font-size: 10px; } }
+.title {
+  font-size: 1.555em;
+  margin: 1rem 0; }
+
+#tile21 {
+  background: #f1c40f; }
+
+#tile21 .tileHeader {
+  background: #f39c12; }
+
+#tile22 {
+  background: #2ecc71; }
+
+#tile22 .tileHeader {
+  background: #27ae60; }
+
+#tile23 {
+  background: #9b59b6; }
+
+#tile23 .tileHeader {
+  background: #8e44ad; }
+
+#tile24 {
+  background: #3498db; }
+
+#tile24 .tileHeader {
+  background: #2980b9; }
+
+#tile25, #tile31 {
+  background: #e74c3c; }
+
+#tile25 .tileHeader, #tile31 .tileHeader {
+  background: #c0392b; }
+
+#tile26 {
+  background: #1abc9c; }
+
+#tile26 .tileHeader {
+  background: #16a085; }
+
+#tile27 {
+  background: #e67e22; }
+
+#tile27 .tileHeader {
+  background: #d53400; }
+
+#tile28 {
+  background: #34495e; }
+
+#tile28 .tileHeader {
+  background: #2c3e50; }
+
+#tile1 {
+  background: #fff;
+  color: #5f5f5f; }
+
+/*# sourceMappingURL=styles.css.map */
