@@ -1,0 +1,26 @@
+.btn-logout {
+  padding: 0.222rem 0.2778rem 0.222rem 0.833rem;
+  background: #6f3a7d;
+  color: #e6e6e6;
+  -webkit-transform: skew(-20deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+  text-align: right;
+}
+
+.btn-logoutText {
+  -webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+  font-weight: 600;
+  display: inline-block;
+  padding-right: 0.5555rem;
+}
+
+.btn-logoutIcon {
+  color: #e6e6e6;
+  padding: 0 0.2778rem;
+  background: #6f3a7d;
+  font-size: 1.333em;
+  display: inline-block;
+}

@@ -8,4 +8,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e1b32', endColorstr='#e6e6e6', GradientType=1);
   display: block; }
 
+.main > .row {
+  margin: 0; }
+
 /*# sourceMappingURL=dashboard.component.css.map */
