@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,aAAc;EACZ,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,QAAQ",
+"sources": ["dashboard-brand.component.scss"],
+"names": [],
+"file": "dashboard-brand.component.css"
+}

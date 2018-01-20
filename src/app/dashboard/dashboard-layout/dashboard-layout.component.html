@@ -1,0 +1,24 @@
+<div class="main">
+  <section id="dashboard" class="row">
+
+    <aside id="dashboardSideColumn" class="col-4">
+
+        <div class="row  justify-content-center">
+          <div class="col-10">
+            <app-dashboard-brand></app-dashboard-brand>
+            <router-outlet name="side_column"></router-outlet>
+          </div>
+        </div>
+    </aside>
+
+    <section id="mainPage" class="col-8">
+      <header>
+        <app-dashboard-logout></app-dashboard-logout>
+        <app-dashboard-search></app-dashboard-search>
+      </header>
+      <router-outlet></router-outlet>
+      <app-dashboard-footer></app-dashboard-footer>
+    </section>
+  </section>
+
+</div>

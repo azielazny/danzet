@@ -1,0 +1,36 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  overflow-y: hidden; }
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  background: #e6e6e6;
+  display: block;
+  overflow: auto; }
+
+.main > .row {
+  margin: 0; }
+
+#dashboard {
+  z-index: 1;
+  position: relative; }
+
+app-dashboard-footer {
+  z-index: -1;
+  position: relative; }
+
+#dashboardSideColumn {
+  color: #dcdcdc;
+  padding-top: 1em;
+  background: #2e1b32;
+  min-height: 100vh; }
+
+.title {
+  font-size: 1.555em;
+  margin: 1rem 0; }
+
+/*# sourceMappingURL=dashboard-layout.component.css.map */

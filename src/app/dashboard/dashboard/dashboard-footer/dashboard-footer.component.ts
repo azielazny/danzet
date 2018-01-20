@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-footer',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardFooterComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+
+  }
+
+  onNavigate() {
+
+
+    window.open("https://www.google.com", "_blank");
+  }
 }
