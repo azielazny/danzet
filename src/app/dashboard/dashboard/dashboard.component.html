@@ -79,7 +79,10 @@
     </div>
     <div class="row ">
       <div class="col-4">
-        <div id="tile21" class="tile">
+        <div id="tile21" class="tile" [routerLink]="['./',{outlets:{primary:'cars-management','side_column':'cars-management' }}]">
+             <!--[routerLink]="['/dashboard/cars-management']">-->
+          <!--[routerLink]="['dashboard/',{outlets:{'':['cars-management'],'side_column':['cars-management'] }}]">-->
+          <!--<div id="tile21" class="tile" [routerLink]="['cars-management',{outlets:{side_column:'cars-management'}}]">-->
 
           <div class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->

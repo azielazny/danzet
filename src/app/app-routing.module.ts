@@ -19,7 +19,7 @@ const routes: Routes = [
     // ]
   },
   { path: 'index', component: UpcomingCarInspectionsComponent},
-  { path: '**', redirectTo: '' }
+  // { path: '**', redirectTo: '' }
   // {path: 'index', component: UpcomingCarInspectionsComponent,   data: { title: 'blank Views' }},
   // {path: 'dashboard', component: DashboardComponent,  data: { title: 'blank Views' }, children: DashboardRoutingModule},
   // {path: 'dashboard', component: UpcomingCarInspectionsComponent},
