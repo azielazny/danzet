@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {CarInspections} from '../../../classes/car-inspections';
 import {CarInspectionService} from '../../../services/car-inspection.service';
 
@@ -19,7 +19,9 @@ export class UpcomingCarInspectionGridComponent implements OnInit {
 
   ngOnInit() {
     this.getCarsInspections();
+
   }
+
 
   getCarsInspections(): void {
     this.carsInspectionsService.getCarsInspections().then(carsInspections => this.carsInspections = carsInspections);

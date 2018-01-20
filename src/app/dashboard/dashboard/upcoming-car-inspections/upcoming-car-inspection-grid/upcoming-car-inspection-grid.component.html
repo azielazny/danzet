@@ -1,16 +1,8 @@
 <div class="col-12 dynamicTileSection">
   <div class="row ">
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile31"></app-upcoming-car-inspection-tile>
-    <!--<app-upcoming-car-inspection-tile class="col-6 col-md-4" [to]="from"></app-upcoming-car-inspection-tile>-->
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile24" ></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile26"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile25"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile23"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile21"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile22"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile28"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile27"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile27"></app-upcoming-car-inspection-tile>
-    <app-upcoming-car-inspection-tile class="col-6 col-md-4" to="tile25"></app-upcoming-car-inspection-tile>
+    <app-upcoming-car-inspection-tile to=tile{{31+i}} [carInspections]="carInspecti"
+                                      *ngFor="let carInspecti of carsInspections; let i = index;"
+                                      class="col-6 col-md-4"></app-upcoming-car-inspection-tile>
+
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="serviceTile">
-  <div id="{{to}}" class="tile">
+  <div  class="tile" [attr.id]="'tile'+getRandomColorScheme()">
 
-    <div class="carousel slide" data-ride="carousel" data-interval="10000">
+    <div  class="carousel slide" data-ride="carousel"  [attr.data-interval]="getRandomDataInterval()">
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="carousel-item ">
@@ -9,23 +9,23 @@
             Wymiana oleju
           </div>
           <h3 class="tileCaptionHeader"><i class="fas fa-tint"></i></h3>
-          <div class="float-right serviceDate">22.11</div>
+          <div class="float-right serviceDate">{{carInspections.oil_change_date}}</div>
         </div>
         <div class="carousel-item">
           <div class="tileHeader">Wymiana rozrządu</div>
           <h3 class="tileCaptionHeader"><i class="fas fa-wrench"></i></h3>
-          <div class="float-right serviceDate">12.11</div>
+          <div class="float-right serviceDate">{{carInspections.timing_belt_change_date}}</div>
         </div>
         <div class="carousel-item active">
           <div class="tileHeader">Przegląd techniczny </div>
           <h3 class="tileCaptionHeader"><i class="fas fa-stethoscope"></i></h3>
-          <div class="float-right serviceDate">05.06</div>
+          <div class="float-right serviceDate">{{carInspections.technical_inspection_date}}</div>
         </div>
         <div class="carousel-item">
-          <div class="tileHeader">Mariusz Pudzianowski</div>
+          <div class="tileHeader">{{carInspections.client_name}}</div>
           <p class="tileCaptionHeader PersonData">
-            <i class="fas fa-user"></i> <br><span>+48 555 555 555</span></p>
-          <div class="float-right serviceUserDate">FORD MUSTANG VI, SEDAN</div>
+            <i class="fas fa-user"></i> <br><span>{{carInspections.client_phone}}</span></p>
+          <div class="float-right serviceUserDate">{{carInspections.car_brand}}, {{carInspections.car_model}}</div>
         </div>
       </div>
     </div>

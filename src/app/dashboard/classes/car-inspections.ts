@@ -4,6 +4,8 @@ export class CarInspections {
   client_phone: string;
   oil_change_date: string;
   timing_belt_change_date: string;
-
+  technical_inspection_date: string;
+  car_brand: string;
+  car_model: string;
 
 }

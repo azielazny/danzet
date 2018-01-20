@@ -19,18 +19,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    $('#dashboardBody .tile').height($('#dashboardBody #tile21').width());
-    $('#upcoming-car-inspections .tile').height($('#upcoming-car-inspections #tile21').width());
-    $('#dashboardBody .carousel').height($('#dashboardBody #tile21').width());
-    $('#dashboardBody .carousel-item').height($('#dashboardBody #tile21').width());
+    $('#dashboardBody .tile').height($('#dashboardBody #tile1').width());
+    $('#dashboardBody .carousel').height($('#dashboardBody #tile1').width());
+    $('#dashboardBody .carousel-item').height($('#dashboardBody #tile1').width());
 
-    $('.services .tile').height($('#tile31').width());
-    $('.serviceTile .carousel').height($('#tile31').width());
-    $('.serviceTile .carousel-item').height($('#tile31').width());
 
-    $('#tile1 ').height($('#dashboardBody #tile1').width() - 10);
-    $('#tile1 .carousel').height($('#tile1').width() - 10);
-    $('#tile1 .carousel-item').height($('#tile1').width() - 10);
+    $('#tile11 ').height($('#dashboardBody #tile11').width() - 10);
+    $('#tile11 .carousel').height($('#tile11').width() - 10);
+    $('#tile11 .carousel-item').height($('#tile11').width() - 10);
     $(window).resize(function () {
       if (this.resizeTO) {
         clearTimeout(this.resizeTO);
@@ -41,17 +37,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
 
     $(window).bind('resizeEnd', function () {
-      $('#dashboardBody .tile').height($('#dashboardBody #tile21').width());
-      $('#upcoming-car-inspections .tile').height($('#upcoming-car-inspections #tile21').width());
-      $('#dashboardBody .carousel').height($('#dashboardBody #tile21').width());
-      $('#dashboardBody .carousel-item').height($('#dashboardBody #tile21').width());
-      $('#tile1 ').height($('#tile1').width() - 10);
-      $('#tile1 .carousel').height($('#tile1').width() - 10);
-      $('#tile1 .carousel-item').height($('#tile1').width() - 10);
-
-      $('.services .tile').height($('#tile31').width());
-      $('.serviceTile .carousel').height($('#tile31').width());
-      $('.serviceTile .carousel-item').height($('#tile31').width());
+      $('#dashboardBody .tile').height($('#dashboardBody #tile1').width());
+      $('#dashboardBody .carousel').height($('#dashboardBody #tile1').width());
+      $('#dashboardBody .carousel-item').height($('#dashboardBody #tile1').width());
+      $('#tile11 ').height($('#tile11').width() - 10);
+      $('#tile11 .carousel').height($('#tile11').width() - 10);
+      $('#tile11 .carousel-item').height($('#tile11').width() - 10);
     });
   }
 
