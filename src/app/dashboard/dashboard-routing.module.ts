@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {DashboardLayoutComponent} from './dashboard-layout/dashboard-layout.component';
+import {DashboardLayoutComponent} from './dashboard/layout/dashboard-layout/dashboard-layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {UpcomingCarInspectionsComponent} from './dashboard/upcoming-car-inspections/upcoming-car-inspections/upcoming-car-inspections.component';
-import {CarsManagementMenuComponent} from './dashboard/cars-management-menu/cars-management-menu.component';
+import {CarsManagementMenuComponent} from './dashboard/cars-management/cars-management-menu/cars-management-menu.component';
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
 
 export const dashboardRoutes: Routes = [

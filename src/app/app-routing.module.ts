@@ -4,7 +4,7 @@ import {DashboardComponent} from './dashboard/dashboard/dashboard.component';
 import {
   UpcomingCarInspectionsComponent
 } from './dashboard/dashboard/upcoming-car-inspections/upcoming-car-inspections/upcoming-car-inspections.component';
-import {DashboardLayoutComponent} from './dashboard/dashboard-layout/dashboard-layout.component';
+import {DashboardLayoutComponent} from './dashboard/dashboard/layout/dashboard-layout/dashboard-layout.component';
 
 
 const routes: Routes = [
