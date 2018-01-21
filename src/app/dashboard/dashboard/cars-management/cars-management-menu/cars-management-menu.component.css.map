@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,uIAA4H;EAC1H,OAAO,EAAE,OAAO;;AAElB,YAAa;EACX,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,GAAG;EACR,SAAS,EAAE,gBAAgB;EAC3B,iBAAiB,EAAE,gBAAgB;EACnC,aAAa,EAAE,gBAAgB;EAC/B,MAAM,EAAE,YAAY;EACpB,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,KAAK;EACZ,WAAW,EAAE,OAAO",
+"sources": ["cars-management-menu.component.scss"],
 "names": [],
 "file": "cars-management-menu.component.css"
 }

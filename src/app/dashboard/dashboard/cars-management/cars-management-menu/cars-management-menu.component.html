@@ -1,3 +1,37 @@
-<p>
-  cars-management-menu works!
-</p>
+<div class="col-12 dynamicTile">
+  <div class="row justify-content-center">
+
+    <div class="col-6 col-md-4">
+      <div class="serviceTile" >
+        <div class="tile" [attr.id]="'tile'+getRandomColorScheme()" (window:resize)="0">
+          <div class="carousel-item active" >
+            <div class="tileCaption font-weight-bold">Lista samochodów osobowych</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="serviceTile">
+        <div class="tile" [attr.id]="'tile'+getRandomColorScheme()" >
+          <div class="carousel-item active">
+            <div class="tileCaption font-weight-bold">Dodaj samochód ręcznie</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-4">
+      <div class="serviceTile">
+        <div class="tile" [attr.id]="'tile'+getRandomColorScheme()">
+
+          <div class="carousel-item active">
+            <div class="tileCaption font-weight-bold">Dodaj samochód skanując dowód</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

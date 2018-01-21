@@ -1,0 +1,15 @@
+.dynamicTile >.row>.col-12, .dynamicTile>.row>.col-6, .dynamicTile>.row> .col-4, .dynamicTile> .col-2, .dynamicTile> .col-1 {
+  padding: 0.28rem;//5
+}
+.tileCaption {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  margin: 0 !important;
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+}
+
