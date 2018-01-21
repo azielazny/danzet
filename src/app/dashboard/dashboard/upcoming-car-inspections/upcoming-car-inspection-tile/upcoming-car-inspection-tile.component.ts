@@ -40,7 +40,7 @@ export class UpcomingCarInspectionTileComponent implements OnInit, AfterViewInit
   @HostListener('window:resize', ['$event'])
   private onResize(event) {
     this.listCssTiles.forEach(listItem => {
-      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('.tile:first-of-type').offsetWidth + 'px');
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('.serviceTile:first-of-type').offsetWidth + 'px');
     });
   }
 

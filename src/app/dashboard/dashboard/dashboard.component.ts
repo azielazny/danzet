@@ -1,8 +1,7 @@
-import {Component, OnInit, AfterViewInit, Renderer2, ElementRef} from '@angular/core';
+import {Component, OnInit, AfterViewInit, Renderer2, ElementRef, HostListener} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 
-declare let $: any;
 
 @Component({
   selector: 'app-dashboard',
@@ -10,40 +9,38 @@ declare let $: any;
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
+  private listCssTiles: HTMLElement[];
+  private listCssTilesDoble: HTMLElement[];
 
-  constructor(private title: Title, private route: ActivatedRoute, private router: Router) {
+  constructor(private title: Title, private route: ActivatedRoute, private router: Router, private el: ElementRef,
+              private renderer: Renderer2) {
     title.setTitle(route.snapshot.data['title']);
   }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    $('#dashboardBody .tile').height($('#dashboardBody #tile1').width());
-    $('#dashboardBody .carousel').height($('#dashboardBody #tile1').width());
-    $('#dashboardBody .carousel-item').height($('#dashboardBody #tile1').width());
-
-
-    $('#tile11 ').height($('#dashboardBody #tile11').width() - 10);
-    $('#tile11 .carousel').height($('#tile11').width() - 10);
-    $('#tile11 .carousel-item').height($('#tile11').width() - 10);
-    $(window).resize(function () {
-      if (this.resizeTO) {
-        clearTimeout(this.resizeTO);
-      }
-      this.resizeTO = setTimeout(function () {
-        $(this).trigger('resizeEnd');
-      }, 10);
+  @HostListener('window:resize', ['$event'])
+  private onResize(event) {
+    this.listCssTiles.forEach(listItem => {
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('#dashboardBody #tile1').offsetWidth + 'px');
     });
-
-    $(window).bind('resizeEnd', function () {
-      $('#dashboardBody .tile').height($('#dashboardBody #tile1').width());
-      $('#dashboardBody .carousel').height($('#dashboardBody #tile1').width());
-      $('#dashboardBody .carousel-item').height($('#dashboardBody #tile1').width());
-      $('#tile11 ').height($('#tile11').width() - 10);
-      $('#tile11 .carousel').height($('#tile11').width() - 10);
-      $('#tile11 .carousel-item').height($('#tile11').width() - 10);
+    this.listCssTilesDoble.forEach(listItem => {
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('#dashboardBody #tile11').offsetWidth + 'px');
     });
   }
+
+  ngAfterViewInit() {
+    this.listCssTiles = this.el.nativeElement.querySelectorAll('#dashboardBody .tile, #dashboardBody .carousel, #dashboardBody .carousel-item') as HTMLElement[];
+    this.listCssTiles.forEach(listItem => {
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('#dashboardBody #tile1').offsetWidth + 'px');
+    });
+    this.listCssTilesDoble = this.el.nativeElement.querySelectorAll('#tile11, #tile11 .carousel, #tile11 .carousel-item') as HTMLElement[];
+    this.listCssTilesDoble.forEach(listItem => {
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('#tile11').offsetWidth - 10 + 'px');
+    });
+
+  }
+
 
 }
