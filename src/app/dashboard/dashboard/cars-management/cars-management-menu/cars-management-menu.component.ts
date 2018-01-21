@@ -28,14 +28,8 @@ export class CarsManagementMenuComponent implements OnInit, AfterViewInit {
     return this.randomColorScheme;
   }
 
-
-  private getRandomDataInterval(): number {
-    return (Math.floor(Math.random() * 10) + 8) * 1000;
-
-  }
-
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  private onResize(event) {
     this.listCssTiles.forEach(listItem => {
       this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('.tile:first-of-type').offsetWidth + 'px');
     });
