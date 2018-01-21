@@ -1,7 +1,9 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {
+  AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnInit,
+  Renderer2
+} from '@angular/core';
 import {CarInspections} from '../../../classes/car-inspections';
 
-declare let $: any;
 
 @Component({
   selector: 'app-upcoming-car-inspection-tile',
@@ -14,8 +16,10 @@ export class UpcomingCarInspectionTileComponent implements OnInit, AfterViewInit
   @Input()
   private carInspections: CarInspections;
   private randomColorScheme: number;
+  private listCssTiles: HTMLElement[];
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef, private el: ElementRef,
+  private renderer: Renderer2) {
     this.to = 'rrrrrrrrr';
   }
 
@@ -33,26 +37,19 @@ export class UpcomingCarInspectionTileComponent implements OnInit, AfterViewInit
     return (Math.floor(Math.random() * 10) + 8) * 1000;
 
   }
+  @HostListener('window:resize', ['$event'])
+  private onResize(event) {
+    this.listCssTiles.forEach(listItem => {
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('.tile:first-of-type').offsetWidth + 'px');
+    });
+  }
 
   ngAfterViewInit() {
-
-    $('.serviceTile .tile').height($('.serviceTile:first-of-type').width());
-    $('.serviceTile .carousel').height($('.serviceTile:first-of-type').width());
-    $('.serviceTile .carousel-item').height($('.serviceTile:first-of-type').width());
-    $(window).resize(function () {
-      if (this.resizeTO) {
-        clearTimeout(this.resizeTO);
-      }
-      this.resizeTO = setTimeout(function () {
-        $(this).trigger('resizeEnd');
-      }, 10);
+    this.listCssTiles = this.el.nativeElement.querySelectorAll('.serviceTile .tile, .serviceTile .carousel, .serviceTile .carousel-item') as HTMLElement[];
+    this.listCssTiles.forEach(listItem => {
+      this.renderer.setStyle(listItem, 'height', this.el.nativeElement.querySelector('.serviceTile:first-of-type').offsetWidth + 'px');
     });
 
-    $(window).bind('resizeEnd', function () {
-      $('.serviceTile .tile').height($('.serviceTile:first-of-type').width());
-      $('.serviceTile .carousel').height($('.serviceTile:first-of-type').width());
-      $('.serviceTile .carousel-item').height($('.serviceTile:first-of-type').width());
-    });
   }
 
 
