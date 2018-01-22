@@ -5,52 +5,54 @@
 
 <div class="row justify-content-center">
   <div class="col-12">
+    <div class="table-tile">
+      <table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th>Marka</th>
+          <th>Model</th>
+          <th>Rocznik</th>
+          <th>Vin</th>
+          <th>Nr rej.</th>
+          <th>Data</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+          <th><input type="text" placeholder="Marka" name="brand" class="col-12"/></th>
+          <th><input type="text" placeholder="Model" name="model" class="col-12"/></th>
+          <th><input type="text" placeholder="Rocznik" name="productionDate" class="col-12"/></th>
+          <th><input type="text" placeholder="Vin" name="vin" class="col-12 details-control"/></th>
+          <th><input type="text" placeholder="Nr rej." name="registrationNumber" class="col-12"/></th>
+          <th><input type="text" placeholder="Data" name="registrationDate" class="col-12"/></th>
+          <th><input type="text" hidden/></th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let car of cars; let i = index;">
+          <td>{{car.brand}}</td>
+          <td>{{car.model}}</td>
+          <td>{{car.productionYear}}</td>
+          <td>{{car.vin}}</td>
+          <td>{{car.registrationNumber}}</td>
+          <td>{{car.registrationDate}}</td>
+          <td>
+            <div class="dropdown">
+              <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false" title="opcje"></i>
+              <div class="dropdown-menu" aria-labelledby="dropdownAction">
+                <a class="dropdown-item" href="#">Pokaż</a>
+                <a class="dropdown-item" href="#">Edytuj</a>
+                <a class="dropdown-item" href="#">Usuń</a>
+              </div>
+            </div>
+          </td>
+        </tr>
 
-    <table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">
-      <thead>
-      <tr>
-        <th>Marka</th>
-        <th>Model</th>
-        <th>Rocznik</th>
-        <th>Vin</th>
-        <th>Nr rej.</th>
-        <th>Data</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tfoot>
-      <tr>
-        <th><input type="text" placeholder="Marka" name="brand" class="col-12"/></th>
-        <th><input type="text" placeholder="Model" name="model" class="col-12"/></th>
-        <th><input type="text" placeholder="Rocznik" name="productionDate" class="col-12"/></th>
-        <th><input type="text" placeholder="Vin" name="vin" class="col-12 details-control"/></th>
-        <th><input type="text" placeholder="Nr rej." name="registrationNumber" class="col-12"/></th>
-        <th><input type="text" placeholder="Data" name="registrationDate" class="col-12"/></th>
-        <th><input type="text" hidden/></th>
-      </tr>
-      </tfoot>
-
-      <tbody>
-
-      <tr  role="row" ng-class="{ i%2===0: odd}" *ngFor="let car of cars; let i = index;" >
-        <td>{{car.brand}}</td>
-        <td>{{car.model}}</td>
-        <td>{{car.productionYear}}</td>
-        <td>{{car.vin}}</td>
-        <td>{{car.registrationNumber}}</td>
-        <td>{{car.registrationDate}}</td>
-        <td><div class="dropdown">
-            <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="opcje"></i>
-          <div class="dropdown-menu" aria-labelledby="dropdownAction">
-            <a class="dropdown-item" href="#">Pokaż</a>
-            <a class="dropdown-item" href="#">Edytuj</a>
-            <a class="dropdown-item" href="#">Usuń</a>
-          </div>
-        </div></td>
-      </tr>
-
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

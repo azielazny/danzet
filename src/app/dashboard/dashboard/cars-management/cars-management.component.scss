@@ -17,13 +17,16 @@ table.dataTable tbody tr {
 .table th {
   border-top: 1px solid #2c3e50;
 }
+.table-tile {
+  background: #e8e8e8;
+  padding: 10px 5px;
+  border: 1px solid #d8d5d5;
+}
 table {
 
   background: #6f3a7d;
   color: #fff;
-  //border-spacing: 2px !important;
-  //box-shadow: 1px 1px 1px 0px #333, -2px 2px 1px 0px #333;
-  border: 1px solid #6f3a7d;
+  //border: 1px solid #6f3a7d;
 
   tbody td:last-of-type {
     text-align: center;
