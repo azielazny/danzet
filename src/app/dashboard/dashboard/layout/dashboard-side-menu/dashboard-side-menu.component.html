@@ -2,15 +2,15 @@
 
   <div class="row justify-content-center">
 
-    <div *ngFor="let nav of subNavigation" class="{{nav.tileSize}}" [routerLink]="nav.link">
-      <div class="serviceTile">
+    <a *ngFor="let nav of subNavigation" class="{{nav.tileSize}}" [href]="nav.link">
+      <div class="serviceTile" >
         <div class="tile" [attr.id]="nav.colorScheme || 'tile'+getRandomColorScheme()">
           <div class="carousel-item active">
             <div class="tileCaption font-weight-bold">{{nav.name}}</div>
           </div>
         </div>
       </div>
-    </div>
+    </a>
 
 
 

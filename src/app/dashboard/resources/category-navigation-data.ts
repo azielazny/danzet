@@ -13,7 +13,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Lista samochodów osobowych',
         tileSize: 'col-4',
         colorScheme: 'tile6',
-        link: '/dashboard'
+        link: '/dashboard/(cars-management//side_column:menu/cars-management)'
       },
       {
         name: 'Dodaj samochód ręcznie',
@@ -35,7 +35,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Lista klientów',
         tileSize: 'col-4',
         colorScheme: 'tile6',
-        link: '/dashboard'
+        link:  '/dashboard/(cars-management//side_column:menu/clients-management)'
       },
       {
         name: 'Dodaj klienta',

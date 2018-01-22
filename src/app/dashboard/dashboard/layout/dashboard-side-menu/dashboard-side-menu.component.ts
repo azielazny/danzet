@@ -2,7 +2,7 @@ import {
   AfterViewChecked,
   AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2
 } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {AppNavigation} from '../../../classes/app-navigation';
 
@@ -19,7 +19,7 @@ export class DashboardSideMenuComponent implements OnInit, AfterViewChecked {
   private subNavigation: AppNavigation[] = [];
 
   constructor(private cdr: ChangeDetectorRef, private el: ElementRef,
-              private renderer: Renderer2, private route: ActivatedRoute, private navigationService: NavigationService) {
+              private renderer: Renderer2, private route: ActivatedRoute, private navigationService: NavigationService, private router: Router) {
 
   }
 
@@ -39,7 +39,7 @@ export class DashboardSideMenuComponent implements OnInit, AfterViewChecked {
 
   private getRandomColorScheme(): number {
     this.randomColorScheme = Math.floor(Math.random() * 8) + 1;
-    this.cdr.detach();
+    // this.cdr.detach();
     return this.randomColorScheme;
   }
 

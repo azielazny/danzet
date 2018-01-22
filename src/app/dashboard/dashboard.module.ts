@@ -8,16 +8,18 @@ import {DashboardFooterComponent} from './dashboard/layout/dashboard-footer/dash
 import {DashboardLayoutComponent} from './dashboard/layout/dashboard-layout/dashboard-layout.component';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardBrandComponent} from './dashboard/layout/dashboard-brand/dashboard-brand.component';
-import {DashboardSideMenuComponent} from './dashboard/cars-management/dashboard-side-menu/dashboard-side-menu.component';
+import {DashboardSideMenuComponent} from './dashboard/layout/dashboard-side-menu/dashboard-side-menu.component';
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
 import {NavigationService} from './services/navigation.service';
+import {DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   imports: [
     CommonModule,
     UpcomingCarInspectionsModule,
     DashboardSearchModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    DataTablesModule
   ],
   declarations: [
     DashboardComponent,

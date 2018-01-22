@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {DashboardLayoutComponent} from './dashboard/layout/dashboard-layout/dashboard-layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {UpcomingCarInspectionsComponent} from './dashboard/upcoming-car-inspections/upcoming-car-inspections/upcoming-car-inspections.component';
-import {DashboardSideMenuComponent} from './dashboard/cars-management/dashboard-side-menu/dashboard-side-menu.component';
+import {DashboardSideMenuComponent} from './dashboard/layout/dashboard-side-menu/dashboard-side-menu.component';
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
 
 export const dashboardRoutes: Routes = [
