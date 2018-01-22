@@ -1,39 +1,31 @@
-#search .fa-search {
-  color: #898989;
-  padding: 0.555rem;
-}
+#search {
+  margin: 0.755rem 0;
+  .fa-search {
+    color: #898989;
+    padding: 0.555rem;
+  }
 
-.searchTitle {
-  font-size: 0.65em;
-  text-transform: uppercase;
-  color: #6f3a7d;
-  font-weight: 900;
-  margin: 0.555rem 1.388rem;
+  .searchTitle {
+    font-size: 0.65em;
+    text-transform: uppercase;
+    color: #6f3a7d;
+    font-weight: 900;
+    margin: 0.555rem 1.388rem;
 
-}
+  }
 
-.inputSearchForm {
-  border: none;
-  background: transparent;
-  border-bottom: 0.1111rem solid #b3b3b3;
-  height: 2.22rem;
-  font-size: 1.388em;
-  color: #5f5f5f;
-  &:focus {
-    outline: -webkit-focus-ring-color auto 0;
+  .inputSearchForm {
+    border: none;
+    background: transparent;
+    border-bottom: 0.1111rem solid #b3b3b3;
+    height: 2.22rem;
+    font-size: 1.388em;
+    color: #5f5f5f;
+    &:focus {
+      outline: -webkit-focus-ring-color auto 0;
+    }
   }
 }
 
-.searchResult {
-  color: #6f3a7d;
-  font-size: 0.8333em;
-  font-weight: 800;
-  margin: 0.2777rem 0;
-  .fa-phone {
-    width: 1.388rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-}
 
 
