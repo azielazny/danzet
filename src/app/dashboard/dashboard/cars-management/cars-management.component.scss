@@ -21,10 +21,11 @@ table.dataTable tbody tr {
   background: #e8e8e8;
   padding: 10px 5px;
   border: 1px solid #d8d5d5;
+  display: inline-flex;
 }
 table {
 
-  background: #6f3a7d;
+  background: #2c3e50;
   color: #fff;
   //border: 1px solid #6f3a7d;
 
@@ -33,7 +34,7 @@ table {
   }
 
   input {
-    background: #6f3a7d;
+    background: #2c3e50;
     border: none;
     border-bottom: 1px solid #fff;
     color: #fff;

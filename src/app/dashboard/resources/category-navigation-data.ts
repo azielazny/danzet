@@ -12,7 +12,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Lista samochodów osobowych',
         tileSize: 'col-4',
-        colorScheme: 'tile6',
+        colorScheme: 'tile1',
         link: '/dashboard/(cars-management//side_column:menu/cars-management)'
       },
       {
@@ -34,13 +34,13 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Lista klientów',
         tileSize: 'col-4',
-        colorScheme: 'tile6',
+        colorScheme: 'tile4',
         link:  '/dashboard/(cars-management//side_column:menu/clients-management)'
       },
       {
         name: 'Dodaj klienta',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile5',
         link: '/dashboard'
       }
     ]
@@ -57,19 +57,19 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Dodaj usługę serwisową',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile7',
         link: '/dashboard'
       },
       {
         name: 'Zamów części z hurtowni',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile8',
         link: '/dashboard'
       },
       {
         name: 'Dodaj części z hurtowni',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile1',
         link: '/dashboard'
       }
     ]
@@ -80,31 +80,31 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Sprzedaż części',
         tileSize: 'col-4',
-        colorScheme: 'tile6',
+        colorScheme: 'tile2',
         link: '/dashboard'
       },
       {
         name: 'Zamówienia z hurtowni',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile3',
         link: '/dashboard'
       },
       {
         name: 'Stan magazynowy',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile4',
         link: '/dashboard'
       },
       {
         name: 'Bilans miesiąca',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile5',
         link: '/dashboard'
       },
       {
         name: 'Publiczny raport serwisowy',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile6',
         link: '/dashboard'
       }
     ]
@@ -115,19 +115,19 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Checklista',
         tileSize: 'col-4',
-        colorScheme: 'tile6',
+        colorScheme: 'tile7',
         link: '/dashboard'
       },
       {
         name: 'Lista raportów z przeglądów pojazdów',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile8',
         link: '/dashboard'
       },
       {
         name: 'Lista nadchodzących przeglądów',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile1',
         link: '/dashboard'
       }
     ]
@@ -138,31 +138,31 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Wysłane',
         tileSize: 'col-4',
-        colorScheme: 'tile6',
+        colorScheme: 'tile2',
         link: '/dashboard'
       },
       {
         name: 'Wiadomość ogólna dla klienta',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile3',
         link: '/dashboard'
       },
       {
         name: 'Wiadomość dotycząca auta',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile4',
         link: '/dashboard'
       },
       {
         name: 'Szablony wiadomości',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile5',
         link: '/dashboard'
       },
       {
         name: 'Wyślij sms',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile6',
         link: '/dashboard'
       }
     ]
@@ -173,19 +173,19 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Lista użytkowników',
         tileSize: 'col-4',
-        colorScheme: 'tile6',
+        colorScheme: 'tile7',
         link: '/dashboard'
       },
       {
         name: 'Dane API',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile8',
         link: '/dashboard'
       },
       {
         name: 'Lista hurtowni',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile1',
         link: '/dashboard'
       },
       {
@@ -197,13 +197,13 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
       {
         name: 'Dane SMTP',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile3',
         link: '/dashboard'
       },
       {
         name: 'Usługa publicznego raportu serwisowego',
         tileSize: 'col-4',
-        colorScheme: 'tile2',
+        colorScheme: 'tile4',
         link: '/dashboard'
       }
     ]
