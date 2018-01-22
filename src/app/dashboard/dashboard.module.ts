@@ -12,6 +12,7 @@ import {DashboardSideMenuComponent} from './dashboard/layout/dashboard-side-menu
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
 import {NavigationService} from './services/navigation.service';
 import {DataTablesModule} from 'angular-datatables';
+import {CarService} from "./services/car.service";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {DataTablesModule} from 'angular-datatables';
     DashboardSideMenuComponent,
     CarsManagementComponent],
   providers: [
-    NavigationService
+    NavigationService,
+    CarService
   ],
 })
 export class DashboardModule {

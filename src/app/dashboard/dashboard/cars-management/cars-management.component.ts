@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {DataTableDirective} from 'angular-datatables';
-declare var $: any;
+import {Car} from '../../classes/car';
+import {CarService} from '../../services/car.service';
+
 
 @Component({
   selector: 'app-cars-management',
@@ -9,41 +11,44 @@ declare var $: any;
 })
 export class CarsManagementComponent implements OnInit, AfterViewInit {
   @ViewChild(DataTableDirective)
-  datatableElement: DataTableDirective;
+  private datatableElement: DataTableDirective;
 
-  dtOptions: DataTables.Settings = {};
+  private dtOptions: DataTables.Settings = {};
 
-  constructor() {
+  private cars: Car[] = [];
+
+  constructor(private carService: CarService) {
   }
 
   ngOnInit() {
+    this.getCarsList();
 
     this.dtOptions = {
       // ajax: 'data/data.json',
 
       columns: [
         {
-          title: 'Brand',
+          // title: 'Brand',
           data: 'brand'
         },
         {
-          title: 'Model',
+          // title: 'Model',
           data: 'model'
         },
         {
-          title: 'Production date',
+          // title: 'Production date',
           data: 'productionDate'
         },
         {
-          title: 'Vin',
+          // title: 'Vin',
           data: 'vin'
         },
         {
-          title: 'Registration number',
+          // title: 'Registration number',
           data: 'registrationNumber'
         },
         {
-          title: 'Registration date',
+          // title: 'Registration date',
           data: 'registrationDate'
         },
         {
@@ -51,9 +56,6 @@ export class CarsManagementComponent implements OnInit, AfterViewInit {
         }
       ]
     };
-
-
-
 
 
   }
@@ -74,5 +76,8 @@ export class CarsManagementComponent implements OnInit, AfterViewInit {
   }
 
 
+  private getCarsList(): void {
+    this.carService.getCarsList().then(c => this.cars = c);
+  }
 }
 
