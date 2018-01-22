@@ -8,8 +8,9 @@ import {DashboardFooterComponent} from './dashboard/layout/dashboard-footer/dash
 import {DashboardLayoutComponent} from './dashboard/layout/dashboard-layout/dashboard-layout.component';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardBrandComponent} from './dashboard/layout/dashboard-brand/dashboard-brand.component';
-import {CarsManagementMenuComponent} from './dashboard/cars-management/cars-management-menu/cars-management-menu.component';
+import {DashboardSideMenuComponent} from './dashboard/cars-management/dashboard-side-menu/dashboard-side-menu.component';
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
+import {NavigationService} from './services/navigation.service';
 
 @NgModule({
   imports: [
@@ -24,8 +25,11 @@ import {CarsManagementComponent} from './dashboard/cars-management/cars-manageme
     DashboardFooterComponent,
     DashboardLayoutComponent,
     DashboardBrandComponent,
-    CarsManagementMenuComponent,
-    CarsManagementComponent]
+    DashboardSideMenuComponent,
+    CarsManagementComponent],
+  providers: [
+    NavigationService
+  ],
 })
 export class DashboardModule {
 }

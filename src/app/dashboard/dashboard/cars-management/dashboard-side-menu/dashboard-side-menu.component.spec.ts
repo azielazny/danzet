@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CarsManagementMenuComponent } from './cars-management-menu.component';
+import { DashboardSideMenuComponent } from './dashboard-side-menu.component';
 
-describe('CarsManagementMenuComponent', () => {
-  let component: CarsManagementMenuComponent;
-  let fixture: ComponentFixture<CarsManagementMenuComponent>;
+describe('DashboardSideMenuComponent', () => {
+  let component: DashboardSideMenuComponent;
+  let fixture: ComponentFixture<DashboardSideMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarsManagementMenuComponent ]
+      declarations: [ DashboardSideMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CarsManagementMenuComponent);
+    fixture = TestBed.createComponent(DashboardSideMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
