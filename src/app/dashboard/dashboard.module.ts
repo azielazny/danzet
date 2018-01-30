@@ -13,6 +13,8 @@ import {CarsManagementComponent} from './dashboard/cars-management/cars-manageme
 import {NavigationService} from './services/navigation.service';
 import {DataTablesModule} from 'angular-datatables';
 import {CarService} from "./services/car.service";
+import { AddCarsComponent } from './dashboard/add-cars/add-cars.component';
+import { AddCarsEditComponent } from './dashboard/add-cars/add-cars-edit/add-cars-edit.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import {CarService} from "./services/car.service";
     DashboardLayoutComponent,
     DashboardBrandComponent,
     DashboardSideMenuComponent,
-    CarsManagementComponent],
+    CarsManagementComponent,
+    AddCarsComponent
+    /*AddCarsEditComponent*/],
   providers: [
     NavigationService,
     CarService

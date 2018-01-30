@@ -5,6 +5,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {UpcomingCarInspectionsComponent} from './dashboard/upcoming-car-inspections/upcoming-car-inspections/upcoming-car-inspections.component';
 import {DashboardSideMenuComponent} from './dashboard/layout/dashboard-side-menu/dashboard-side-menu.component';
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
+import {AddCarsComponent} from "./dashboard/add-cars/add-cars.component";
 
 export const dashboardRoutes: Routes = [
   {
@@ -14,6 +15,7 @@ export const dashboardRoutes: Routes = [
       {path: '', component: DashboardComponent, data: {title: 'makeCarService ++:: Dashboard'}},
       {path: '', component: UpcomingCarInspectionsComponent, outlet: 'side_column'},
       {path: 'cars-management', component: CarsManagementComponent, data: {title: 'makeCarService ++:: Zarządzanie samochodami'}},
+      {path: 'add-car', component: AddCarsComponent, data: {title: 'makeCarService ++:: Wprowadzanie samochodu'}},
       {path: 'menu/:subMenuId', component: DashboardSideMenuComponent, outlet: 'side_column'}
     ]
   }

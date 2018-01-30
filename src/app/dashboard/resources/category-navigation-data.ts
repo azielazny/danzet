@@ -19,7 +19,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Dodaj samochód ręcznie',
         tileSize: 'col-4',
         colorScheme: 'tile2',
-        link: '/dashboard'
+        link: '/dashboard/(add-car//side_column:menu/cars-management)'
       },
       {
         name: 'Dodaj samochód skanując dowód',
