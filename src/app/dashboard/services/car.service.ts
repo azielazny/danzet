@@ -11,4 +11,8 @@ export class CarService {
   getCarsList(): Promise<Car[]> {
     return Promise.resolve(CAR);
   }
+
+  getCarById(car_id: number): Promise<Car> {
+    return Promise.resolve(CAR.filter(x => x.car_id === car_id)[0]);
+  }
 }

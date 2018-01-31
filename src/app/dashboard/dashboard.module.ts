@@ -12,9 +12,14 @@ import {DashboardSideMenuComponent} from './dashboard/layout/dashboard-side-menu
 import {CarsManagementComponent} from './dashboard/cars-management/cars-management.component';
 import {NavigationService} from './services/navigation.service';
 import {DataTablesModule} from 'angular-datatables';
-import {CarService} from "./services/car.service";
-import { AddCarsComponent } from './dashboard/add-cars/add-cars.component';
-import { AddCarsEditComponent } from './dashboard/add-cars/add-cars-edit/add-cars-edit.component';
+import {CarService} from './services/car.service';
+import {AddCarsComponent} from './dashboard/add-cars/add-cars.component';
+import {AddCarsEditComponent} from './dashboard/add-cars/add-cars-edit/add-cars-edit.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
+import {ButtonModule, DropdownModule, PanelModule} from 'primeng/primeng';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   imports: [
@@ -22,7 +27,14 @@ import { AddCarsEditComponent } from './dashboard/add-cars/add-cars-edit/add-car
     UpcomingCarInspectionsModule,
     DashboardSearchModule,
     DashboardRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    PanelModule,
+    ButtonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpModule
   ],
   declarations: [
     DashboardComponent,
@@ -32,11 +44,12 @@ import { AddCarsEditComponent } from './dashboard/add-cars/add-cars-edit/add-car
     DashboardBrandComponent,
     DashboardSideMenuComponent,
     CarsManagementComponent,
-    AddCarsComponent
-    /*AddCarsEditComponent*/],
+    AddCarsComponent,
+    AddCarsEditComponent],
   providers: [
     NavigationService,
     CarService
+    // FormBuilder
   ],
 })
 export class DashboardModule {

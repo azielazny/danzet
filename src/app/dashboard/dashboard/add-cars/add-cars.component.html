@@ -6,46 +6,72 @@
 <div class="row justify-content-center">
 
 
-  <button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('name')"></button>
+  <!--<button pButton type="button" icon="fas fa-edit" class="ui-button-secondary" (click)="toggleEdit('name')"></button>-->
 
-  <!--<p-panel header="Profile">-->
+  <p-panel header="Samochód" class="col-6">
+    <div *ngIf="editedField !== 'car'">
+      <div class="row  mb-3">
+        <div class="col-3"><strong>Marka</strong></div>
+        <div class="col-7">{{car?.brand}}</div>
+        <div class="col-2 text-right">
+          <button pButton type="button" icon="fas fa-edit" class="ui-button-secondary"
+                  (click)="toggleEdit('car')"></button>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Model</strong></div>
+        <div class="col-sm-9">{{car?.model}}</div>
+      </div>
+    </div>
+
+    <app-add-cars-edit *ngIf="editedField === 'car'"
+                       [defaultBrand]="car?.brand"
+                       [defaultModel]="car?.model"
+                       (submitForm)="submitCar($event)"
+                       (cancelForm)="resetEdit()">
+    </app-add-cars-edit>
+    <hr/>
+
+    <!--<div *ngIf="editedField !== 'address'">-->
     <!--<div class="row mb-3">-->
-      <!--<div class="col-sm-3"><strong>Firstname</strong></div>-->
-      <!--<div class="col-sm-7">{{ profile.firstname }}</div>-->
-      <!--<div class="col-sm-2 text-right">-->
-        <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('name')"></button>-->
-      <!--</div>-->
+    <!--<div class="col-sm-3"><strong>Address</strong></div>-->
+    <!--<div class="col-sm-7">{{ profile.address }}</div>-->
+    <!--<div class="col-sm-2 text-right">-->
+    <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('address')"></button>-->
+    <!--</div>-->
     <!--</div>-->
     <!--<div class="row mb-3">-->
-      <!--<div class="col-sm-3"><strong>Lastname</strong></div>-->
-      <!--<div class="col-sm-9">{{ profile.lastname }}</div>-->
+    <!--<div class="col-sm-3"><strong>Postal code</strong></div>-->
+    <!--<div class="col-sm-9">{{ profile.postalcode }}</div>-->
     <!--</div>-->
+    <!--</div>-->
+    <!--<app-profile-address *ngIf="editedField === 'address'"-->
+    <!--[defaultAddress]="profile.address"-->
+    <!--[defaultPostalcode]="profile.postalcode"-->
+    <!--(submitForm)="submitAddress($event)"-->
+    <!--(cancelForm)="resetEdit()">-->
+    <!--</app-profile-address>-->
     <!--<hr/>-->
 
+    <!--<div *ngIf="editedField !== 'number'">-->
     <!--<div class="row mb-3">-->
-      <!--<div class="col-sm-3"><strong>Address</strong></div>-->
-      <!--<div class="col-sm-7">{{ profile.address }}</div>-->
-      <!--<div class="col-sm-2 text-right">-->
-        <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('address')"></button>-->
-      <!--</div>-->
+    <!--<div class="col-sm-3"><strong>Home number</strong></div>-->
+    <!--<div class="col-sm-7">{{ profile.homeNumber }}</div>-->
+    <!--<div class="col-sm-2 text-right">-->
+    <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('number')"></button>-->
+    <!--</div>-->
     <!--</div>-->
     <!--<div class="row mb-3">-->
-      <!--<div class="col-sm-3"><strong>Postal code</strong></div>-->
-      <!--<div class="col-sm-9">{{ profile.postalcode }}</div>-->
+    <!--<div class="col-sm-3"><strong>Mobile number</strong></div>-->
+    <!--<div class="col-sm-9">{{ profile.mobileNumber }}</div>-->
     <!--</div>-->
-    <!--<hr/>-->
-
-    <!--<div class="row mb-3">-->
-      <!--<div class="col-sm-3"><strong>Home number</strong></div>-->
-      <!--<div class="col-sm-7">{{ profile.homeNumber }}</div>-->
-      <!--<div class="col-sm-2 text-right">-->
-        <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('number')"></button>-->
-      <!--</div>-->
     <!--</div>-->
-    <!--<div class="row mb-3">-->
-      <!--<div class="col-sm-3"><strong>Mobile number</strong></div>-->
-      <!--<div class="col-sm-9">{{ profile.mobileNumber }}</div>-->
-    <!--</div>-->
-  <!--</p-panel>-->
+    <!--<app-profile-number *ngIf="editedField === 'number'"-->
+    <!--[defaultHomeNumber]="profile.homeNumber"-->
+    <!--[defaultMobileNumber]="profile.mobileNumber"-->
+    <!--(submitForm)="submitNumber($event)"-->
+    <!--(cancelForm)="resetEdit()">-->
+    <!--</app-profile-number>-->
+  </p-panel>
 
 </div>
