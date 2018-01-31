@@ -1,18 +1,67 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="p-3 bg-faded">
+<form [formGroup]="form" (ngSubmit)="submit()" class=" bg-faded">
   <div class="form-group row">
-    <label for="brand" class="col-sm-3 col-form-label"><strong>Marka</strong></label>
+    <label for="brand" class="col-sm-3 col-form-label"><strong>Marka <span class="text-primary">*</span></strong></label>
     <div class="col-sm-9">
-      <input id="brand" type="text" class="form-control" formControlName="brand" />
+      <input id="brand" type="text" class="form-control" formControlName="brand"/>
     </div>
   </div>
   <div class="form-group row">
-    <label for="model" class="col-sm-3 col-form-label"><strong>Model</strong></label>
+    <label for="model" class="col-sm-3 col-form-label"><strong>Model <span class="text-primary">*</span></strong></label>
     <div class="col-sm-9">
-      <input id="model" type="text" class="form-control" formControlName="model" />
+      <input id="model" type="text" class="form-control" formControlName="model"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="registrationNumber" class="col-sm-3 col-form-label"><strong>Numer rejestracyjny</strong></label>
+    <div class="col-sm-9">
+      <input id="registrationNumber" type="text" class="form-control" formControlName="registrationNumber"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="productionYear" class="col-sm-3 col-form-label"><strong>Rok produkcji</strong></label>
+    <div class="col-sm-9">
+      <input id="productionYear" type="text" class="form-control" formControlName="productionYear"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="capacity" class="col-sm-3 col-form-label"><strong>Pojemność</strong></label>
+    <div class="col-sm-9">
+      <input id="capacity" type="text" class="form-control" formControlName="capacity"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="enginePower" class="col-sm-3 col-form-label"><strong>Moc silnika</strong></label>
+    <div class="col-sm-9">
+      <input id="enginePower" type="text" class="form-control" formControlName="enginePower"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="fuel" class="col-sm-3 col-form-label"><strong>Rodzaj paliwa</strong></label>
+    <div class="col-sm-9">
+      <input id="fuel" type="text" class="form-control" formControlName="fuel"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="registrationDate" class="col-sm-3 col-form-label"><strong>Data rejestracji</strong></label>
+    <div class="col-sm-9">
+      <input id="registrationDate" type="text" class="form-control" formControlName="registrationDate"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="carVersion" class="col-sm-3 col-form-label"><strong>Wersja pojazdu</strong></label>
+    <div class="col-sm-9">
+      <input id="carVersion" type="text" class="form-control" formControlName="carVersion"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="drSeries" class="col-sm-3 col-form-label"><strong>Seria i numer dowodu</strong></label>
+    <div class="col-sm-9">
+      <input id="drSeries" type="text" class="form-control" formControlName="drSeries"/>
     </div>
   </div>
   <div class="text-right">
-    <button pButton type="button" class="ui-button-info" icon="fa-times" label="Anuluj" (click)="cancel()"></button>
-    <button pButton type="submit" class="ui-button-success" icon="fa-floppy-o" label="Zapisz" [disabled]="!form.valid"></button>
+    <button pButton type="button" class="ui-button-primary" icon="far fa-times" label="Anuluj" (click)="cancel()"></button>
+    <button pButton type="submit" class="ui-button-success" icon="far fa-save" label="Zapisz"
+            [disabled]="!form.valid"></button>
   </div>
 </form>

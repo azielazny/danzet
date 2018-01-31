@@ -8,7 +8,7 @@
 
   <!--<button pButton type="button" icon="fas fa-edit" class="ui-button-secondary" (click)="toggleEdit('name')"></button>-->
 
-  <p-panel header="Samochód" class="col-6">
+  <p-panel header="Samochód" class="col-6 zebraPanel">
     <div *ngIf="editedField !== 'car'">
       <div class="row  mb-3">
         <div class="col-3"><strong>Marka</strong></div>
@@ -22,56 +22,59 @@
         <div class="col-sm-3"><strong>Model</strong></div>
         <div class="col-sm-9">{{car?.model}}</div>
       </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>VIN</strong></div>
+        <div class="col-sm-9">{{car?.vin}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Numer rejestracyjny</strong></div>
+        <div class="col-sm-9">{{car?.registrationNumber}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Rok produkcji</strong></div>
+        <div class="col-sm-9">{{car?.productionYear}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Pojemność</strong></div>
+        <div class="col-sm-9">{{car?.capacity}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Moc silnika</strong></div>
+        <div class="col-sm-9">{{car?.enginePower}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Rodzaj paliwa</strong></div>
+        <div class="col-sm-9">{{car?.fuel}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Data rejestracji</strong></div>
+        <div class="col-sm-9">{{car?.registrationDate}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Wersja pojazdu</strong></div>
+        <div class="col-sm-9">{{car?.carVersion}}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Seria i numer dowodu</strong></div>
+        <div class="col-sm-9">{{car?.drSeries}}</div>
+      </div>
     </div>
 
     <app-add-cars-edit *ngIf="editedField === 'car'"
                        [defaultBrand]="car?.brand"
                        [defaultModel]="car?.model"
+                       [defaultVin]="car?.vin"
+                       [defaultRegistrationNumber]="car?.registrationNumber"
+                       [defaultProductionYear]="car?.productionYear"
+                       [defaultCapacity]="car?.capacity"
+                       [defaultEnginePower]="car?.enginePower"
+                       [defaultFuel]="car?.fuel"
+                       [defaultRegistrationDate]="car?.registrationDate"
+                       [defaultCarVersion]="car?.carVersion"
+                       [defaultDrSeries]="car?.drSeries"
                        (submitForm)="submitCar($event)"
                        (cancelForm)="resetEdit()">
     </app-add-cars-edit>
-    <hr/>
-
-    <!--<div *ngIf="editedField !== 'address'">-->
-    <!--<div class="row mb-3">-->
-    <!--<div class="col-sm-3"><strong>Address</strong></div>-->
-    <!--<div class="col-sm-7">{{ profile.address }}</div>-->
-    <!--<div class="col-sm-2 text-right">-->
-    <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('address')"></button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row mb-3">-->
-    <!--<div class="col-sm-3"><strong>Postal code</strong></div>-->
-    <!--<div class="col-sm-9">{{ profile.postalcode }}</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<app-profile-address *ngIf="editedField === 'address'"-->
-    <!--[defaultAddress]="profile.address"-->
-    <!--[defaultPostalcode]="profile.postalcode"-->
-    <!--(submitForm)="submitAddress($event)"-->
-    <!--(cancelForm)="resetEdit()">-->
-    <!--</app-profile-address>-->
-    <!--<hr/>-->
-
-    <!--<div *ngIf="editedField !== 'number'">-->
-    <!--<div class="row mb-3">-->
-    <!--<div class="col-sm-3"><strong>Home number</strong></div>-->
-    <!--<div class="col-sm-7">{{ profile.homeNumber }}</div>-->
-    <!--<div class="col-sm-2 text-right">-->
-    <!--<button pButton type="button" icon="fa-pencil" class="ui-button-secondary" (click)="toggleEdit('number')"></button>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row mb-3">-->
-    <!--<div class="col-sm-3"><strong>Mobile number</strong></div>-->
-    <!--<div class="col-sm-9">{{ profile.mobileNumber }}</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<app-profile-number *ngIf="editedField === 'number'"-->
-    <!--[defaultHomeNumber]="profile.homeNumber"-->
-    <!--[defaultMobileNumber]="profile.mobileNumber"-->
-    <!--(submitForm)="submitNumber($event)"-->
-    <!--(cancelForm)="resetEdit()">-->
-    <!--</app-profile-number>-->
   </p-panel>
 
 </div>

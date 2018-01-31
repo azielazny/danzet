@@ -10,7 +10,7 @@ import {CarService} from '../../services/car.service';
 export class AddCarsComponent implements OnInit {
 
 
-  @Input() editedField: string = 'car';
+  @Input() editedField: string;
   // @Output() changeEditedField = new EventEmitter<string>();
 
   @Input() car: Car;
