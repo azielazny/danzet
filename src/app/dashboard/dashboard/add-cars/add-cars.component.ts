@@ -6,6 +6,7 @@ import {Car} from '../../classes/car';
 import {CarService} from '../../services/car.service';
 import {Client} from '../../classes/client';
 import {CLIENT} from '../../resources/client-data';
+import {Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-cars',
@@ -26,7 +27,24 @@ export class AddCarsComponent implements OnInit {
   }
 
   submitCar(name: Car) {
-    this.car = name;
+    this.car.brand = name.brand;
+    this.car.model = name.model;
+    this.car.registrationNumber = name.registrationNumber;
+    this.car.productionYear = name.productionYear;
+    this.car.vin = name.vin;
+    this.car.capacity = name.capacity;
+    this.resetEdit();
+  }
+
+  submitCar2(name: Car) {
+    this.car.carVersion = name.carVersion;
+    this.car.registrationDate = name.registrationDate;
+    this.car.enginePower = name.enginePower;
+    this.car.fuel = name.fuel;
+    this.car.drSeries = name.drSeries;
+    this.car.course = name.course;
+    this.car.dateAdded = name.dateAdded;
+    this.car.info = name.info;
     this.resetEdit();
   }
 

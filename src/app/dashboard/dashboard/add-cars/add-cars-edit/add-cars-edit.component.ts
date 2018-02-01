@@ -28,7 +28,7 @@ export class AddCarsEditComponent implements OnInit {
       registrationNumber: [this.defaultRegistrationNumber],
       productionYear: [this.defaultProductionYear],
       vin: [this.defaultVin],
-      capacity: [this.defaultCapacity],
+      capacity: [this.defaultCapacity]
 
     });
   }

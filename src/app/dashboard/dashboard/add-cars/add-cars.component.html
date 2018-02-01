@@ -61,7 +61,9 @@
                            [defaultVin]="car?.vin"
                            [defaultRegistrationNumber]="car?.registrationNumber"
                            [defaultProductionYear]="car?.productionYear"
-                           [defaultCapacity]="car?.capacity">
+                           [defaultCapacity]="car?.capacity"
+                           (submitForm)="submitCar($event)"
+                           (cancelForm)="resetEdit()">
         </app-add-cars-edit>
       </p-panel>
     </div>
@@ -115,7 +117,7 @@
                             [defaultCourse]="car?.course"
                             [defaultDateAdded]="car?.dateAdded"
                             [defaultInfo]="car?.info"
-                            (submitForm)="submitCar($event)"
+                            (submitForm)="submitCar2($event)"
                             (cancelForm)="resetEdit()">
         </app-add-cars-edit2>
       </p-panel>
