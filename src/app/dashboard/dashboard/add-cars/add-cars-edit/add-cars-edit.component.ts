@@ -13,12 +13,8 @@ export class AddCarsEditComponent implements OnInit {
   @Input() defaultProductionYear: string;
   @Input() defaultVin: string;
   @Input() defaultRegistrationNumber: string;
-  @Input() defaultRegistrationDate: string;
   @Input() defaultCarVersion: string;
   @Input() defaultCapacity: string;
-  @Input() defaultEnginePower: string;
-  @Input() defaultFuel: string;
-  @Input() defaultDrSeries: string;
   @Output() submitForm = new EventEmitter<Car>();
   @Output() cancelForm = new EventEmitter<void>();
   form: FormGroup;
@@ -32,12 +28,8 @@ export class AddCarsEditComponent implements OnInit {
       registrationNumber: [this.defaultRegistrationNumber],
       productionYear: [this.defaultProductionYear],
       vin: [this.defaultVin],
-      registrationDate: [this.defaultRegistrationDate],
-      carVersion: [this.defaultCarVersion],
       capacity: [this.defaultCapacity],
-      enginePower: [this.defaultEnginePower],
-      fuel: [this.defaultFuel],
-      drSeries: [this.defaultDrSeries]
+
     });
   }
 

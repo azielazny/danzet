@@ -20,6 +20,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ButtonModule, DropdownModule, PanelModule} from 'primeng/primeng';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import { AddCarsEdit2Component } from './dashboard/add-cars/add-cars-edit2/add-cars-edit2.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import {HttpModule} from '@angular/http';
     DashboardSideMenuComponent,
     CarsManagementComponent,
     AddCarsComponent,
-    AddCarsEditComponent],
+    AddCarsEditComponent,
+    AddCarsEdit2Component],
   providers: [
     NavigationService,
     CarService

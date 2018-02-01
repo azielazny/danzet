@@ -5,8 +5,8 @@ export class Client {
   zip?: string;
   city?: string;
   street?: string;
-  houseNumber?: string;
-  apartmentNumber?: string;
+  houseNumber?: number;
+  apartmentNumber?: number;
   phone?: string;
   email?: string;
 

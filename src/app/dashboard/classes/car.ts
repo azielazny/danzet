@@ -11,4 +11,7 @@ export class Car {
   enginePower?: string; // moc silnika
   fuel?: string; // RodzajPaliwa
   drSeries?: string; // seria dowodu rejestracyjnego
+  course?:string; // przebieg
+  dateAdded?: string; //data dodania
+  info?: string; //dodatkowe info
 }

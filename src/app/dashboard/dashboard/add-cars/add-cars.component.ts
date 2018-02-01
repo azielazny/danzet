@@ -1,6 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
+  Renderer2
+} from '@angular/core';
 import {Car} from '../../classes/car';
 import {CarService} from '../../services/car.service';
+import {Client} from '../../classes/client';
+import {CLIENT} from '../../resources/client-data';
 
 @Component({
   selector: 'app-add-cars',
@@ -11,11 +16,13 @@ export class AddCarsComponent implements OnInit {
 
 
   @Input() editedField: string;
+  @Input() client: Client;
   // @Output() changeEditedField = new EventEmitter<string>();
 
   @Input() car: Car;
 
-  constructor(private carService: CarService) {
+  constructor(private carService: CarService, private el: ElementRef, private renderer: Renderer2) {
+    this.client = <Client>CLIENT[0];
   }
 
   submitCar(name: Car) {
@@ -38,4 +45,6 @@ export class AddCarsComponent implements OnInit {
   private getCarById() {
     this.carService.getCarById(11).then(c => this.car = c);
   }
+
+
 }
