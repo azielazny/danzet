@@ -1,0 +1,41 @@
+.dropinfo {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #a9a9a9;
+  border-top: 0px;
+  z-index: 333;
+  padding: 0; }
+  .dropinfo ul {
+    margin: 0;
+    padding: 0; }
+    .dropinfo ul li {
+      list-style: none;
+      width: 100%;
+      cursor: pointer !important;
+      padding: 0 10px; }
+      .dropinfo ul li:hover {
+        background: #efefef; }
+      .dropinfo ul li span {
+        margin-right: 10px; }
+
+.fa-check-square:before {
+  content: "\F0C8" !important; }
+
+li:hover .fa-check-square::before {
+  content: "\F14A" !important; }
+
+.searchBox {
+  padding: 0; }
+
+input.form-control {
+  border: none;
+  border-bottom: 1px solid #b3b3b3;
+  border-radius: inherit;
+  padding: 0rem !important;
+  line-height: 1;
+  background: transparent; }
+
+.col-form-label {
+  padding-top: 0; }
+
+/*# sourceMappingURL=add-cars-client-search.component.css.map */
