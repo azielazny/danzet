@@ -19,8 +19,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {ButtonModule, DropdownModule, PanelModule} from 'primeng/primeng';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import { AddCarsEdit2Component } from './dashboard/add-cars/add-cars-edit2/add-cars-edit2.component';
+import { AddCarsClientSearchComponent } from './dashboard/add-cars/add-cars-client-search/add-cars-client-search.component';
+import {ClientService} from "./services/client.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -35,7 +37,7 @@ import { AddCarsEdit2Component } from './dashboard/add-cars/add-cars-edit2/add-c
     ButtonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
   declarations: [
     DashboardComponent,
@@ -47,10 +49,12 @@ import { AddCarsEdit2Component } from './dashboard/add-cars/add-cars-edit2/add-c
     CarsManagementComponent,
     AddCarsComponent,
     AddCarsEditComponent,
-    AddCarsEdit2Component],
+    AddCarsEdit2Component,
+    AddCarsClientSearchComponent],
   providers: [
     NavigationService,
-    CarService
+    CarService,
+    ClientService
     // FormBuilder
   ],
 })

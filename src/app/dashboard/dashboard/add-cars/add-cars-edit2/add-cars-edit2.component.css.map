@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,kBAAmB;EACjB,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,iBAAiB;EAChC,aAAa,EAAE,OAAO;EACtB,OAAO,EAAE,eAAe;EACxB,WAAW,EAAE,CAAC;EACd,UAAU,EAAE,WAAW;;AAEzB,eAAgB;EACd,WAAW,EAAE,CAAC",
+"sources": ["add-cars-edit2.component.scss"],
 "names": [],
 "file": "add-cars-edit2.component.css"
 }

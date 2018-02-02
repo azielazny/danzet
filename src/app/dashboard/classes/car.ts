@@ -14,4 +14,5 @@ export class Car {
   course?:string; // przebieg
   dateAdded?: string; //data dodania
   info?: string; //dodatkowe info
+client_id?: number;
 }

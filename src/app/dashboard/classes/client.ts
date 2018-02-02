@@ -1,6 +1,6 @@
 export class Client {
-  client_id: number;
-  firstName: string;
+  client_id?: number;//temporary is optional
+  firstName?: string;//temporary is optional
   lastName?: string;
   zip?: string;
   city?: string;
@@ -10,4 +10,12 @@ export class Client {
   phone?: string;
   email?: string;
 
+  name?: string; //temporary to test
+  latest?: string; //temporary to test
+}
+
+
+export class ClientArray {
+  results: Array<Client>;
+  total: number;
 }

@@ -5,25 +5,8 @@
 
   <div class="row justify-content-center">
     <div class="col-6" id="firstCarPanel">
-      <p-panel header="Klient" class="mb-3 col-6">
-        <div *ngIf="editedField !== 'client'">
-          <div class="row  mb-3">
-            <div class="col-1"><span class="fas fa-search"></span></div>
-            <div class="col-9"><input class="col-12" value="{{client?.firstName}} {{client?.lastName}}"></div>
-            <div class="col-2 text-right">
-              <button pButton type="button" icon="fas fa-plus" class="ui-button-secondary"></button>
-            </div>
-          </div>
-          <div class="row  mb-3">
-            <div class="col-3"><strong>Klient</strong></div>
-            <div class="col-9">{{client?.firstName}} {{client?.lastName}}, {{client?.city}}, {{client?.street}}
-              {{client?.houseNumber}}/{{client?.apartmentNumber}}, tel. {{client?.phone}}
-            </div>
-          </div>
-        </div>
-      </p-panel>
-      <!--</div>-->
-      <!--<div class="row justify-content-center">-->
+      <app-add-cars-client-search [clientNumber]="car.client_id" (selectedClient)="getClientId($event)"></app-add-cars-client-search>
+
       <p-panel header="Samochód" class="mb-3 col-6">
         <div *ngIf="editedField !== 'car'">
           <div class="row  mb-3">
