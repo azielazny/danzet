@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Car} from '../../../classes/car';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-cars-edit',
   templateUrl: './add-cars-edit.component.html',
   styleUrls: ['./add-cars-edit.component.scss']
 })
+
 export class AddCarsEditComponent implements OnInit {
   @Input() defaultBrand: string;
   @Input() defaultModel: string;
@@ -29,7 +30,6 @@ export class AddCarsEditComponent implements OnInit {
       productionYear: [this.defaultProductionYear],
       vin: [this.defaultVin],
       capacity: [this.defaultCapacity]
-
     });
   }
 

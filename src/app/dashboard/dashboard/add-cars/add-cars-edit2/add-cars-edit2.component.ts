@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Car} from "../../../classes/car";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Car} from '../../../classes/car';
 
 @Component({
   selector: 'app-add-cars-edit2',
   templateUrl: './add-cars-edit2.component.html',
   styleUrls: ['./add-cars-edit2.component.scss']
 })
+
 export class AddCarsEdit2Component implements OnInit {
   @Input() defaultCarVersion: string;
   @Input() defaultCapacity: string;
@@ -21,7 +22,8 @@ export class AddCarsEdit2Component implements OnInit {
   @Output() cancelForm = new EventEmitter<void>();
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
