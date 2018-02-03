@@ -21,24 +21,8 @@
           <div class="col-sm-9">{{client?.lastName}}</div>
         </div>
         <div class="row mb-3">
-          <div class="col-sm-3"><strong>Kod Pocztowy</strong></div>
-          <div class="col-sm-9">{{client.zip}}</div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-sm-3"><strong>Miasto</strong></div>
-          <div class="col-sm-9">{{client?.city}}</div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-sm-3"><strong>Ulica</strong></div>
-          <div class="col-sm-9">{{client?.street}}</div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-sm-3"><strong>Numer domu</strong></div>
-          <div class="col-sm-9">{{client?.houseNumber}}</div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-sm-3"><strong>Numer lokalu</strong></div>
-          <div class="col-sm-9">{{client?.apartmentNumber}}</div>
+          <div class="col-sm-3"><strong>Adres</strong></div>
+          <div class="col-sm-9">{{client?.zip}} {{client?.city}}<br>{{client?.street}} {{client?.houseNumber}}/{{client?.apartmentNumber}}</div>
         </div>
         <div class="row mb-3">
           <div class="col-sm-3"><strong>Telefon</strong></div>
@@ -54,16 +38,19 @@
           <div class="col-sm-9">{{client?.modificationDate}}</div>
         </div>
       </div>
-      <!--<app-add-cars-edit *ngIf="editedField === 'car'"-->
-      <!--[defaultBrand]="car?.brand"-->
-      <!--[defaultModel]="car?.model"-->
-      <!--[defaultVin]="car?.vin"-->
-      <!--[defaultRegistrationNumber]="car?.registrationNumber"-->
-      <!--[defaultProductionYear]="car?.productionYear"-->
-      <!--[defaultCapacity]="car?.capacity"-->
-      <!--(submitForm)="submitCar($event)"-->
-      <!--(cancelForm)="resetEdit()">-->
-      <!--</app-add-cars-edit>-->
+      <app-add-client-edit *ngIf="editedField === 'client'"
+      [defaultFirstName]="client?.firstName"
+      [defaultLastName]="client?.lastName"
+      [defaultZip]="client?.zip"
+      [defaultCity]="client?.city"
+      [defaultStreet]="client?.street"
+      [defaultHouseNumber]="client?.houseNumber"
+      [defaultApartmentNumber]="client?.apartmentNumber"
+      [defaultPhone]="client?.phone"
+      [defaultEmail]="client?.email"
+      (submitForm)="submitClient($event)"
+      (cancelForm)="resetEdit()">
+      </app-add-client-edit>
 
     </p-panel>
   </div>

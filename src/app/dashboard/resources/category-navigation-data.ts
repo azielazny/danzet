@@ -41,7 +41,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Dodaj klienta',
         tileSize: 'col-4',
         colorScheme: 'tile5',
-        link: '/dashboard'
+        link: '/dashboard/(add-client//side_column:menu/clients-management)'
       }
     ]
   },

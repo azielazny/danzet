@@ -25,6 +25,7 @@ import {ClientService} from "./services/client.service";
 import {HttpClientModule} from "@angular/common/http";
 import { AddClientsComponent } from './dashboard/add-clients/add-clients.component';
 import { ClientsManagementComponent } from './dashboard/clients-management/clients-management.component';
+import { AddClientEditComponent } from './dashboard/add-clients/add-client-edit/add-client-edit.component';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { ClientsManagementComponent } from './dashboard/clients-management/clien
     AddCarsEdit2Component,
     AddCarsClientSearchComponent,
     AddClientsComponent,
-    ClientsManagementComponent],
+    ClientsManagementComponent,
+    AddClientEditComponent],
   providers: [
     NavigationService,
     CarService,
