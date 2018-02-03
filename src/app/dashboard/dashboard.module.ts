@@ -23,6 +23,8 @@ import { AddCarsEdit2Component } from './dashboard/add-cars/add-cars-edit2/add-c
 import { AddCarsClientSearchComponent } from './dashboard/add-cars/add-cars-client-search/add-cars-client-search.component';
 import {ClientService} from "./services/client.service";
 import {HttpClientModule} from "@angular/common/http";
+import { AddClientsComponent } from './dashboard/add-clients/add-clients.component';
+import { ClientsManagementComponent } from './dashboard/clients-management/clients-management.component';
 
 @NgModule({
   imports: [
@@ -50,7 +52,9 @@ import {HttpClientModule} from "@angular/common/http";
     AddCarsComponent,
     AddCarsEditComponent,
     AddCarsEdit2Component,
-    AddCarsClientSearchComponent],
+    AddCarsClientSearchComponent,
+    AddClientsComponent,
+    ClientsManagementComponent],
   providers: [
     NavigationService,
     CarService,

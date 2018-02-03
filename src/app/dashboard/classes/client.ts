@@ -9,6 +9,7 @@ export class Client {
   apartmentNumber?: number;
   phone?: string;
   email?: string;
+  modificationDate?: string;
 
   name?: string; //temporary to test
   latest?: string; //temporary to test
