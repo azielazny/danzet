@@ -1,0 +1,26 @@
+.carinfo {
+  color: #2c3e50;
+  font-size: 80%;
+  font-weight: 500;
+}
+.tile-category-dark {
+  margin: 0.555rem 0;
+  font-size: 1.7777em;
+  color: #2c3e50;
+  font-weight: 600;
+}
+:host ::ng-deep .ui-panel {
+  border:none;
+  border-radius: unset;
+}
+:host ::ng-deep .ui-panel.ui-widget .ui-panel-titlebar.ui-corner-all {
+  background: #34495e !important;
+  color: #fff;
+  padding: 0.1666rem 0.1666rem 0.1666rem 1rem;
+  /* color: #fff; */
+  /* text-align: center; */
+  text-transform: uppercase;
+  font-size: 1em;
+  border-radius: 0;
+  font-weight: 500;
+}

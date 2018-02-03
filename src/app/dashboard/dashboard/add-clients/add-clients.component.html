@@ -1,0 +1,142 @@
+<div class="row justify-content-center" style="margin: 10px 0 30px;">
+  <i class="fas fa-arrow-left tile-category-dark col-1 " style="line-height: inherit;" routerLink="/dashboard"></i>
+  <div class="tile-category-dark col-11 ">Dodaj samochód osobowy</div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-6" id="firstCarPanel">
+
+    <p-panel header="Klient" class="mb-3 col-6">
+      <div *ngIf="editedField !== 'client'">
+        <div class="row  mb-3">
+          <div class="col-3"><strong>Imię</strong></div>
+          <div class="col-7">{{client?.firstName}}</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="fas fa-edit" class="ui-button-secondary"
+                    (click)="toggleEdit('client')"></button>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Nazwisko</strong></div>
+          <div class="col-sm-9">{{client?.lastName}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Kod Pocztowy</strong></div>
+          <div class="col-sm-9">{{client.zip}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Miasto</strong></div>
+          <div class="col-sm-9">{{client?.city}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Ulica</strong></div>
+          <div class="col-sm-9">{{client?.street}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Numer domu</strong></div>
+          <div class="col-sm-9">{{client?.houseNumber}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Numer lokalu</strong></div>
+          <div class="col-sm-9">{{client?.apartmentNumber}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Telefon</strong></div>
+          <div class="col-sm-9">{{client?.phone}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>E-mail</strong></div>
+          <div class="col-sm-9">{{client?.email}}</div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Data modyfikacji</strong></div>
+          <div class="col-sm-9">{{client?.modificationDate}}</div>
+        </div>
+      </div>
+      <!--<app-add-cars-edit *ngIf="editedField === 'car'"-->
+      <!--[defaultBrand]="car?.brand"-->
+      <!--[defaultModel]="car?.model"-->
+      <!--[defaultVin]="car?.vin"-->
+      <!--[defaultRegistrationNumber]="car?.registrationNumber"-->
+      <!--[defaultProductionYear]="car?.productionYear"-->
+      <!--[defaultCapacity]="car?.capacity"-->
+      <!--(submitForm)="submitCar($event)"-->
+      <!--(cancelForm)="resetEdit()">-->
+      <!--</app-add-cars-edit>-->
+
+    </p-panel>
+  </div>
+  <div class="col-6" id="secondCarPanel">
+    <p-panel header="Lista samochodów" class="mb-3 col-6">
+      <div class="row mb-3">
+        <div class="col-sm-12 text-right">
+          <button pButton type="button" icon="fas fa-plus" class="ui-button-secondary"
+                  (click)="toggleEdit('dodaj')"></button>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3"><strong>Honda Civic</strong></div>
+        <div class="col-sm-7 carinfo">
+          Vin: vin<br>
+          Nr rejestracji: registrationNumber<br>
+          Rok produkcji: productionYear<br>
+          Pojemność: capacity
+        </div>
+        <div class="col-2 text-right">
+          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+        </div>
+      </div>
+  <div class="row mb-3">
+        <div class="col-sm-3"><strong>Honda Civic</strong></div>
+        <div class="col-sm-7 carinfo">
+          Vin: vin<br>
+          Nr rejestracji: registrationNumber<br>
+          Rok produkcji: productionYear<br>
+          Pojemność: capacity
+        </div>
+        <div class="col-2 text-right">
+          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+        </div>
+      </div>
+  <div class="row mb-3">
+        <div class="col-sm-3"><strong>Honda Civic</strong></div>
+        <div class="col-sm-7 carinfo">
+          Vin: vin<br>
+          Nr rejestracji: registrationNumber<br>
+          Rok produkcji: productionYear<br>
+          Pojemność: capacity
+        </div>
+        <div class="col-2 text-right">
+          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+        </div>
+      </div>
+  <div class="row mb-3">
+        <div class="col-sm-3"><strong>Honda Civic</strong></div>
+        <div class="col-sm-7 carinfo">
+          Vin: vin<br>
+          Nr rejestracji: registrationNumber<br>
+          Rok produkcji: productionYear<br>
+          Pojemność: capacity
+        </div>
+        <div class="col-2 text-right">
+          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
+                  (click)="toggleEdit('client')"></button>
+        </div>
+      </div>
+
+
+    </p-panel>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="row justify-content-center" style="margin: 10px 0 30px;">
+  <i class="fas fa-arrow-left tile-category-dark col-1 " style="line-height: inherit;" routerLink="/dashboard"></i>
+  <div class="tile-category-dark col-11 ">Lista klientów</div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="table-tile">
+      <table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th>Imię</th>
+          <th>Nazwisko</th>
+          <th>Miasto</th>
+          <th>Telefon</th>
+          <th>E-mail</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+          <th><input type="text" placeholder="Imię" name="firstName" class="col-12"/></th>
+          <th><input type="text" placeholder="Nazwisko" name="lastName" class="col-12"/></th>
+          <th><input type="text" placeholder="Miasto" name="City" class="col-12"/></th>
+          <th><input type="text" placeholder="Telefon" name="phone" class="col-12 details-control"/></th>
+          <th><input type="text" placeholder="E-mail" name="e-mail" class="col-12"/></th>
+          <th><input type="text" hidden/></th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let client of clients; let i = index;">
+          <td>{{client.firstName}}</td>
+          <td>{{client.lastName}}</td>
+          <td>{{client.city}}</td>
+          <td>{{client.phone}}</td>
+          <td>{{client.email}}</td>
+          <td>
+            <div class="dropdown">
+              <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false" title="opcje"></i>
+              <div class="dropdown-menu" aria-labelledby="dropdownAction">
+                <a class="dropdown-item" href="#">Pokaż</a>
+                <a class="dropdown-item" href="#">Edytuj</a>
+                <a class="dropdown-item" href="#">Usuń</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
