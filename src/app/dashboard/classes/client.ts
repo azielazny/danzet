@@ -10,6 +10,8 @@ export class Client {
   phone?: string;
   email?: string;
   modificationDate?: string;
+  company?: string;
+  nip?:string;
 
   name?: string; //temporary to test
   latest?: string; //temporary to test

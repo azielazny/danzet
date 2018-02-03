@@ -35,7 +35,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Lista klientów',
         tileSize: 'col-4',
         colorScheme: 'tile4',
-        link:  '/dashboard/(cars-management//side_column:menu/clients-management)'
+        link:  '/dashboard/(clients-management//side_column:menu/clients-management)'
       },
       {
         name: 'Dodaj klienta',
