@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACP,KAAK,EAAE,OAAO;EACd,SAAS,EAAE,GAAG;EACd,WAAW,EAAE,GAAG",
+"sources": ["add-client-car-list.component.scss"],
+"names": [],
+"file": "add-client-car-list.component.css"
+}

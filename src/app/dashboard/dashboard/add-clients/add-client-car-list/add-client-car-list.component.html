@@ -1,0 +1,18 @@
+<div  *ngFor="let car of cars;">
+  <div class="row mb-3">
+    <div class="col-sm-3"><strong>{{car?.brand}} {{car?.model}}</strong></div>
+    <div class="col-sm-7 carinfo">
+      Vin: {{car?.vin}}<br>
+      Nr rejestracji: {{car?.registrationNumber}}<br>
+      Rok produkcji: {{car?.productionYear}}<br>
+      Pojemność: {{car?.capacity}}
+    </div>
+    <div class="col-2 text-right">
+      <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
+              [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id,'side_column':'menu/cars-management' }}]"></button>
+      <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
+              (click)="removeCar(client_id)"></button>
+    </div>
+  </div>
+</div>
+

@@ -89,7 +89,8 @@ export const CAR: Car[] = [
     productionYear: 2213,
     vin: 'sdfghjefd737',
     registrationNumber: 'GDA1234',
-    registrationDate: '13.11.2016'
+    registrationDate: '13.11.2016',
+    client_id: 1
   },
   {
     car_id: 11,
@@ -99,7 +100,7 @@ export const CAR: Car[] = [
     vin: 'XXXXXXXX',
     registrationNumber: 'GDA1234',
     registrationDate: '13.11.2016',
-    client_id: 2
+    client_id: 1
   },
   {
     car_id: 12,

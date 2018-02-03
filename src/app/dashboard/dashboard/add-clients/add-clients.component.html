@@ -22,7 +22,9 @@
         </div>
         <div class="row mb-3">
           <div class="col-sm-3"><strong>Adres</strong></div>
-          <div class="col-sm-9">{{client?.zip}} {{client?.city}}<br>{{client?.street}} {{client?.houseNumber}}/{{client?.apartmentNumber}}</div>
+          <div class="col-sm-9">{{client?.zip}} {{client?.city}}<br>{{client?.street}}
+            {{client?.houseNumber}}/{{client?.apartmentNumber}}
+          </div>
         </div>
         <div class="row mb-3">
           <div class="col-sm-3"><strong>Telefon</strong></div>
@@ -39,17 +41,17 @@
         </div>
       </div>
       <app-add-client-edit *ngIf="editedField === 'client'"
-      [defaultFirstName]="client?.firstName"
-      [defaultLastName]="client?.lastName"
-      [defaultZip]="client?.zip"
-      [defaultCity]="client?.city"
-      [defaultStreet]="client?.street"
-      [defaultHouseNumber]="client?.houseNumber"
-      [defaultApartmentNumber]="client?.apartmentNumber"
-      [defaultPhone]="client?.phone"
-      [defaultEmail]="client?.email"
-      (submitForm)="submitClient($event)"
-      (cancelForm)="resetEdit()">
+                           [defaultFirstName]="client?.firstName"
+                           [defaultLastName]="client?.lastName"
+                           [defaultZip]="client?.zip"
+                           [defaultCity]="client?.city"
+                           [defaultStreet]="client?.street"
+                           [defaultHouseNumber]="client?.houseNumber"
+                           [defaultApartmentNumber]="client?.apartmentNumber"
+                           [defaultPhone]="client?.phone"
+                           [defaultEmail]="client?.email"
+                           (submitForm)="submitClient($event)"
+                           (cancelForm)="resetEdit()">
       </app-add-client-edit>
 
     </p-panel>
@@ -62,68 +64,7 @@
                   (click)="toggleEdit('dodaj')"></button>
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-sm-3"><strong>Honda Civic</strong></div>
-        <div class="col-sm-7 carinfo">
-          Vin: vin<br>
-          Nr rejestracji: registrationNumber<br>
-          Rok produkcji: productionYear<br>
-          Pojemność: capacity
-        </div>
-        <div class="col-2 text-right">
-          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-        </div>
-      </div>
-  <div class="row mb-3">
-        <div class="col-sm-3"><strong>Honda Civic</strong></div>
-        <div class="col-sm-7 carinfo">
-          Vin: vin<br>
-          Nr rejestracji: registrationNumber<br>
-          Rok produkcji: productionYear<br>
-          Pojemność: capacity
-        </div>
-        <div class="col-2 text-right">
-          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-        </div>
-      </div>
-  <div class="row mb-3">
-        <div class="col-sm-3"><strong>Honda Civic</strong></div>
-        <div class="col-sm-7 carinfo">
-          Vin: vin<br>
-          Nr rejestracji: registrationNumber<br>
-          Rok produkcji: productionYear<br>
-          Pojemność: capacity
-        </div>
-        <div class="col-2 text-right">
-          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-        </div>
-      </div>
-  <div class="row mb-3">
-        <div class="col-sm-3"><strong>Honda Civic</strong></div>
-        <div class="col-sm-7 carinfo">
-          Vin: vin<br>
-          Nr rejestracji: registrationNumber<br>
-          Rok produkcji: productionYear<br>
-          Pojemność: capacity
-        </div>
-        <div class="col-2 text-right">
-          <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-          <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
-                  (click)="toggleEdit('client')"></button>
-        </div>
-      </div>
-
-
+   <app-add-client-car-list [client_id]="client?.client_id"></app-add-client-car-list>
     </p-panel>
   </div>
 </div>
