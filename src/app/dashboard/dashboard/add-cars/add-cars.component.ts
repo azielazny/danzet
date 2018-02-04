@@ -42,7 +42,8 @@ export class AddCarsComponent implements OnInit {
   }
 
   private getClientId(evt) {
-    this.car.client_id = evt;
+    // this.car.client_id = evt;
+    this.clientId = evt;
   }
 
   private submitCar(name: Car) {
@@ -78,7 +79,7 @@ export class AddCarsComponent implements OnInit {
   private getCarById(carId: number) {
     this.carService.getCarById(carId).then(c => {
       this.car = c;
-      this.clientId = c.client_id;
+      if (typeof this.car !== 'undefined') { this.clientId = this.car.client_id; }
     });
   }
 

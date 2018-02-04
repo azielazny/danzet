@@ -19,7 +19,6 @@ export class AddCarsClientSearchComponent implements OnInit {
 
   @Input()
   public set clientNumber(clientNr: number) {
-    console.log(clientNr);
     this.getClientById(clientNr);
   }
 

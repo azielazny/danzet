@@ -32,8 +32,7 @@ export class DashboardSideMenuComponent implements OnInit, AfterViewChecked {
 
 
   private getNavigation(): void {
-    this.navigationService.getNavigationById(this.subMenuName).then(nav => this.subNavigation = nav)
-      .then(result => console.log(result)).catch(error => console.log(error));
+    this.navigationService.getNavigationById(this.subMenuName).then(nav => this.subNavigation = nav).catch(error => console.log(error));
 
   }
 
