@@ -25,12 +25,12 @@ export class AddClientCarListComponent implements OnInit, OnChanges {
 
   }
 
-  getCarsByClientId(client_id:number) {
+  getCarsByClientId(client_id: number) {
     this.carService.getCarsByClientId(client_id).then(c => this.cars = c);
     console.log(this.cars);
   }
 
-  removeCar(s: string) {
-
+  removeCar(car_id: number) {
+//remove client_id from car_id
   }
 }

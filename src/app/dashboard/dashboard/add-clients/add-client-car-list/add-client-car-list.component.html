@@ -9,9 +9,9 @@
     </div>
     <div class="col-2 text-right">
       <button pButton type="button" icon="fas fa-search" class="mb-1 ui-button-secondary"
-              [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id,'side_column':'menu/cars-management' }}]"></button>
+              [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id, side_column:'menu/cars-management' }}]"></button>
       <button pButton type="button" icon="far fa-trash-alt" class="mb-1 ui-button-secondary"
-              (click)="removeCar(client_id)"></button>
+              (click)="removeCar(car?.car_id)"></button>
     </div>
   </div>
 </div>

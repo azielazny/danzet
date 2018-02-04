@@ -1,6 +1,6 @@
 import {
   AfterViewChecked,
-  AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, Renderer2
+  AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnChanges, OnInit, Renderer2, SimpleChanges
 } from '@angular/core';
 import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
@@ -18,18 +18,18 @@ export class DashboardSideMenuComponent implements OnInit, AfterViewChecked {
   private subMenuName: string;
   private subNavigation: AppNavigation[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private el: ElementRef,
-              private renderer: Renderer2, private route: ActivatedRoute, private navigationService: NavigationService, private router: Router) {
-
+  constructor(private cdr: ChangeDetectorRef, private el: ElementRef, private renderer: Renderer2,
+              private route: ActivatedRoute, private navigationService: NavigationService, private router: Router) {
+    this.route.params.subscribe(params => {
+      this.subMenuName = params['subMenuId'];
+      this.getNavigation();
+    });
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.subMenuName = params['subMenuId'];
-    });
-    this.getNavigation();
 
   }
+
 
   private getNavigation(): void {
     this.navigationService.getNavigationById(this.subMenuName).then(nav => this.subNavigation = nav)

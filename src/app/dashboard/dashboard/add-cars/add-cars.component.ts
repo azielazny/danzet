@@ -1,6 +1,7 @@
 import {
-  AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output,
-  Renderer2
+  AfterViewChecked,
+  AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output,
+  Renderer2, SimpleChange, SimpleChanges
 } from '@angular/core';
 import {Car} from '../../classes/car';
 import {CarService} from '../../services/car.service';
@@ -11,6 +12,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
+import {ActivatedRoute, Params} from "@angular/router";
 
 
 @Component({
@@ -23,12 +25,16 @@ export class AddCarsComponent implements OnInit {
 
   @Input() editedField: string;
   @Input() car: Car;
+  @Input() private carId: number;
 
-  constructor(private carService: CarService) {
+  constructor(private carService: CarService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.getCarById();
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.carId = +params['carId'];
+    });
+    this.getCarById(this.carId);
   }
 
   getClientId(evt) {
@@ -65,8 +71,8 @@ export class AddCarsComponent implements OnInit {
     this.editedField = null;
   }
 
-  private getCarById() {
-    this.carService.getCarById(11).then(c => this.car = c);//id samochodu będzie z url
+  private getCarById(carId: number) {
+    this.carService.getCarById(carId).then(c => this.car = c);
   }
 
 
