@@ -61,7 +61,7 @@
       <div class="row mb-3">
         <div class="col-sm-12 text-right">
           <button pButton type="button" icon="fas fa-plus" class="ui-button-secondary"
-                  (click)="toggleEdit('dodaj')"></button>
+                  [routerLink]="['/dashboard/',{outlets:{primary:'add-car/null/'+client?.client_id, side_column:'menu/cars-management' }}]"></button>
         </div>
       </div>
    <app-add-client-car-list [client_id]="client?.client_id"></app-add-client-car-list>

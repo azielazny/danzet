@@ -9,8 +9,8 @@ import {Car} from '../../../classes/car';
 })
 export class AddClientCarListComponent implements OnInit, OnChanges {
 
-  @Input() client_id: number;
-  private cars: Car[];
+  @Input() private client_id: number;
+  private cars: Car[] = [];
 
   constructor(private carService: CarService) {
   }
@@ -25,12 +25,12 @@ export class AddClientCarListComponent implements OnInit, OnChanges {
 
   }
 
-  getCarsByClientId(client_id: number) {
+  private getCarsByClientId(client_id: number) {
     this.carService.getCarsByClientId(client_id).then(c => this.cars = c);
     console.log(this.cars);
   }
 
-  removeCar(car_id: number) {
+  private removeCar(car_id: number) {
 //remove client_id from car_id
   }
 }

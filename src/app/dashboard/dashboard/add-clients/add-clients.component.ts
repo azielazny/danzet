@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Client} from '../../classes/client';
 import {ClientService} from '../../services/client.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-add-clients',
@@ -9,35 +10,38 @@ import {ClientService} from '../../services/client.service';
 })
 export class AddClientsComponent implements OnInit {
 
-  @Input() editedField: string;
-  @Input() client: Client;
+  @Input() private editedField: string;
+  @Input() private client: Client;
+  @Input() private clientId: number;
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.clientId = +params['clientId'];
+      this.editedField = params['editedField'];
+      this.getClientById();
+    });
   }
 
   ngOnInit(): void {
-    this.getClientById();
+
   }
 
-  // getClientId(evt) {
-  //   this.car.client_id = evt;
-  // }
 
-  submitClient(name: Client) {
+  private submitClient(name: Client) {
     this.client = name;
     this.resetEdit();
   }
 
-  toggleEdit(field) {
+  private toggleEdit(field) {
     this.editedField = field;
   }
 
-  resetEdit() {
+  private resetEdit() {
     this.editedField = null;
   }
 
   private getClientById() {
-    this.clientService.getClientById(1).then(c => this.client = c);
+    if (this.clientId > 0) { this.clientService.getClientById(this.clientId).then(c => this.client = c); }
   }
 
 

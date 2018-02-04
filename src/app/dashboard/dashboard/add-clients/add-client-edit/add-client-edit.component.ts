@@ -9,18 +9,18 @@ import {Car} from "../../../classes/car";
 })
 export class AddClientEditComponent implements OnInit {
 
-  @Input() defaultFirstName: string;
-  @Input() defaultLastName: string;
-  @Input() defaultZip: string;
-  @Input() defaultCity: string;
-  @Input() defaultStreet: string;
-  @Input() defaultHouseNumber: string;
-  @Input() defaultApartmentNumber: string;
-  @Input() defaultPhone: string;
-  @Input() defaultEmail: string;
-  @Output() submitForm = new EventEmitter<Car>();
-  @Output() cancelForm = new EventEmitter<void>();
-  form: FormGroup;
+  @Input() private defaultFirstName: string;
+  @Input() private defaultLastName: string;
+  @Input() private defaultZip: string;
+  @Input() private defaultCity: string;
+  @Input() private defaultStreet: string;
+  @Input() private defaultHouseNumber: string;
+  @Input() private defaultApartmentNumber: string;
+  @Input() private defaultPhone: string;
+  @Input() private defaultEmail: string;
+  @Output() private submitForm = new EventEmitter<Car>();
+  @Output() private cancelForm = new EventEmitter<void>();
+  private form: FormGroup;
 
   constructor(private fb: FormBuilder) {
   }
@@ -39,11 +39,11 @@ export class AddClientEditComponent implements OnInit {
     });
   }
 
-  submit() {
+  private submit() {
     this.submitForm.emit(this.form.value);
   }
 
-  cancel() {
+  private cancel() {
     this.cancelForm.emit();
   }
 }

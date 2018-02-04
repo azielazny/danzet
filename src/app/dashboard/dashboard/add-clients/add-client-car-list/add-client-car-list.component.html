@@ -1,4 +1,6 @@
-<div  *ngFor="let car of cars;">
+<div *ngIf="cars.length<1">
+  <p> <i class="far fa-comment" style="color: #b3b3b3;"></i> Ten klient nie ma jeszcze dodanych samochodów do bazy.</p>
+</div><div  *ngFor="let car of cars;">
   <div class="row mb-3">
     <div class="col-sm-3"><strong>{{car?.brand}} {{car?.model}}</strong></div>
     <div class="col-sm-7 carinfo">

@@ -9,18 +9,18 @@ import {Car} from '../../../classes/car';
 })
 
 export class AddCarsEdit2Component implements OnInit {
-  @Input() defaultCarVersion: string;
-  @Input() defaultCapacity: string;
-  @Input() defaultRegistrationDate: string;
-  @Input() defaultEnginePower: string;
-  @Input() defaultFuel: string;
-  @Input() defaultDrSeries: string;
-  @Input() defaultCourse: string;
-  @Input() defaultDateAdded: string;
-  @Input() defaultInfo: string;
-  @Output() submitForm = new EventEmitter<Car>();
-  @Output() cancelForm = new EventEmitter<void>();
-  form: FormGroup;
+  @Input() private defaultCarVersion: string;
+  @Input() private defaultCapacity: string;
+  @Input() private defaultRegistrationDate: string;
+  @Input() private defaultEnginePower: string;
+  @Input() private defaultFuel: string;
+  @Input() private defaultDrSeries: string;
+  @Input() private defaultCourse: string;
+  @Input() private defaultDateAdded: string;
+  @Input() private defaultInfo: string;
+  @Output() private submitForm = new EventEmitter<Car>();
+  @Output() private cancelForm = new EventEmitter<void>();
+  private form: FormGroup;
 
   constructor(private fb: FormBuilder) {
   }
@@ -38,11 +38,11 @@ export class AddCarsEdit2Component implements OnInit {
     });
   }
 
-  submit() {
+  private submit() {
     this.submitForm.emit(this.form.value);
   }
 
-  cancel() {
+  private cancel() {
     this.cancelForm.emit();
   }
 }

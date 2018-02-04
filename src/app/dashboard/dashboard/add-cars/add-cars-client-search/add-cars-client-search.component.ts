@@ -19,6 +19,7 @@ export class AddCarsClientSearchComponent implements OnInit {
 
   @Input()
   public set clientNumber(clientNr: number) {
+    console.log(clientNr);
     this.getClientById(clientNr);
   }
 
@@ -39,7 +40,7 @@ export class AddCarsClientSearchComponent implements OnInit {
     });
   }
 
-  choiceClient(client_id: number) {
+  private choiceClient(client_id: number) {
     this.clientsList = [];
     this.searchTerm = null;
     this.selectedClient.emit(client_id);

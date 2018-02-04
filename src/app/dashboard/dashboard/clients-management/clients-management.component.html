@@ -39,9 +39,9 @@
               <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
                  aria-expanded="false" title="opcje"></i>
               <div class="dropdown-menu" aria-labelledby="dropdownAction">
-                <a class="dropdown-item" href="#">Pokaż</a>
-                <a class="dropdown-item" href="#">Edytuj</a>
-                <a class="dropdown-item" href="#">Usuń</a>
+                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id, side_column:'menu/clients-management' }}]">Pokaż</a>
+                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id+'/client', side_column:'menu/clients-management' }}]">Edytuj</a>
+                <a class="dropdown-item" href="#" (click)="removeCar(client?.client_id)">Usuń</a>
               </div>
             </div>
           </td>

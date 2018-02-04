@@ -13,7 +13,8 @@
         </div>
       </div>
       <div class="col-2 text-right">
-        <button pButton type="button" icon="fas fa-plus" class="ui-button-secondary"></button>
+        <button pButton type="button" icon="fas fa-plus" class="ui-button-secondary"
+                [routerLink]="['/dashboard/',{outlets:{primary:'add-client', side_column:'menu/clients-management' }}]"></button>
       </div>
     </div>
     <div class="row  mb-3">

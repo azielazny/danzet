@@ -28,11 +28,23 @@ export const dashboardRoutes: Routes = [
         data: {title: 'makeCarService ++:: Wprowadzanie samochodu'}
       },
       {
+        path: 'add-car/:carId/:clientId',
+        component: AddCarsComponent,
+        data: {title: 'makeCarService ++:: Wprowadzanie samochodu'}
+      },
+      {
+        path: 'add-car/:carId/:clientId/:editedField',
+        component: AddCarsComponent,
+        data: {title: 'makeCarService ++:: Wprowadzanie samochodu'}
+      },
+      {
         path: 'clients-management',
         component: ClientsManagementComponent,
         data: {title: 'makeCarService ++:: Zarządzanie klientami'}
       },
       {path: 'add-client', component: AddClientsComponent, data: {title: 'makeCarService ++:: Wprowadzanie klienta'}},
+      {path: 'add-client/:clientId', component: AddClientsComponent, data: {title: 'makeCarService ++:: Wprowadzanie klienta'}},
+      {path: 'add-client/:clientId/:editedField', component: AddClientsComponent, data: {title: 'makeCarService ++:: Wprowadzanie klienta'}},
       {path: 'menu/:subMenuId', component: DashboardSideMenuComponent, outlet: 'side_column'}
     ]
   }

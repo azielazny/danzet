@@ -9,16 +9,16 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 
 export class AddCarsEditComponent implements OnInit {
-  @Input() defaultBrand: string;
-  @Input() defaultModel: string;
-  @Input() defaultProductionYear: string;
-  @Input() defaultVin: string;
-  @Input() defaultRegistrationNumber: string;
-  @Input() defaultCarVersion: string;
-  @Input() defaultCapacity: string;
-  @Output() submitForm = new EventEmitter<Car>();
-  @Output() cancelForm = new EventEmitter<void>();
-  form: FormGroup;
+  @Input() private defaultBrand: string;
+  @Input() private defaultModel: string;
+  @Input() private defaultProductionYear: string;
+  @Input() private defaultVin: string;
+  @Input() private defaultRegistrationNumber: string;
+  @Input() private defaultCarVersion: string;
+  @Input() private defaultCapacity: string;
+  @Output() private submitForm = new EventEmitter<Car>();
+  @Output() private cancelForm = new EventEmitter<void>();
+  private form: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
@@ -33,11 +33,11 @@ export class AddCarsEditComponent implements OnInit {
     });
   }
 
-  submit() {
+  private submit() {
     this.submitForm.emit(this.form.value);
   }
 
-  cancel() {
+  private cancel() {
     this.cancelForm.emit();
   }
 }

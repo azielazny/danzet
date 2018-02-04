@@ -5,7 +5,7 @@
 
   <div class="row justify-content-center">
     <div class="col-6" id="firstCarPanel">
-      <app-add-cars-client-search [clientNumber]="car?.client_id" (selectedClient)="getClientId($event)"></app-add-cars-client-search>
+      <app-add-cars-client-search [clientNumber]="clientId" (selectedClient)="getClientId($event)"></app-add-cars-client-search>
 
       <p-panel header="Samochód" class="mb-3 col-6">
         <div *ngIf="editedField !== 'car'">

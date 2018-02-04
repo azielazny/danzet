@@ -12,7 +12,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params} from '@angular/router';
 
 
 @Component({
@@ -23,25 +23,29 @@ import {ActivatedRoute, Params} from "@angular/router";
 export class AddCarsComponent implements OnInit {
 
 
-  @Input() editedField: string;
-  @Input() car: Car;
+  @Input() private editedField: string;
+  @Input() private car: Car;
   @Input() private carId: number;
+  @Input() private clientId: number;
 
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.carId = +params['carId'];
+      this.clientId = +params['clientId'];
+      this.editedField = params['editedField'];
+      this.getCarById(this.carId);
+    });
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.carId = +params['carId'];
-    });
-    this.getCarById(this.carId);
+
   }
 
-  getClientId(evt) {
+  private getClientId(evt) {
     this.car.client_id = evt;
   }
 
-  submitCar(name: Car) {
+  private submitCar(name: Car) {
     this.car.brand = name.brand;
     this.car.model = name.model;
     this.car.registrationNumber = name.registrationNumber;
@@ -51,7 +55,7 @@ export class AddCarsComponent implements OnInit {
     this.resetEdit();
   }
 
-  submitCar2(name: Car) {
+  private submitCar2(name: Car) {
     this.car.carVersion = name.carVersion;
     this.car.registrationDate = name.registrationDate;
     this.car.enginePower = name.enginePower;
@@ -63,16 +67,19 @@ export class AddCarsComponent implements OnInit {
     this.resetEdit();
   }
 
-  toggleEdit(field) {
+  private toggleEdit(field) {
     this.editedField = field;
   }
 
-  resetEdit() {
+  private resetEdit() {
     this.editedField = null;
   }
 
   private getCarById(carId: number) {
-    this.carService.getCarById(carId).then(c => this.car = c);
+    this.carService.getCarById(carId).then(c => {
+      this.car = c;
+      this.clientId = c.client_id;
+    });
   }
 
 

@@ -79,5 +79,8 @@ export class CarsManagementComponent implements OnInit, AfterViewInit {
   private getCarsList(): void {
     this.carService.getCarsList().then(c => this.cars = c);
   }
+  private removeCar(carId:number) {
+    //usunięcie samochodu z listy
+  }
 }
 
