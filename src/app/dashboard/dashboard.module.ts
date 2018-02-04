@@ -27,6 +27,10 @@ import { AddClientsComponent } from './dashboard/add-clients/add-clients.compone
 import { ClientsManagementComponent } from './dashboard/clients-management/clients-management.component';
 import { AddClientEditComponent } from './dashboard/add-clients/add-client-edit/add-client-edit.component';
 import { AddClientCarListComponent } from './dashboard/add-clients/add-client-car-list/add-client-car-list.component';
+import { ServicesManagementComponent } from './dashboard/services-management/services-management.component';
+import { AddServicesComponent } from './dashboard/add-services/add-services.component';
+import {ServiceService} from "./services/service.service";
+import { AddServicesEditComponent } from './dashboard/add-services/add-services-edit/add-services-edit.component';
 
 @NgModule({
   imports: [
@@ -58,11 +62,15 @@ import { AddClientCarListComponent } from './dashboard/add-clients/add-client-ca
     AddClientsComponent,
     ClientsManagementComponent,
     AddClientEditComponent,
-    AddClientCarListComponent],
+    AddClientCarListComponent,
+    ServicesManagementComponent,
+    AddServicesComponent,
+    AddServicesEditComponent],
   providers: [
     NavigationService,
     CarService,
-    ClientService
+    ClientService,
+    ServiceService
     // FormBuilder
   ],
 })

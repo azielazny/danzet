@@ -52,13 +52,13 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Lista usług serwisowych',
         tileSize: 'col-4',
         colorScheme: 'tile6',
-        link: '/dashboard'
+        link:  '/dashboard/(services-management//side_column:menu/services-management)'
       },
       {
         name: 'Dodaj usługę serwisową',
         tileSize: 'col-4',
         colorScheme: 'tile7',
-        link: '/dashboard'
+        link: '/dashboard/(add-service//side_column:menu/services-management)'
       },
       {
         name: 'Zamów części z hurtowni',

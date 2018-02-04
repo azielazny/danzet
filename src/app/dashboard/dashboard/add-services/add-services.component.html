@@ -1,0 +1,63 @@
+<div class="row justify-content-center" style="margin: 10px 0 30px;">
+  <i class="fas fa-arrow-left tile-category-dark col-1 " style="line-height: inherit;" routerLink="/dashboard"></i>
+  <div class="tile-category-dark col-11 ">Dodaj usługę</div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-6" id="firstCarPanel">
+
+    <p-panel header="Klient" class="mb-3 col-6">
+      <div *ngIf="editedField !== 'service'">
+        <div class="row  mb-3">
+          <div class="col-3"><strong>Nazwa</strong></div>
+          <div class="col-7">{{service?.name}}</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="fas fa-edit" class="ui-button-secondary"
+                    (click)="toggleEdit('service')"></button>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Kod</strong></div>
+          <div class="col-sm-9">{{service?.code}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Cena netto</strong></div>
+          <div class="col-sm-9">{{service?.netPrice}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Vat</strong></div>
+          <div class="col-sm-9">{{service?.vat}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Cena brutto</strong></div>
+          <div class="col-sm-9">{{service?.grossPrice}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Jednostka</strong></div>
+          <div class="col-sm-9">{{service?.unit}}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Opis</strong></div>
+          <div class="col-sm-9">{{service?.info}}</div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Data modyfikacji</strong></div>
+          <div class="col-sm-9">{{client?.modificationDate}}</div>
+        </div>
+      </div>
+      <app-add-services-edit *ngIf="editedField === 'service'"
+                           [defaultName]="service?.name"
+                           [defaultCode]="service?.code"
+                           [defaultNetPrice]="service?.netPrice"
+                           [defaultVat]="service?.vat"
+                           [defaultGrossPrice]="service?.grossPrice"
+                           [defaultUnit]="service?.unit"
+                           [defaultInfo]="service?.info"
+                           (submitForm)="submitService($event)"
+                           (cancelForm)="resetEdit()">
+      </app-add-services-edit>
+
+    </p-panel>
+  </div>
+</div>
