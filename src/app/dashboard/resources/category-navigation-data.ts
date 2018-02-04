@@ -67,9 +67,21 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         link: '/dashboard'
       },
       {
-        name: 'Dodaj części z hurtowni',
+        name: 'Wprowadź części z hurtowni',
         tileSize: 'col-4',
         colorScheme: 'tile1',
+        link: '/dashboard'
+      },
+      {
+        name: 'Lista serwisowanych samochodów',
+        tileSize: 'col-4',
+        colorScheme: 'tile2',
+        link: '/dashboard'
+      },
+      {
+        name: 'Dodaj serwis samochodu',
+        tileSize: 'col-4',
+        colorScheme: 'tile3',
         link: '/dashboard'
       }
     ]
