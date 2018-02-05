@@ -35,6 +35,8 @@ import { AddProductsComponent } from './dashboard/add-products/add-products.comp
 import { WarehouseComponent } from './dashboard/warehouse/warehouse.component';
 import {ProductService} from "./services/product.service";
 import {WarehouseService} from "./services/warehouse.service";
+import { AddProductEditComponent } from './dashboard/add-products/add-product-edit/add-product-edit.component';
+import { AddProductEdit2Component } from './dashboard/add-products/add-product-edit2/add-product-edit2.component';
 
 @NgModule({
   imports: [
@@ -71,7 +73,9 @@ import {WarehouseService} from "./services/warehouse.service";
     AddServicesComponent,
     AddServicesEditComponent,
     AddProductsComponent,
-    WarehouseComponent],
+    WarehouseComponent,
+    AddProductEditComponent,
+    AddProductEdit2Component],
   providers: [
     NavigationService,
     CarService,

@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class=" bg-faded">
+  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label"><strong>Nazwa <span
+      class="text-primary">*</span></strong></label>
+    <div class="col-sm-9">
+      <input id="name" type="text" class="form-control" formControlName="name"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="code" class="col-sm-3 col-form-label"><strong>Kod <span
+      class="text-primary">*</span></strong></label>
+    <div class="col-sm-9">
+      <input id="code" type="text" class="form-control" formControlName="code"/>
+    </div>
+  </div>
+<div class="form-group row">
+    <label for="unit" class="col-sm-3 col-form-label"><strong>Jednostka</strong></label>
+    <div class="col-sm-9">
+      <input id="unit" type="text" class="form-control" formControlName="unit"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="info" class="col-sm-3 col-form-label"><strong>Opis</strong></label>
+    <div class="col-sm-9">
+      <textarea id="info" class="form-control" formControlName="info"></textarea>
+    </div>
+  </div>
+  <div class="text-right">
+    <button pButton type="button" class="ui-button-primary" icon="fas fa-times" label="Anuluj"
+            (click)="cancel()"></button>
+    <button pButton type="submit" class="ui-button-success" icon="far fa-save" label="Zapisz"
+            [disabled]="!form.valid"></button>
+  </div>
+</form>
+

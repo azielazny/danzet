@@ -1,3 +1,179 @@
-<p>
-  add-products works!
-</p>
+<div class="row justify-content-center" style="margin: 10px 0 30px;">
+  <i class="fas fa-arrow-left tile-category-dark col-1 " style="line-height: inherit;" routerLink="/dashboard"></i>
+  <div class="tile-category-dark col-11 ">Dodaj produkt</div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-6" id="firstCarPanel">
+
+    <p-panel header="Produkt" class="mb-3 col-6">
+      <div *ngIf="editedField !== 'product'">
+        <div class="row  mb-3">
+          <div class="col-3"><strong>Nazwa</strong></div>
+          <div class="col-7">{{product?.name}}</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="far fa-trash-alt" title="usuń produkt"
+                    class="ui-button-secondary"
+                    (click)="removeProduct(product?.product_id)"></button>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Kod</strong></div>
+          <div class="col-sm-7">{{product?.code}}</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="fas fa-edit" title="edytuj produkt"
+                    class="ui-button-secondary"
+                    (click)="toggleEdit('product')"></button>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3"><strong>Ilość</strong></div>
+          <div class="col-sm-9">{{product?.quantity}} {{product?.unit}}</div>
+        </div>
+        <div class="row  mb-3">
+          <div class="col-3"><strong>Magazyn</strong></div>
+          <div class="col-9" >Wybierz magazyn, aby sprawdzić ilość produktu w tym magazynie</div>
+        </div>
+        <div class="row  mb-3">
+          <div class="col-3"><strong></strong></div>
+          <div class="col-7">{{product?.warehouseName}}
+            <select id="warehouseName" class="form-control">
+              <option value="Gdańsk" selected>Gdańsk</option>
+              <option value="Rzeszów">Rzeszów</option>
+              <option value="Wrocław">Wrocław</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="row mb-3" *ngIf="editedField !== 'addProduct'">
+          <div class="col-sm-3"><strong>Opis</strong></div>
+          <div class="col-sm-9">{{product?.info}}</div>
+        </div>
+      </div>
+      <app-add-product-edit *ngIf="editedField === 'product'"
+                            [defaultName]="product?.name"
+                            [defaultCode]="product?.code"
+                            [defaultQuantity]="product?.quantity"
+                            [defaultUnit]="product?.unit"
+                            [defaultInfo]="product?.info"
+                            (submitForm)="submitProduct($event)"
+                            (cancelForm)="resetEdit()">
+      </app-add-product-edit>
+    </p-panel>
+
+    <p-panel header="Dodaj produkt" class="mb-3 col-6">
+      <div *ngIf="editedField !== 'addProduct'">
+
+        <div class="row  mb-3">
+          <div class="col-10">Włącz tryb edycji, aby dodać produkt</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="fas fa-edit" class="ui-button-secondary"
+                    (click)="toggleEdit('addProduct')"></button>
+          </div>
+        </div>
+
+      </div>
+      <app-add-product-edit2 *ngIf="editedField === 'addProduct'"
+                            [defaultWarehouseId]="product?.warehouse_id"
+                            [defaultWarehouseName]="product?.warehouseName"
+                            [defaultSupplier]="product?.supplier"
+                            [defaultQuantity]="product?.quantity"
+                            [defaultReceivedDate]="product?.receivedDate"
+                            [defaultWorkerId]="product?.worker_id"
+                            [defaultNetPrice]="product?.netPrice"
+                            [defaultVat]="product?.vat"
+                            [defaultGrossPrice]="product?.grossPrice"
+                            (submitForm)="submitProduct($event)"
+                            (cancelForm)="resetEdit()">
+      </app-add-product-edit2>
+    </p-panel>
+  </div>
+  <div class="col-6" id="firstCarPanel">
+    <p-panel header="Stan magazynowy" class="mb-3 col-6">
+      <div class="row  mb-3">
+        <div class="col-3"><strong>Data dodania</strong></div>
+        <div class="col-2"><strong>Ilość</strong></div>
+        <div class="col-5"><strong>Cena netto/brutto</strong></div>
+        <div class="col-2"></div>
+      </div>
+
+      <div>
+        <div class="row warehouseInfo">
+          <div class="col-3">01.02.2222</div>
+          <div class="col-2">556</div>
+          <div class="col-5">2332.00 zł/3444.00 zł</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
+                    (click)="removeWarehousePosition('product')"></button>
+          </div>
+        </div>
+        <div class="row warehouseData mb-3">
+          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
+          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
+          <div class="col-3"><strong>Uwagi</strong></div>
+          <div class="col-9 ">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row warehouseInfo">
+          <div class="col-3">01.02.2222</div>
+          <div class="col-2">556</div>
+          <div class="col-5">2332.00 zł/3444.00 zł</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
+                    (click)="removeWarehousePosition('product')"></button>
+          </div>
+        </div>
+        <div class="row warehouseData mb-3">
+          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
+          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
+          <div class="col-3"><strong>Uwagi</strong></div>
+          <div class="col-9 ">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row warehouseInfo">
+          <div class="col-3">01.02.2222</div>
+          <div class="col-2">556</div>
+          <div class="col-5">2332.00 zł/3444.00 zł</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
+                    (click)="removeWarehousePosition('product')"></button>
+          </div>
+        </div>
+        <div class="row warehouseData mb-3">
+          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
+          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
+          <div class="col-3"><strong>Uwagi</strong></div>
+          <div class="col-9 ">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row warehouseInfo">
+          <div class="col-3">01.02.2222</div>
+          <div class="col-2">556</div>
+          <div class="col-5">2332.00 zł/3444.00 zł</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
+                    (click)="removeWarehousePosition('product')"></button>
+          </div>
+        </div>
+        <div class="row warehouseData mb-3">
+          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
+          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
+          <div class="col-3"><strong>Uwagi</strong></div>
+          <div class="col-9 ">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
+          </div>
+        </div>
+      </div>
+
+    </p-panel>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import {AddClientsComponent} from './dashboard/add-clients/add-clients.component
 import {ServicesManagementComponent} from "./dashboard/services-management/services-management.component";
 import {AddServicesComponent} from "./dashboard/add-services/add-services.component";
 import {WarehouseComponent} from "./dashboard/warehouse/warehouse.component";
+import {AddProductsComponent} from "./dashboard/add-products/add-products.component";
 
 export const dashboardRoutes: Routes = [
   {
@@ -33,8 +34,8 @@ export const dashboardRoutes: Routes = [
       {path: 'add-service/:serviceId', component: AddServicesComponent, data: {title: 'makeCarService ++:: Wprowadzanie usługi'}},
       {path: 'add-service/:serviceId/:editedField', component: AddServicesComponent, data: {title: 'makeCarService ++:: Wprowadzanie usługi'}},
       {path: 'warehouse', component: WarehouseComponent, data: {title: 'makeCarService ++:: Zarządzanie magazynem'}},
-      // {path: 'add-service', component: AddServicesComponent, data: {title: 'makeCarService ++:: Wprowadzanie usługi'}},
-      // {path: 'add-service/:serviceId', component: AddServicesComponent, data: {title: 'makeCarService ++:: Wprowadzanie usługi'}},
+      {path: 'add-product', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
+      {path: 'add-product/:productId', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
       // {path: 'add-service/:serviceId/:editedField', component: AddServicesComponent, data: {title: 'makeCarService ++:: Wprowadzanie usługi'}},
       {path: 'menu/:subMenuId', component: DashboardSideMenuComponent, outlet: 'side_column'}
     ]
