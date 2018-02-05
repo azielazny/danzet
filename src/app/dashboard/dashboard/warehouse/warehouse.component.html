@@ -1,0 +1,56 @@
+<div class="row justify-content-center" style="margin: 10px 0 30px;">
+  <i class="fas fa-arrow-left tile-category-dark col-1 " style="line-height: inherit;" routerLink="/dashboard"></i>
+  <div class="tile-category-dark col-11 ">Stan magazynowy</div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="table-tile">
+      <table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th>Nazwa</th>
+          <th>Kod</th>
+          <th>Magazyn</th>
+          <th>Ilość</th>
+          <th>Jednostka</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+          <th><input type="text" placeholder="Nazwa" name="name" class="col-12"/></th>
+          <th><input type="text" placeholder="Kod" name="code" class="col-12"/></th>
+          <th><input type="text" placeholder="Magazyn" name="warehouseName" class="col-12"/></th>
+          <th><input type="text" placeholder="Ilość" name="quantity" class="col-12 details-control"/></th>
+          <th><input type="text" placeholder="Jednostka" name="unit" class="col-12"/></th>
+          <th><input type="text" hidden/></th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let product of products; let i = index;">
+          <td>{{product.name}}</td>
+          <td>{{product.code}}</td>
+          <td>{{product.warehouseName}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.unit}}</td>
+          <td>
+            <div class="dropdown">
+              <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false" title="opcje"></i>
+              <div class="dropdown-menu" aria-labelledby="dropdownAction">
+                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-service/'+service?.service_id, side_column:'menu/services-management' }}]">Pokaż</a>
+                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-service/'+service?.service_id+'/service', side_column:'menu/services-management' }}]">Edytuj</a>
+                <a class="dropdown-item" href="#" (click)="removeProduct(product?.product_id)">Usuń</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

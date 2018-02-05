@@ -31,6 +31,10 @@ import { ServicesManagementComponent } from './dashboard/services-management/ser
 import { AddServicesComponent } from './dashboard/add-services/add-services.component';
 import {ServiceService} from "./services/service.service";
 import { AddServicesEditComponent } from './dashboard/add-services/add-services-edit/add-services-edit.component';
+import { AddProductsComponent } from './dashboard/add-products/add-products.component';
+import { WarehouseComponent } from './dashboard/warehouse/warehouse.component';
+import {ProductService} from "./services/product.service";
+import {WarehouseService} from "./services/warehouse.service";
 
 @NgModule({
   imports: [
@@ -65,12 +69,16 @@ import { AddServicesEditComponent } from './dashboard/add-services/add-services-
     AddClientCarListComponent,
     ServicesManagementComponent,
     AddServicesComponent,
-    AddServicesEditComponent],
+    AddServicesEditComponent,
+    AddProductsComponent,
+    WarehouseComponent],
   providers: [
     NavigationService,
     CarService,
     ClientService,
-    ServiceService
+    ServiceService,
+    ProductService,
+    WarehouseService
     // FormBuilder
   ],
 })
