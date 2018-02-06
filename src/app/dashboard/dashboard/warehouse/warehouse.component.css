@@ -1,3 +1,57 @@
+.tile-category-dark {
+  margin: 0.555rem 0;
+  font-size: 1.7777em;
+  color: #2c3e50;
+  font-weight: 600; }
 
+tr.odd {
+  background: #fff !important; }
+
+table.dataTable tbody tr {
+  background-color: #e8e8e8;
+  color: #2c3e50; }
+
+.table th {
+  border-top: 1px solid #2c3e50; }
+
+.table-tile {
+  background: #e8e8e8;
+  padding: 10px 5px;
+  border: 1px solid #d8d5d5;
+  display: inline-flex; }
+
+table {
+  background: #2c3e50;
+  color: #fff; }
+  table tbody td:last-of-type {
+    text-align: center; }
+  table input {
+    background: #2c3e50;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    /* color: #fff !important; */ }
+    table input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #e6e6e6; }
+    table input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #e6e6e6; }
+    table input:-ms-input-placeholder {
+      /* IE 10+ */
+      color: #e6e6e6; }
+    table input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #e6e6e6; }
+
+div.dataTables_filter input[type="search"] {
+  background: #e6e6e6 !important;
+  border: none;
+  border-bottom: 2px solid #2c3e50; }
+
+div.dataTables_filter select {
+  background: #2c3e50 !important;
+  border: navajowhite;
+  color: #fff; }
 
 /*# sourceMappingURL=warehouse.component.css.map */

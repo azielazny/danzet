@@ -1,20 +1,27 @@
 export class Product {
   product_id?: number;
-  warehouse_id?: number;
-  warehouseName?: string;
-  worker_id?: number;
-  supplier?: string;
   name?: string;
   code?: string;
+  info?: string;
+  unit?: string;
+  productInventory?: ProductInventory[];
+  warehouseName?: string; //dynamic fields for warehouse
+  warehouse_id?: number; //temporary dynamic fields for warehouse
+}
+
+export class ProductInventory {
+  product_id?: number;
   netPrice?: string;
+  warehouse_id?: number;
+  warehouseName?: string;
   vat?: string;
   grossPrice?: string;
   quantity?: number;
+  supplier?: string;
   receivedDate?: string;
   releaseDate?: string;
   client_id?: number;
   car_id?: number;
-  unit?: string;
-
+  worker_id?: number;
   info?: string;
 }

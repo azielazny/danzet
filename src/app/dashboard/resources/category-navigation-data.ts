@@ -70,7 +70,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Wprowadź części z hurtowni',
         tileSize: 'col-4',
         colorScheme: 'tile1',
-        link: '/dashboard'
+        link: '/dashboard/(add-product//side_column:menu/services-management)'
       },
       {
         name: 'Lista serwisowanych samochodów',
@@ -105,7 +105,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Stan magazynowy',
         tileSize: 'col-4',
         colorScheme: 'tile4',
-        link: '/dashboard'
+        link: '/dashboard/(warehouse//side_column:menu/reports-management)'
       },
       {
         name: 'Bilans miesiąca',
