@@ -4,11 +4,12 @@
     <label for="warehouseName" class="col-sm-3 col-form-label"><strong>Magazyn</strong></label>
     <div class="col-sm-9">
       <!--<select id="warehouseName" [ngModel]="selectedItem" class="form-control" formControlName="warehouseName">-->
-      <select id="warehouseName" class="form-control" formControlName="warehouseName">
-        <option value="Gdańsk" selected>Gdańsk</option>
-        <option value="Rzeszów">Rzeszów</option>
-        <option value="Wrocław">Wrocław</option>
-      </select>
+      <label for="warehouseName">
+        <select [(ngModel)]="defaultWarehouseId" id="warehouseName" class="form-control" formControlName="warehouseId">
+          <option *ngFor="let warehouse of warehouses" [ngValue]="warehouse.warehouse_id">{{warehouse.name}}
+          </option>
+        </select>
+      </label>
     </div>
   </div>
 

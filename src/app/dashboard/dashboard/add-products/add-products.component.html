@@ -28,20 +28,22 @@
         </div>
         <div class="row mb-3">
           <div class="col-sm-3"><strong>Ilość</strong></div>
-          <div class="col-sm-9">{{product?.quantity}} {{product?.unit}}</div>
+          <div class="col-sm-9">{{product?.warehouseQuantity}} {{product?.unit}}</div>
         </div>
         <div class="row  mb-3">
           <div class="col-3"><strong>Magazyn</strong></div>
-          <div class="col-9" >Wybierz magazyn, aby sprawdzić ilość produktu w tym magazynie</div>
+          <div class="col-9">Wybierz magazyn, aby sprawdzić ilość produktu w tym magazynie</div>
         </div>
         <div class="row  mb-3">
           <div class="col-3"><strong></strong></div>
-          <div class="col-7">{{product?.warehouseName}}
-            <select id="warehouseName" class="form-control">
-              <option value="Gdańsk" selected>Gdańsk</option>
-              <option value="Rzeszów">Rzeszów</option>
-              <option value="Wrocław">Wrocław</option>
-            </select>
+          <div class="col-7">
+            <label for="warehouseName">
+              <select [(ngModel)]="warehouseSelected" id="warehouseName" class="form-control"
+                      (change)="ChangeWarehouseValue($event)">
+                <option *ngFor="let warehouse of warehouses" [ngValue]="warehouse.warehouse_id">{{warehouse.name}}
+                </option>
+              </select>
+            </label>
           </div>
 
         </div>
@@ -53,7 +55,7 @@
       <app-add-product-edit *ngIf="editedField === 'product'"
                             [defaultName]="product?.name"
                             [defaultCode]="product?.code"
-                            [defaultQuantity]="product?.quantity"
+                            [defaultQuantity]="product?.warehouseQuantity"
                             [defaultUnit]="product?.unit"
                             [defaultInfo]="product?.info"
                             (submitForm)="submitProduct($event)"
@@ -74,18 +76,22 @@
 
       </div>
       <app-add-product-edit2 *ngIf="editedField === 'addProduct'"
-                            [defaultWarehouseId]="product?.warehouse_id"
-                            [defaultWarehouseName]="product?.warehouseName"
-                            [defaultSupplier]="product?.supplier"
-                            [defaultQuantity]="product?.quantity"
-                            [defaultReceivedDate]="product?.receivedDate"
-                            [defaultWorkerId]="product?.worker_id"
-                            [defaultNetPrice]="product?.netPrice"
-                            [defaultVat]="product?.vat"
-                            [defaultGrossPrice]="product?.grossPrice"
-                            (submitForm)="submitProduct($event)"
-                            (cancelForm)="resetEdit()">
+                             (submitForm)="submitProduct($event)"
+                             (cancelForm)="resetEdit()">
       </app-add-product-edit2>
+      <!--<app-add-product-edit2 *ngIf="editedField === 'addProduct'"-->
+                             <!--[defaultWarehouseId]="product?.productInventory[0].warehouse_id"-->
+                             <!--[defaultWarehouseName]="product?.productInventory[0].warehouseName"-->
+                             <!--[defaultSupplier]="product?.productInventory[0].supplier"-->
+                             <!--[defaultQuantity]="product?.productInventory[0].quantity"-->
+                             <!--[defaultReceivedDate]="product?.productInventory[0].receivedDate"-->
+                             <!--[defaultWorkerId]="product?.productInventory[0].worker_id"-->
+                             <!--[defaultNetPrice]="product?.productInventory[0].netPrice"-->
+                             <!--[defaultVat]="product?.productInventory[0].vat"-->
+                             <!--[defaultGrossPrice]="product?.productInventory[0].grossPrice"-->
+                             <!--(submitForm)="submitProduct($event)"-->
+                             <!--(cancelForm)="resetEdit()">-->
+      <!--</app-add-product-edit2>-->
     </p-panel>
   </div>
   <div class="col-6" id="firstCarPanel">
@@ -96,84 +102,32 @@
         <div class="col-5"><strong>Cena netto/brutto</strong></div>
         <div class="col-2"></div>
       </div>
+      <div class="row" *ngIf="filtredProductList.length==0">
+        <div class="col-12 text-center mb-5">W wybranym magazynie nie ma tego produktu</div>
+      </div>
+      <div *ngFor="let fProduct of filtredProductList">
+        <div class="row warehouseInfo">
+          <div class="col-3">{{fProduct.receivedDate}}</div>
+          <div class="col-2">{{fProduct.quantity}}</div>
+          <div class="col-5">{{fProduct.netPrice}}zł / {{fProduct.grossPrice}}zł</div>
+          <div class="col-2 text-right">
+            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
+                    (click)="removeWarehousePosition('product')"></button>
+          </div>
+        </div>
+        <div class="row warehouseData mb-3">
+          <div class="col-6" title="Dostawca"><strong><i class="fas fa-truck"></i></strong> {{fProduct.supplier}}</div>
+          <div class="col-6" title="Wprowadzający"><strong><i class="fas fa-user"></i></strong> {{fProduct.worker_id}}
+          </div>
+          <div class="col-12 row" *ngIf="fProduct.info.length>0">
+            <div class="col-3"><strong>Uwagi</strong></div>
+            <div class="col-9">
+              {{fProduct.info}}
+            </div>
+          </div>
 
-      <div>
-        <div class="row warehouseInfo">
-          <div class="col-3">01.02.2222</div>
-          <div class="col-2">556</div>
-          <div class="col-5">2332.00 zł/3444.00 zł</div>
-          <div class="col-2 text-right">
-            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
-                    (click)="removeWarehousePosition('product')"></button>
-          </div>
-        </div>
-        <div class="row warehouseData mb-3">
-          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
-          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
-          <div class="col-3"><strong>Uwagi</strong></div>
-          <div class="col-9 ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
-          </div>
         </div>
       </div>
-      <div>
-        <div class="row warehouseInfo">
-          <div class="col-3">01.02.2222</div>
-          <div class="col-2">556</div>
-          <div class="col-5">2332.00 zł/3444.00 zł</div>
-          <div class="col-2 text-right">
-            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
-                    (click)="removeWarehousePosition('product')"></button>
-          </div>
-        </div>
-        <div class="row warehouseData mb-3">
-          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
-          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
-          <div class="col-3"><strong>Uwagi</strong></div>
-          <div class="col-9 ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="row warehouseInfo">
-          <div class="col-3">01.02.2222</div>
-          <div class="col-2">556</div>
-          <div class="col-5">2332.00 zł/3444.00 zł</div>
-          <div class="col-2 text-right">
-            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
-                    (click)="removeWarehousePosition('product')"></button>
-          </div>
-        </div>
-        <div class="row warehouseData mb-3">
-          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
-          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
-          <div class="col-3"><strong>Uwagi</strong></div>
-          <div class="col-9 ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="row warehouseInfo">
-          <div class="col-3">01.02.2222</div>
-          <div class="col-2">556</div>
-          <div class="col-5">2332.00 zł/3444.00 zł</div>
-          <div class="col-2 text-right">
-            <button pButton type="button" icon="far fa-trash-alt" class="ui-button-secondary"
-                    (click)="removeWarehousePosition('product')"></button>
-          </div>
-        </div>
-        <div class="row warehouseData mb-3">
-          <div class="col-6"><strong><i class="fas fa-truck"></i></strong> Hurtownia XX</div>
-          <div class="col-6"><strong><i class="fas fa-user"></i></strong> Daniel Zielazny</div>
-          <div class="col-3"><strong>Uwagi</strong></div>
-          <div class="col-9 ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, voluptates.
-          </div>
-        </div>
-      </div>
-
     </p-panel>
   </div>
 </div>

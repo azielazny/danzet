@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Product} from "../../../classes/product";
+import {Product, ProductInventory} from "../../../classes/product";
+import {WarehouseService} from "../../../services/warehouse.service";
+import {Warehouse} from "../../../classes/warehouse";
 
 @Component({
   selector: 'app-add-product-edit2',
@@ -9,21 +11,25 @@ import {Product} from "../../../classes/product";
 })
 export class AddProductEdit2Component implements OnInit {
 
-  @Input() private defaultWarehouseId: string;
+  @Input() private defaultWarehouseId: number;
   @Input() private defaultWarehouseName: string;
   @Input() private defaultSupplier: string;
   @Input() private defaultQuantity: string;
   @Input() private defaultReceivedDate: string;
-  @Input() private defaultWorkerId: string;
+  @Input() private defaultWorkerId: number;
   @Input() private defaultNetPrice: string;
   @Input() private defaultVat: string;
   @Input() private defaultGrossPrice: string;
   @Input() private defaultInfo: string;
-  @Output() private submitForm = new EventEmitter<Product>();
+  @Output() private submitForm = new EventEmitter<ProductInventory>();
   @Output() private cancelForm = new EventEmitter<void>();
   private form: FormGroup;
+  private warehouses: Warehouse[];
+  private warehouseSelected: number;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private warehouseService: WarehouseService) {
+    this.defaultWarehouseId = 1;
+    this.getWarehouseList();
   }
 
   ngOnInit() {
@@ -47,5 +53,9 @@ export class AddProductEdit2Component implements OnInit {
 
   private cancel() {
     this.cancelForm.emit();
+  }
+
+  private getWarehouseList() {
+    this.warehouseService.getWarehouseList().then(w => this.warehouses = w);
   }
 }

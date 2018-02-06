@@ -7,6 +7,7 @@ export class Product {
   productInventory?: ProductInventory[];
   warehouseName?: string; //dynamic fields for warehouse
   warehouse_id?: number; //temporary dynamic fields for warehouse
+  warehouseQuantity?:string;
 }
 
 export class ProductInventory {
