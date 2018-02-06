@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, NgModule, VERSION} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
-import {Product, ProductInventory} from "../../classes/product";
-import {ProductService} from "../../services/product.service";
-import {WarehouseService} from "../../services/warehouse.service";
-import {Warehouse} from "../../classes/warehouse";
+import {ActivatedRoute, Params} from '@angular/router';
+import {Product, ProductInventory} from '../../classes/product';
+import {ProductService} from '../../services/product.service';
+import {WarehouseService} from '../../services/warehouse.service';
+import {Warehouse} from '../../classes/warehouse';
 
 @Component({
   selector: 'app-add-products',
@@ -13,11 +13,11 @@ import {Warehouse} from "../../classes/warehouse";
 export class AddProductsComponent implements OnInit {
 
   @Input() private editedField: string;
-  @Input() private product: Product;
+  @Input() private product: Product = {};
   @Input() private productId: number;
   private warehouses: Warehouse[];
   private warehouseSelected: number;
-  private filtredProductList: ProductInventory[];
+  private filtredProductList: ProductInventory[]=[];
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private warehouseService: WarehouseService) {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -26,6 +26,7 @@ export class AddProductsComponent implements OnInit {
       this.editedField = params['editedField'];
       this.getProductById();
       this.getWarehouseList();
+
     });
     // this.warehouseSelected = 1;
 
@@ -33,7 +34,9 @@ export class AddProductsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getProductListByWarehouse();
+    if (this.product.productInventory !== undefined) {
+      this.getProductListByWarehouse();
+    }
   }
 
   private submitProduct(name: Product) {
