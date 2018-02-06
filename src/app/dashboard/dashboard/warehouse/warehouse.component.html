@@ -39,8 +39,7 @@
               <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
                  aria-expanded="false" title="opcje"></i>
               <div class="dropdown-menu" aria-labelledby="dropdownAction">
-                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-service/'+service?.service_id, side_column:'menu/services-management' }}]">Pokaż</a>
-                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-service/'+service?.service_id+'/service', side_column:'menu/services-management' }}]">Edytuj</a>
+                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-product/'+product?.product_id+'/'+product?.warehouse_id, side_column:'menu/services-management' }}]">Pokaż</a>
                 <a class="dropdown-item" href="#" (click)="removeProduct(product?.product_id)">Usuń</a>
               </div>
             </div>

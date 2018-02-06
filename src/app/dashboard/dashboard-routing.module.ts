@@ -36,7 +36,7 @@ export const dashboardRoutes: Routes = [
       {path: 'warehouse', component: WarehouseComponent, data: {title: 'makeCarService ++:: Zarządzanie magazynem'}},
       {path: 'add-product', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
       {path: 'add-product/:productId', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
-      // {path: 'add-service/:serviceId/:editedField', component: AddServicesComponent, data: {title: 'makeCarService ++:: Wprowadzanie usługi'}},
+      {path: 'add-product/:productId/:warehouseId', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
       {path: 'menu/:subMenuId', component: DashboardSideMenuComponent, outlet: 'side_column'}
     ]
   }

@@ -22,11 +22,12 @@ export class AddProductsComponent implements OnInit {
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private warehouseService: WarehouseService) {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.productId = +params['productId'];
+      this.warehouseSelected = (+params['warehouseId']) ? +params['warehouseId'] : 1;
       this.editedField = params['editedField'];
       this.getProductById();
       this.getWarehouseList();
     });
-    this.warehouseSelected = 1;
+    // this.warehouseSelected = 1;
 
   }
 
@@ -64,7 +65,7 @@ export class AddProductsComponent implements OnInit {
 
   private getProductListByWarehouse() {
     this.filtredProductList = this.product.productInventory.filter(w => w.warehouse_id === this.warehouseSelected);
-    console.log(this.filtredProductList );
+    console.log(this.filtredProductList);
   }
 
   private removeWarehousePosition(s: string) {
