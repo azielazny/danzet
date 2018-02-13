@@ -1,3 +1,5 @@
+import {Client} from "./client";
+
 export interface Car {
   car_id: number;
   brand: string; // MarkaPojazdu;
@@ -15,5 +17,30 @@ export interface Car {
   dateAdded?: string; //data dodania
   info?: string; //dodatkowe info
   client_id?: number;
-  modificationDate?:string;
+  modificationDate?: string;
+}
+
+export interface CarApi {
+  car_id: number;
+  brand: string;
+  model: string;
+  production_year?: number;
+  vin?: string;
+  registration_number?: string;
+  registration_date?: string;
+  car_version?: string;
+  capacity?: string;
+  engine_power?: string;
+  fuel?: string;
+  dr_series?: string;
+  course?: string;
+  date_added?: string;
+  info?: string;
+  client_id?: number;
+  modification_date?: string;
+}
+
+export interface CarArray {
+  result: Array<Car>;
+  status: boolean | number;
 }
