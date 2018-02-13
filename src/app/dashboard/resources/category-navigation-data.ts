@@ -76,7 +76,7 @@ export const NAVIGATION_ARRAY: NavigationData[] = [
         name: 'Lista serwisowanych samochodów',
         tileSize: 'col-4',
         colorScheme: 'tile2',
-        link: '/dashboard'
+        link: '/dashboard/(repaired-cars-management//side_column:menu/services-management)'
       },
       {
         name: 'Dodaj serwis samochodu',
