@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {DataTableDirective} from 'angular-datatables';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClientService} from '../../services/client.service';
 import {Client} from '../../classes/client';
 
@@ -8,61 +7,29 @@ import {Client} from '../../classes/client';
   templateUrl: './clients-management.component.html',
   styleUrls: ['./clients-management.component.scss']
 })
-export class ClientsManagementComponent implements OnInit, AfterViewInit {
+export class ClientsManagementComponent implements OnInit {
 
-  @ViewChild(DataTableDirective)
-  private datatableElement: DataTableDirective;
-
-  private dtOptions: DataTables.Settings = {};
-
+  cols: any[];
   private clients: Client[] = [];
+  private stacked: boolean;
 
   constructor(private clientService: ClientService) {
   }
 
   ngOnInit() {
     this.getClientsList();
-
-    this.dtOptions = {
-
-      columns: [
-        {
-          data: 'firstName'
-        },
-        {
-          data: 'lastName'
-        },
-        {
-          data: 'city'
-        },
-        {
-          data: 'phone'
-        },
-        {
-          data: 'email'
-        },
-        {
-          orderable: false
-        }
-      ]
-    };
-
+    this.cols = [
+      {field: 'firstName', header: 'Imię'},
+      {field: 'lastName', header: 'Nazwisko'},
+      {field: 'city', header: 'Miasto'},
+      {field: 'phone', header: 'Telefon'},
+      {field: 'email', header: 'E-mail'}
+    ];
 
   }
 
-  ngAfterViewInit(): void {
-    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.columns().every(function () {
-        const that = this;
-        $('input', this.footer()).on('keyup change', function () {
-          if (that.search() !== this['value']) {
-            that
-              .search(this['value'])
-              .draw();
-          }
-        });
-      });
-    });
+  toggle() {
+    this.stacked = !this.stacked;
   }
 
 

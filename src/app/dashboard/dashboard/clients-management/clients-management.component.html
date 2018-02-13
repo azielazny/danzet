@@ -6,49 +6,51 @@
 <div class="row justify-content-center">
   <div class="col-12">
     <div class="table-tile">
-      <table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">
-        <thead>
-        <tr>
-          <th>Imię</th>
-          <th>Nazwisko</th>
-          <th>Miasto</th>
-          <th>Telefon</th>
-          <th>E-mail</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-          <th><input type="text" placeholder="Imię" name="firstName" class="col-12"/></th>
-          <th><input type="text" placeholder="Nazwisko" name="lastName" class="col-12"/></th>
-          <th><input type="text" placeholder="Miasto" name="City" class="col-12"/></th>
-          <th><input type="text" placeholder="Telefon" name="phone" class="col-12 details-control"/></th>
-          <th><input type="text" placeholder="E-mail" name="e-mail" class="col-12"/></th>
-          <th><input type="text" hidden/></th>
-        </tr>
-        </tfoot>
-        <tbody>
-        <tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let client of clients; let i = index;">
-          <td>{{client.firstName}}</td>
-          <td>{{client.lastName}}</td>
-          <td>{{client.city}}</td>
-          <td>{{client.phone}}</td>
-          <td>{{client.email}}</td>
-          <td>
+
+      <div class="ui-widget-header row">
+        <div class="text-left col-6">
+        </div>
+        <div class="text-right col-6">
+          <i class="fa fa-search"></i>
+          <input #gb type="text" pInputText placeholder="Global Filter" class="globalSearch">
+        </div>
+      </div>
+
+      <p-dataTable [value]="clients" [rows]="10" [paginator]="true" [pageLinks]="3" [stacked]="stacked"
+                   [responsive]="true"
+                   [rowsPerPageOptions]="[5,10,20,50]" sortMode="multiple" [globalFilter]="gb" #dt
+                   resizableColumns="true">
+        <p-column field="firstName" header="Imię" [sortable]="true" [filter]="true" filterPlaceholder="Imię"></p-column>
+        <p-column field="lastName" header="Nazwisko" [sortable]="true" [filter]="true"
+                  filterPlaceholder="Nazwisko"></p-column>
+        <p-column field="city" header="Miasto" [sortable]="true" [filter]="true" filterPlaceholder="Miasto"></p-column>
+        <p-column field="phone" header="Telefon" [sortable]="true" [filter]="true"
+                  filterPlaceholder="Telefon"></p-column>
+        <p-column field="email" header="E-mail" [sortable]="true" [filter]="true" filterPlaceholder="E-mail"></p-column>
+
+
+        <p-column field="" header="" [sortable]="false" [filter]="false" styleClass="action-icon">
+          <ng-template let-client="rowData" pTemplate type="body">
             <div class="dropdown">
               <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
                  aria-expanded="false" title="opcje"></i>
               <div class="dropdown-menu" aria-labelledby="dropdownAction">
-                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id, side_column:'menu/clients-management' }}]">Pokaż</a>
-                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id+'/client', side_column:'menu/clients-management' }}]">Edytuj</a>
+                <a class="dropdown-item" href="#"
+                   [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id, side_column:'menu/clients-management' }}]">Pokaż</a>
+                <a class="dropdown-item" href="#"
+                   [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id+'/client', side_column:'menu/clients-management' }}]">Edytuj</a>
                 <a class="dropdown-item" href="#" (click)="removeCar(client?.client_id)">Usuń</a>
               </div>
             </div>
-          </td>
-        </tr>
+          </ng-template>
+        </p-column>
 
-        </tbody>
-      </table>
+        <ng-template pTemplate="paginatorLeft">
+          <button type="button" pButton icon="fas fa-sync-alt"></button>
+          <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" icon="fa-list"
+                  class="text-left"></button>
+        </ng-template>
+      </p-dataTable>
     </div>
   </div>
 </div>
