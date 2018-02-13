@@ -12,6 +12,7 @@ import {ServicesManagementComponent} from "./dashboard/services-management/servi
 import {AddServicesComponent} from "./dashboard/add-services/add-services.component";
 import {WarehouseComponent} from "./dashboard/warehouse/warehouse.component";
 import {AddProductsComponent} from "./dashboard/add-products/add-products.component";
+import {RepairedCarsManagementComponent} from "./dashboard/repaired-cars-management/repaired-cars-management.component";
 
 export const dashboardRoutes: Routes = [
   {
@@ -37,6 +38,10 @@ export const dashboardRoutes: Routes = [
       {path: 'add-product', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
       {path: 'add-product/:productId', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
       {path: 'add-product/:productId/:warehouseId', component: AddProductsComponent, data: {title: 'makeCarService ++:: Wprowadzanie produktu'}},
+      {path: 'repaired-cars-management', component: RepairedCarsManagementComponent, data: {title: 'makeCarService ++:: Zarządzanie serwisowanymi samochodami'}},
+      // {path: 'add-repaired-car', component: AddCarsComponent, data: {title: 'makeCarService ++:: Wprowadzanie serwisowanego samochodu'}},
+      // {path: 'add-car/:carId', component: AddCarsComponent, data: {title: 'makeCarService ++:: Wprowadzanie serwisowanego samochodu'}},
+      // {path: 'add-car/:carId/:clientId', component: AddCarsComponent, data: {title: 'makeCarService ++:: Wprowadzanie serwisowanego samochodu'}},
       {path: 'menu/:subMenuId', component: DashboardSideMenuComponent, outlet: 'side_column'}
     ]
   }

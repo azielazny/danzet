@@ -17,7 +17,7 @@ export class AddProductsComponent implements OnInit {
   @Input() private productId: number;
   private warehouses: Warehouse[];
   private warehouseSelected: number;
-  private filtredProductList: ProductInventory[]=[];
+  private filtredProductList: ProductInventory[] = [];
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private warehouseService: WarehouseService) {
     this.activatedRoute.params.subscribe((params: Params) => {

@@ -1,0 +1,92 @@
+.tile-category-dark {
+  margin: 0.555rem 0;
+  font-size: 1.7777em;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.table-tile {
+  background: #e8e8e8;
+  padding: 10px 5px;
+  border: 1px solid #d8d5d5;
+  display: flow-root;
+  .ui-widget-header {
+    &.row {
+      padding: 4px 10px;
+      border: 0;
+      margin: 0
+    }
+    .fa-search {
+      margin: 4px 4px 0 0;
+    }
+  }
+}
+
+.globalSearch {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #b3b3b3;
+  color: #2c3e50;
+}
+
+:host ::ng-deep .ui-widget-header {
+  background: transparent;
+  color: #2c3e50;
+  border: none;
+}
+
+:host ::ng-deep .ui-datatable {
+  ::-webkit-input-placeholder {
+    color: #e6e6e6;
+  }
+  ::-moz-placeholder {
+    color: #e6e6e6;
+  }
+  :-ms-input-placeholder {
+    color: #e6e6e6;
+  }
+  :-moz-placeholder {
+    color: #e6e6e6;
+  }
+  .ui-state-default {
+    background: #2c3e50;
+    border: 1px solid #2c3e50;
+    color: #fff;
+  }
+  .ui-column-filter {
+    border-bottom: 1px solid #e6e6e6;
+    border-radius: 0;
+    margin: 0;
+
+  }
+  .ui-paginator-bottom {
+    background: #2c3e50;
+    border: 0
+  }
+  .ui-paginator .ui-paginator-page.ui-state-active {
+    background: #186ba0;
+    color: #ffffff;
+    border-color: #156090;
+  }
+  .ui-dropdown .ui-dropdown-trigger {
+    background: #186ba0;
+    border: 1px solid #186ba0;
+  }
+  &.ui-datatable-resizable {
+    padding-bottom: 1px;
+    overflow: initial;
+  }
+  th.ui-state-active span.fa-sort-asc {
+    color: #186ba0;
+  }
+  .ui-expanded-row-content td {
+    background: #efefef;
+    padding: 0;
+  }
+}
+
+:host ::ng-deep {
+  .col-icon {
+    width: 36px;
+  }
+}
