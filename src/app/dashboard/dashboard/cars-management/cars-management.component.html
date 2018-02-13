@@ -17,7 +17,7 @@
 
       <p-dataTable [value]="cars" [rows]="10" [paginator]="true" [pageLinks]="3" [stacked]="stacked" [responsive]="true"
                    [rowsPerPageOptions]="[5,10,20,50]" sortMode="multiple" [globalFilter]="gb" #dt
-                   resizableColumns="true" >
+                   resizableColumns="true">
         <p-column field="brand" header="Brand" [sortable]="true" [filter]="true" filterPlaceholder="Brand"></p-column>
         <p-column field="model" header="Model" [sortable]="true" [filter]="true" filterPlaceholder="Model"></p-column>
         <p-column field="productionYear" header="Rocznik" [sortable]="true" [filter]="true"
@@ -27,6 +27,23 @@
                   filterPlaceholder="Nr rej"></p-column>
         <p-column field="registrationDate" header="Data" [sortable]="true" [filter]="true"
                   filterPlaceholder="Data"></p-column>
+
+        <p-column field="" header="" [sortable]="false" [filter]="false" styleClass="action-icon">
+          <ng-template let-car="rowData" pTemplate type="body">
+            <div class="dropdown">
+              <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false" title="opcje"></i>
+              <div class="dropdown-menu" aria-labelledby="dropdownAction">
+                <a class="dropdown-item" href="#"
+                   [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id, side_column:'menu/cars-management' }}]">Pokaż</a>
+                <a class="dropdown-item" href="#"
+                   [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id+'/null/car', side_column:'menu/cars-management' }}]">Edytuj</a>
+                <a class="dropdown-item" href="#" (click)="removeCar(car?.car_id)">Usuń</a>
+              </div>
+            </div>
+          </ng-template>
+        </p-column>
+
         <ng-template pTemplate="paginatorLeft">
           <button type="button" pButton icon="fas fa-sync-alt"></button>
           <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" icon="fa-list"
@@ -34,50 +51,50 @@
         </ng-template>
       </p-dataTable>
       <!--<table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">-->
-        <!--<thead>-->
-        <!--<tr>-->
-          <!--<th>Marka</th>-->
-          <!--<th>Model</th>-->
-          <!--<th>Rocznik</th>-->
-          <!--<th>Vin</th>-->
-          <!--<th>Nr rej.</th>-->
-          <!--<th>Data</th>-->
-          <!--<th></th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tfoot>-->
-        <!--<tr>-->
-          <!--<th><input type="text" placeholder="Marka" name="brand" class="col-12"/></th>-->
-          <!--<th><input type="text" placeholder="Model" name="model" class="col-12"/></th>-->
-          <!--<th><input type="text" placeholder="Rocznik" name="productionDate" class="col-12"/></th>-->
-          <!--<th><input type="text" placeholder="Vin" name="vin" class="col-12 details-control"/></th>-->
-          <!--<th><input type="text" placeholder="Nr rej." name="registrationNumber" class="col-12"/></th>-->
-          <!--<th><input type="text" placeholder="Data" name="registrationDate" class="col-12"/></th>-->
-          <!--<th><input type="text" hidden/></th>-->
-        <!--</tr>-->
-        <!--</tfoot>-->
-        <!--<tbody>-->
-        <!--<tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let car of cars; let i = index;">-->
-          <!--<td>{{car.brand}}</td>-->
-          <!--<td>{{car.model}}</td>-->
-          <!--<td>{{car.productionYear}}</td>-->
-          <!--<td>{{car.vin}}</td>-->
-          <!--<td>{{car.registrationNumber}}</td>-->
-          <!--<td>{{car.registrationDate}}</td>-->
-          <!--<td>-->
-            <!--<div class="dropdown">-->
-              <!--<i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"-->
-                 <!--aria-expanded="false" title="opcje"></i>-->
-              <!--<div class="dropdown-menu" aria-labelledby="dropdownAction">-->
-                <!--<a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id, side_column:'menu/cars-management' }}]">Pokaż</a>-->
-                <!--<a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id+'/null/car', side_column:'menu/cars-management' }}]">Edytuj</a>-->
-                <!--<a class="dropdown-item" href="#" (click)="removeCar(car?.car_id)">Usuń</a>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</td>-->
-        <!--</tr>-->
+      <!--<thead>-->
+      <!--<tr>-->
+      <!--<th>Marka</th>-->
+      <!--<th>Model</th>-->
+      <!--<th>Rocznik</th>-->
+      <!--<th>Vin</th>-->
+      <!--<th>Nr rej.</th>-->
+      <!--<th>Data</th>-->
+      <!--<th></th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tfoot>-->
+      <!--<tr>-->
+      <!--<th><input type="text" placeholder="Marka" name="brand" class="col-12"/></th>-->
+      <!--<th><input type="text" placeholder="Model" name="model" class="col-12"/></th>-->
+      <!--<th><input type="text" placeholder="Rocznik" name="productionDate" class="col-12"/></th>-->
+      <!--<th><input type="text" placeholder="Vin" name="vin" class="col-12 details-control"/></th>-->
+      <!--<th><input type="text" placeholder="Nr rej." name="registrationNumber" class="col-12"/></th>-->
+      <!--<th><input type="text" placeholder="Data" name="registrationDate" class="col-12"/></th>-->
+      <!--<th><input type="text" hidden/></th>-->
+      <!--</tr>-->
+      <!--</tfoot>-->
+      <!--<tbody>-->
+      <!--<tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let car of cars; let i = index;">-->
+      <!--<td>{{car.brand}}</td>-->
+      <!--<td>{{car.model}}</td>-->
+      <!--<td>{{car.productionYear}}</td>-->
+      <!--<td>{{car.vin}}</td>-->
+      <!--<td>{{car.registrationNumber}}</td>-->
+      <!--<td>{{car.registrationDate}}</td>-->
+      <!--<td>-->
+      <!--<div class="dropdown">-->
+      <!--<i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"-->
+      <!--aria-expanded="false" title="opcje"></i>-->
+      <!--<div class="dropdown-menu" aria-labelledby="dropdownAction">-->
+      <!--<a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id, side_column:'menu/cars-management' }}]">Pokaż</a>-->
+      <!--<a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-car/'+car?.car_id+'/null/car', side_column:'menu/cars-management' }}]">Edytuj</a>-->
+      <!--<a class="dropdown-item" href="#" (click)="removeCar(car?.car_id)">Usuń</a>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</td>-->
+      <!--</tr>-->
 
-        <!--</tbody>-->
+      <!--</tbody>-->
       <!--</table>-->
     </div>
   </div>

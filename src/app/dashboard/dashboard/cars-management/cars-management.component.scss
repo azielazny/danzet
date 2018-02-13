@@ -48,6 +48,9 @@
   :-moz-placeholder {
     color: #e6e6e6;
   }
+  &.ui-datatable-resizable .ui-datatable-data>tr>td, .ui-datatable-data>tr>td {
+    overflow: inherit;
+  }
   .ui-row-toggler {
     color: #186ba0;
   }
@@ -97,5 +100,8 @@
   }
   .col-icon {
     width: 36px;
+  }
+  .action-icon {
+    width: 26px;
   }
 }

@@ -35,6 +35,8 @@
   color: #e6e6e6; }
 :host ::ng-deep .ui-datatable :-moz-placeholder {
   color: #e6e6e6; }
+:host ::ng-deep .ui-datatable.ui-datatable-resizable .ui-datatable-data > tr > td, :host ::ng-deep .ui-datatable .ui-datatable-data > tr > td {
+  overflow: inherit; }
 :host ::ng-deep .ui-datatable .ui-row-toggler {
   color: #186ba0; }
 :host ::ng-deep .ui-datatable .ui-state-default {
@@ -70,5 +72,7 @@
   content: "\f0dd"; }
 :host ::ng-deep .col-icon {
   width: 36px; }
+:host ::ng-deep .action-icon {
+  width: 26px; }
 
 /*# sourceMappingURL=cars-management.component.css.map */
