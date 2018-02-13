@@ -48,6 +48,9 @@
   :-moz-placeholder {
     color: #e6e6e6;
   }
+  .ui-row-toggler {
+    color: #186ba0;
+  }
   .ui-state-default {
     background: #2c3e50;
     border: 1px solid #2c3e50;
@@ -76,7 +79,7 @@
     padding-bottom: 1px;
     overflow: initial;
   }
-  th.ui-state-active span.fa-sort-asc {
+  th.ui-state-active span.fa-sort-asc, th.ui-state-active span.fa-sort-desc {
     color: #186ba0;
   }
   .ui-expanded-row-content td {
@@ -86,6 +89,12 @@
 }
 
 :host ::ng-deep {
+  .fa-sort-asc:before {
+    content: "\f0de";
+  }
+  .fa-sort-desc:before {
+    content: "\f0dd";
+  }
   .col-icon {
     width: 36px;
   }
