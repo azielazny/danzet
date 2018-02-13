@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {DataTableDirective} from 'angular-datatables';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../../classes/product';
 import {ProductService} from '../../services/product.service';
 import {WarehouseService} from '../../services/warehouse.service';
@@ -10,13 +9,10 @@ import {Warehouse} from '../../classes/warehouse';
   templateUrl: './warehouse.component.html',
   styleUrls: ['./warehouse.component.scss']
 })
-export class WarehouseComponent implements OnInit, AfterViewInit {
+export class WarehouseComponent implements OnInit {
 
-  @ViewChild(DataTableDirective)
-  private datatableElement: DataTableDirective;
-
-  private dtOptions: DataTables.Settings = {};
-
+  cols: any[];
+  private stacked: boolean;
   private products: Product[] = [];
   private warehouses: Warehouse[] = [];
 
@@ -27,48 +23,19 @@ export class WarehouseComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getProductsList();
 
-    this.dtOptions = {
-
-      columns: [
-        {
-          data: 'name'
-        },
-        {
-          data: 'code'
-        },
-        {
-          data: 'warehouseName'
-        },
-        {
-          data: 'quantity'
-        },
-        {
-          data: 'unit'
-        },
-        {
-          orderable: false
-        }
-      ]
-    };
-
+    this.cols = [
+      {field: 'name', header: 'Nazwa'},
+      {field: 'code', header: 'Kod'},
+      {field: 'warehouseName', header: 'Nazwa magazynu'},
+      {field: 'quantity', header: 'Ilość'},
+      {field: 'unit', header: 'Jednostka'}
+    ];
 
   }
 
-  ngAfterViewInit(): void {
-    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.columns().every(function () {
-        const that = this;
-        $('input', this.footer()).on('keyup change', function () {
-          if (that.search() !== this['value']) {
-            that
-              .search(this['value'])
-              .draw();
-          }
-        });
-      });
-    });
+  toggle() {
+    this.stacked = !this.stacked;
   }
-
 
   private getProductsList(): void {
     this.productService.getProductsList().then(c => {
@@ -84,7 +51,7 @@ export class WarehouseComponent implements OnInit, AfterViewInit {
   }
 
   private removeProduct(productId: number) {
-    //remove product from list
+    // remove product from list
   }
 }
 

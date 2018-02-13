@@ -6,48 +6,50 @@
 <div class="row justify-content-center">
   <div class="col-12">
     <div class="table-tile">
-      <table datatable [dtOptions]="dtOptions" class="table table-striped " cellspacing="0" width="100%">
-        <thead>
-        <tr>
-          <th>Nazwa</th>
-          <th>Kod</th>
-          <th>Magazyn</th>
-          <th>Ilość</th>
-          <th>Jednostka</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-          <th><input type="text" placeholder="Nazwa" name="name" class="col-12"/></th>
-          <th><input type="text" placeholder="Kod" name="code" class="col-12"/></th>
-          <th><input type="text" placeholder="Magazyn" name="warehouseName" class="col-12"/></th>
-          <th><input type="text" placeholder="Ilość" name="quantity" class="col-12 details-control"/></th>
-          <th><input type="text" placeholder="Jednostka" name="unit" class="col-12"/></th>
-          <th><input type="text" hidden/></th>
-        </tr>
-        </tfoot>
-        <tbody>
-        <tr role="row" ng-class="{ i%2===0: odd}" *ngFor="let product of products; let i = index;">
-          <td>{{product.name}}</td>
-          <td>{{product.code}}</td>
-          <td>{{product.warehouseName}}</td>
-          <td>{{product.quantity}}</td>
-          <td>{{product.unit}}</td>
-          <td>
+      <div class="ui-widget-header row">
+        <div class="text-left col-6">
+        </div>
+        <div class="text-right col-6">
+          <i class="fa fa-search"></i>
+          <input #gb type="text" pInputText placeholder="Global Filter" class="globalSearch">
+        </div>
+      </div>
+
+      <p-dataTable [value]="products" [rows]="10" [paginator]="true" [pageLinks]="3" [stacked]="stacked"
+                   [responsive]="true"
+                   [rowsPerPageOptions]="[5,10,20,50]" sortMode="multiple" [globalFilter]="gb" #dt
+                   resizableColumns="true">
+        <p-column field="name" header="Nazwa" [sortable]="true" [filter]="true" filterPlaceholder="Nazwa"></p-column>
+        <p-column field="code" header="Kod" [sortable]="true" [filter]="true" filterPlaceholder="Kod"></p-column>
+        <p-column field="warehouseName" header="Magazyn" [sortable]="true" [filter]="true"
+                  filterPlaceholder="Magazyn"></p-column>
+        <p-column field="quantity" header="Ilość" [sortable]="true" [filter]="true"
+                  filterPlaceholder="Ilość"></p-column>
+        <p-column field="unit" header="Jednostka" [sortable]="true" [filter]="true"
+                  filterPlaceholder="Jednostka"></p-column>
+
+
+        <p-column field="" header="" [sortable]="false" [filter]="false" styleClass="action-icon">
+          <ng-template let-product="rowData" pTemplate type="body">
             <div class="dropdown">
               <i class="fas fa-ellipsis-v" id="dropdownAction" data-toggle="dropdown" aria-haspopup="true"
                  aria-expanded="false" title="opcje"></i>
               <div class="dropdown-menu" aria-labelledby="dropdownAction">
-                <a class="dropdown-item" href="#" [routerLink]="['/dashboard/',{outlets:{primary:'add-product/'+product?.product_id+'/'+product?.warehouse_id, side_column:'menu/services-management' }}]">Pokaż</a>
+                <a class="dropdown-item" href="#"
+                   [routerLink]="['/dashboard/',{outlets:{primary:'add-product/'+product?.product_id+'/'+product?.warehouse_id, side_column:'menu/services-management' }}]">Pokaż</a>
                 <a class="dropdown-item" href="#" (click)="removeProduct(product?.product_id)">Usuń</a>
               </div>
             </div>
-          </td>
-        </tr>
+          </ng-template>
+        </p-column>
 
-        </tbody>
-      </table>
+        <ng-template pTemplate="paginatorLeft">
+          <button type="button" pButton icon="fas fa-sync-alt"></button>
+          <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" icon="fa-list"
+                  class="text-left"></button>
+        </ng-template>
+      </p-dataTable>
+
     </div>
   </div>
 </div>
