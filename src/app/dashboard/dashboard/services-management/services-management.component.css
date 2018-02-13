@@ -4,54 +4,75 @@
   color: #2c3e50;
   font-weight: 600; }
 
-tr.odd {
-  background: #fff !important; }
-
-table.dataTable tbody tr {
-  background-color: #e8e8e8;
-  color: #2c3e50; }
-
-.table th {
-  border-top: 1px solid #2c3e50; }
-
 .table-tile {
   background: #e8e8e8;
   padding: 10px 5px;
   border: 1px solid #d8d5d5;
-  display: inline-flex; }
+  display: flow-root; }
+  .table-tile .ui-widget-header.row {
+    padding: 4px 10px;
+    border: 0;
+    margin: 0; }
+  .table-tile .ui-widget-header .fa-search {
+    margin: 4px 4px 0 0; }
 
-table {
+.globalSearch {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #b3b3b3;
+  color: #2c3e50; }
+
+:host ::ng-deep .ui-widget-header {
+  background: transparent;
+  color: #2c3e50;
+  border: none; }
+
+:host ::ng-deep .ui-datatable ::-webkit-input-placeholder {
+  color: #e6e6e6; }
+:host ::ng-deep .ui-datatable ::-moz-placeholder {
+  color: #e6e6e6; }
+:host ::ng-deep .ui-datatable :-ms-input-placeholder {
+  color: #e6e6e6; }
+:host ::ng-deep .ui-datatable :-moz-placeholder {
+  color: #e6e6e6; }
+:host ::ng-deep .ui-datatable.ui-datatable-resizable .ui-datatable-data > tr > td, :host ::ng-deep .ui-datatable .ui-datatable-data > tr > td {
+  overflow: inherit; }
+:host ::ng-deep .ui-datatable .ui-row-toggler {
+  color: #186ba0; }
+:host ::ng-deep .ui-datatable .ui-state-default {
   background: #2c3e50;
+  border: 1px solid #2c3e50;
   color: #fff; }
-  table tbody td:last-of-type {
-    text-align: center; }
-  table input {
-    background: #2c3e50;
-    border: none;
-    border-bottom: 1px solid #fff;
-    color: #fff;
-    /* color: #fff !important; */ }
-    table input::-webkit-input-placeholder {
-      /* Chrome/Opera/Safari */
-      color: #e6e6e6; }
-    table input::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #e6e6e6; }
-    table input:-ms-input-placeholder {
-      /* IE 10+ */
-      color: #e6e6e6; }
-    table input:-moz-placeholder {
-      /* Firefox 18- */
-      color: #e6e6e6; }
+:host ::ng-deep .ui-datatable .ui-column-filter {
+  border-bottom: 1px solid #e6e6e6;
+  border-radius: 0;
+  margin: 0; }
+:host ::ng-deep .ui-datatable .ui-paginator-bottom {
+  background: #2c3e50;
+  border: 0; }
+:host ::ng-deep .ui-datatable .ui-paginator .ui-paginator-page.ui-state-active {
+  background: #186ba0;
+  color: #ffffff;
+  border-color: #156090; }
+:host ::ng-deep .ui-datatable .ui-dropdown .ui-dropdown-trigger {
+  background: #186ba0;
+  border: 1px solid #186ba0; }
+:host ::ng-deep .ui-datatable.ui-datatable-resizable {
+  padding-bottom: 1px;
+  overflow: initial; }
+:host ::ng-deep .ui-datatable th.ui-state-active span.fa-sort-asc, :host ::ng-deep .ui-datatable th.ui-state-active span.fa-sort-desc {
+  color: #186ba0; }
+:host ::ng-deep .ui-datatable .ui-expanded-row-content td {
+  background: #efefef;
+  padding: 0; }
 
-div.dataTables_filter input[type="search"] {
-  background: #e6e6e6 !important;
-  border: none;
-  border-bottom: 2px solid #2c3e50; }
-
-div.dataTables_filter select {
-  background: #2c3e50 !important;
-  border: navajowhite;
-  color: #fff; }
+:host ::ng-deep .fa-sort-asc:before {
+  content: "\f0de"; }
+:host ::ng-deep .fa-sort-desc:before {
+  content: "\f0dd"; }
+:host ::ng-deep .col-icon {
+  width: 36px; }
+:host ::ng-deep .action-icon {
+  width: 26px; }
 
 /*# sourceMappingURL=services-management.component.css.map */

@@ -39,7 +39,7 @@
                    [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id, side_column:'menu/clients-management' }}]">Pokaż</a>
                 <a class="dropdown-item" href="#"
                    [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id+'/client', side_column:'menu/clients-management' }}]">Edytuj</a>
-                <a class="dropdown-item" href="#" (click)="removeCar(client?.client_id)">Usuń</a>
+                <a class="dropdown-item" href="#" (click)="removeClient(client?.client_id)">Usuń</a>
               </div>
             </div>
           </ng-template>

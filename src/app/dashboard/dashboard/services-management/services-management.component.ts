@@ -1,23 +1,17 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {DataTableDirective} from "angular-datatables";
-import {CarService} from "../../services/car.service";
-import {Car} from "../../classes/car";
-import {Service} from "../../classes/service";
-import {ServiceService} from "../../services/service.service";
+import {Service} from '../../classes/service';
+import {ServiceService} from '../../services/service.service';
 
 @Component({
   selector: 'app-services-management',
   templateUrl: './services-management.component.html',
   styleUrls: ['./services-management.component.scss']
 })
-export class ServicesManagementComponent implements OnInit, AfterViewInit {
+export class ServicesManagementComponent implements OnInit {
 
-  @ViewChild(DataTableDirective)
-  private datatableElement: DataTableDirective;
-
-  private dtOptions: DataTables.Settings = {};
-
+  cols: any[];
   private services: Service[] = [];
+  private stacked: boolean;
 
   constructor(private serviceService: ServiceService) {
   }
@@ -25,54 +19,25 @@ export class ServicesManagementComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getServicesList();
 
-    this.dtOptions = {
-
-      columns: [
-        {
-          data: 'name'
-        },
-        {
-          data: 'code'
-        },
-        {
-          data: 'netPrice'
-        },
-        {
-          data: 'vat'
-        },
-        {
-          data: 'grossPrice'
-        },
-        {
-          orderable: false
-        }
-      ]
-    };
-
-
+    this.cols = [
+      {field: 'name', header: 'Nazwa'},
+      {field: 'code', header: 'Kod'},
+      {field: 'netPrice', header: 'Cena netto'},
+      {field: 'vat', header: 'VAT'},
+      {field: 'grossPrice', header: 'Cena brutto'}
+    ];
   }
 
-  ngAfterViewInit(): void {
-    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.columns().every(function () {
-        const that = this;
-        $('input', this.footer()).on('keyup change', function () {
-          if (that.search() !== this['value']) {
-            that
-              .search(this['value'])
-              .draw();
-          }
-        });
-      });
-    });
+  toggle() {
+    this.stacked = !this.stacked;
   }
-
 
   private getServicesList(): void {
     this.serviceService.getServicesList().then(c => this.services = c);
   }
-  private removeCar(carId:number) {
-    //usunięcie samochodu z listy
+
+  private removeService(carId: number) {
+    // usunięcie samochodu z listy
   }
 }
 

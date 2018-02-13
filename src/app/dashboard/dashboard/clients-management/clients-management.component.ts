@@ -36,4 +36,8 @@ export class ClientsManagementComponent implements OnInit {
   private getClientsList(): void {
     this.clientService.getClientList().then(c => this.clients = c);
   }
+
+  removeClient(client_id: number) {
+    // remove client
+  }
 }
