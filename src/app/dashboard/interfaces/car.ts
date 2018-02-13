@@ -41,6 +41,6 @@ export interface CarApi {
 }
 
 export interface CarArray {
-  result: Array<Car>;
+  result: any;
   status: boolean | number;
 }

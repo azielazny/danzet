@@ -3,7 +3,6 @@ import {Car, CarApi, CarArray} from '../interfaces/car';
 import {CAR} from '../resources/car-data';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {BaseRequestOptions, RequestOptions} from "@angular/http";
 
 @Injectable()
 export class CarService {
@@ -20,12 +19,12 @@ export class CarService {
   constructor(private http: HttpClient) {
   }
 
-  getCarsList(): Observable<CarArray> {
-    return this.http.get<CarArray>(this.baseUrl + '/cars', this.httpOptions);
+  getCarsList(): Observable<CarApi[]> {
+    return this.http.get<CarArray>(this.baseUrl + '/cars', this.httpOptions).map(x => x.result);
   }
 
-  getCarById(car_id: number): Promise<Car> {
-    return Promise.resolve(CAR.filter(x => x.car_id === car_id)[0]);
+  getCarById(car_id: number): Observable<Car> {
+    return this.http.get<CarArray>(this.baseUrl + '/cars/' + car_id, this.httpOptions).map(x => x.result);
   }
 
   getCarsByClientId(client_id: number): Promise<Car[]> {

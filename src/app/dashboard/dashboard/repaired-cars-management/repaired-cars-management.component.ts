@@ -62,7 +62,7 @@ export class RepairedCarsManagementComponent implements OnInit {
 
   private getCarsList(): void {
     this.carService.getCarsList().subscribe(x =>
-      this.cars = this.convertToMultiCar(x.result)
+      this.cars = this.convertToMultiCar(x)
     );
   }
 

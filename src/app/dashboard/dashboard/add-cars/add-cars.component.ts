@@ -3,7 +3,7 @@ import {
   AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output,
   Renderer2, SimpleChange, SimpleChanges
 } from '@angular/core';
-import {Car} from '../../interfaces/car';
+import {Car, CarApi} from '../../interfaces/car';
 import {CarService} from '../../services/car.service';
 import {Client} from '../../interfaces/client';
 import {CLIENT} from '../../resources/client-data';
@@ -32,13 +32,11 @@ export class AddCarsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.carId = +params['carId'];
       this.clientId = +params['clientId'];
-      this.editedField = params['editedField'];
-      this.getCarById(this.carId);
+      this.getCarById(this.carId, params['editedField']);
     });
   }
 
   ngOnInit(): void {
-
   }
 
   private getClientId(evt) {
@@ -76,11 +74,35 @@ export class AddCarsComponent implements OnInit {
     this.editedField = null;
   }
 
-  private getCarById(carId: number) {
-    this.carService.getCarById(carId).then(c => {
-      this.car = c;
-      if (typeof this.car !== 'undefined') { this.clientId = this.car.client_id; }
+  convertToCar(item: CarApi) {
+
+    this.car = {
+      car_id: item.car_id,
+      brand: item.brand,
+      model: item.model,
+      productionYear: item.production_year,
+      vin: item.vin,
+      registrationNumber: item.registration_number,
+      registrationDate: item.registration_date,
+      carVersion: item.car_version,
+      capacity: item.capacity,
+      enginePower: item.engine_power,
+      fuel: item.fuel,
+      drSeries: item.dr_series,
+      course: item.course,
+      dateAdded: item.date_added,
+      info: item.info,
+      client_id: item.client_id,
+      modificationDate: item.modification_date
+    };
+  }
+
+  private getCarById(carId: number, editedField: string) {
+    this.carService.getCarById(carId).subscribe(c => {
+      this.convertToCar(c);
+      this.editedField = editedField;
     });
+
   }
 
 
