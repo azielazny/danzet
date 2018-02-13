@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Warehouse} from '../classes/warehouse';
+import {Warehouse} from '../interfaces/warehouse';
 import {WAREHOUSE} from '../resources/warehouse_data';
 
 @Injectable()

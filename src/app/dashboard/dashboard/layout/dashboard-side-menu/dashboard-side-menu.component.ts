@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {ActivatedRoute, PRIMARY_OUTLET, Router, UrlSegment, UrlSegmentGroup, UrlTree} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
-import {AppNavigation} from '../../../classes/app-navigation';
+import {AppNavigation} from '../../../interfaces/app-navigation';
 
 
 @Component({

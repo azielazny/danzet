@@ -1,4 +1,4 @@
-export class Product {
+export interface Product {
   product_id?: number;
   name?: string;
   code?: string;
@@ -10,7 +10,7 @@ export class Product {
   warehouseQuantity?:string;
 }
 
-export class ProductInventory {
+export interface ProductInventory {
   product_id?: number;
   netPrice?: string;
   warehouse_id?: number;

@@ -2,7 +2,7 @@ import {
   AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnInit,
   Renderer2
 } from '@angular/core';
-import {CarInspections} from '../../../classes/car-inspections';
+import {CarInspections} from '../../../interfaces/car-inspections';
 
 
 @Component({

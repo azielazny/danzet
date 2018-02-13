@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Car} from '../classes/car';
+import {Car} from '../interfaces/car';
 import {CAR} from '../resources/car-data';
 
 @Injectable()

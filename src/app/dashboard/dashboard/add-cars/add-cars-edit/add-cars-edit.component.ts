@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Car} from '../../../classes/car';
+import {Car} from '../../../interfaces/car';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({

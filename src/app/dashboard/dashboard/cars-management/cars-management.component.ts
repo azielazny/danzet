@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {DataTableDirective} from 'angular-datatables';
-import {Car} from '../../classes/car';
+import {Car} from '../../interfaces/car';
 import {CarService} from '../../services/car.service';
 
 

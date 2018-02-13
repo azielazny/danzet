@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Service} from "../../../classes/service";
-import {Product} from "../../../classes/product";
+import {Service} from "../../../interfaces/service";
+import {Product} from "../../../interfaces/product";
 
 @Component({
   selector: 'app-add-product-edit',

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CAR_INSPECTIONS_BY_USERS} from '../resources/car-inspections-data';
-import {CarInspections} from '../classes/car-inspections';
+import {CarInspections} from '../interfaces/car-inspections';
 
 @Injectable()
 export class CarInspectionService {

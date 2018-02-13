@@ -1,4 +1,4 @@
-import {Warehouse} from '../classes/warehouse';
+import {Warehouse} from '../interfaces/warehouse';
 
 export const WAREHOUSE: Warehouse[] = [
   {

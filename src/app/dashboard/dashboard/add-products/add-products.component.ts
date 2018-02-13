@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, NgModule, VERSION} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {Product, ProductInventory} from '../../classes/product';
+import {Product, ProductInventory} from '../../interfaces/product';
 import {ProductService} from '../../services/product.service';
 import {WarehouseService} from '../../services/warehouse.service';
-import {Warehouse} from '../../classes/warehouse';
+import {Warehouse} from '../../interfaces/warehouse';
 
 @Component({
   selector: 'app-add-products',

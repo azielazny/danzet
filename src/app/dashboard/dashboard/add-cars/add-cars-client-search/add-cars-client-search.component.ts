@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, Pipe, PipeTransform} from '@angular/core';
 import {ClientService} from '../../../services/client.service';
-import {Client} from '../../../classes/client';
+import {Client} from '../../../interfaces/client';
 import {Subject} from 'rxjs/Subject';
 
 @Component({

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Service} from '../../classes/service';
+import {Service} from '../../interfaces/service';
 import {ServiceService} from '../../services/service.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Client} from '../../classes/client';
+import {Client} from '../../interfaces/client';
 import {ClientService} from '../../services/client.service';
 import {ActivatedRoute, Params} from '@angular/router';
 

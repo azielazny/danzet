@@ -1,4 +1,4 @@
-import {AppNavigation} from '../classes/app-navigation';
+import {AppNavigation} from '../interfaces/app-navigation';
 
 export class NavigationData {
   name: string;

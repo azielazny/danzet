@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {CarInspections} from '../../../classes/car-inspections';
+import {CarInspections} from '../../../interfaces/car-inspections';
 import {CarInspectionService} from '../../../services/car-inspection.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NAVIGATION_ARRAY} from '../resources/category-navigation-data';
-import {AppNavigation} from '../classes/app-navigation';
+import {AppNavigation} from '../interfaces/app-navigation';
 
 @Injectable()
 export class NavigationService {

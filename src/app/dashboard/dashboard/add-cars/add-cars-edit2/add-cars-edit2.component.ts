@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Car} from '../../../classes/car';
+import {Car} from '../../../interfaces/car';
 
 @Component({
   selector: 'app-add-cars-edit2',

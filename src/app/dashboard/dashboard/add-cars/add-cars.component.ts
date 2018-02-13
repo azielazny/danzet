@@ -3,9 +3,9 @@ import {
   AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output,
   Renderer2, SimpleChange, SimpleChanges
 } from '@angular/core';
-import {Car} from '../../classes/car';
+import {Car} from '../../interfaces/car';
 import {CarService} from '../../services/car.service';
-import {Client} from '../../classes/client';
+import {Client} from '../../interfaces/client';
 import {CLIENT} from '../../resources/client-data';
 import {Validators} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';

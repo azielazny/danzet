@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ClientService} from '../../services/client.service';
-import {Client} from '../../classes/client';
+import {Client} from '../../interfaces/client';
 
 @Component({
   selector: 'app-clients-management',

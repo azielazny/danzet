@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Car} from "../../../classes/car";
-import {Service} from "../../../classes/service";
+import {Car} from "../../../interfaces/car";
+import {Service} from "../../../interfaces/service";
 
 @Component({
   selector: 'app-add-services-edit',

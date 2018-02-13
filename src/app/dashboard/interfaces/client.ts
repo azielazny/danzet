@@ -1,4 +1,4 @@
-export class Client {
+export interface Client {
   client_id?: number;//temporary is optional
   firstName?: string;//temporary is optional
   lastName?: string;
@@ -18,7 +18,7 @@ export class Client {
 }
 
 
-export class ClientArray {
+export interface ClientArray {
   results: Array<Client>;
   total: number;
 }

@@ -1,4 +1,4 @@
-import {CarInspections} from '../classes/car-inspections';
+import {CarInspections} from '../interfaces/car-inspections';
 
 export const CAR_INSPECTIONS_BY_USERS: CarInspections[] = [
   {

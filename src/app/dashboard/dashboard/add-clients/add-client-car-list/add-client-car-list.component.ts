@@ -1,6 +1,6 @@
 import {AfterViewChecked, AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CarService} from '../../../services/car.service';
-import {Car} from '../../../classes/car';
+import {Car} from '../../../interfaces/car';
 
 @Component({
   selector: 'app-add-client-car-list',

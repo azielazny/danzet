@@ -1,4 +1,4 @@
-import {Client} from '../classes/client';
+import {Client} from '../interfaces/client';
 
 export const CLIENT: Client[] = [
   {
