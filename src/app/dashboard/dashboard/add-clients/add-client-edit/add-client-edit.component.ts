@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Car} from "../../../interfaces/car";
+import {Client} from "../../../interfaces/client";
 
 @Component({
   selector: 'app-add-client-edit',
@@ -18,7 +19,7 @@ export class AddClientEditComponent implements OnInit {
   @Input() private defaultApartmentNumber: string;
   @Input() private defaultPhone: string;
   @Input() private defaultEmail: string;
-  @Output() private submitForm = new EventEmitter<Car>();
+  @Output() private submitForm = new EventEmitter<Client>();
   @Output() private cancelForm = new EventEmitter<void>();
   private form: FormGroup;
 

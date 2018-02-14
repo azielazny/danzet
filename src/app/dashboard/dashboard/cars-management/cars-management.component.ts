@@ -20,7 +20,7 @@ export class CarsManagementComponent implements OnInit {
   constructor(private carService: CarService, private messageService: MessageService) {
   }
 
-  clear() {
+  private clear() {
     this.messageService.clear();
   }
 
@@ -38,7 +38,7 @@ export class CarsManagementComponent implements OnInit {
 
   }
 
-  convertToMultiCar(field: CarApi[]): Car[] {
+  private convertToMultiCar(field: CarApi[]): Car[] {
     return field.map(item => ({
       car_id: item.car_id,
       brand: item.brand,

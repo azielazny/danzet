@@ -1,5 +1,3 @@
-import {Client} from "./client";
-
 export interface Car {
   car_id?: number;
   brand: string; // MarkaPojazdu;
@@ -14,8 +12,8 @@ export interface Car {
   fuel?: string; // RodzajPaliwa
   drSeries?: string; // seria dowodu rejestracyjnego
   course?: string; // przebieg
-  dateAdded?: string; //data dodania
-  info?: string; //dodatkowe info
+  dateAdded?: string; // data dodania
+  info?: string; // dodatkowe info
   client_id?: number;
   modificationDate?: string;
 }
@@ -40,9 +38,3 @@ export interface CarApi {
   modification_date?: string;
 }
 
-export interface CarArray {
-  result: any;
-  status: any;
-  id?: number;
-  error?: any;
-}

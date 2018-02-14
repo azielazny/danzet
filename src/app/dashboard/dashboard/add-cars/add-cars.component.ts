@@ -131,7 +131,7 @@ export class AddCarsComponent implements OnInit {
   private updateCarById() {
     this.car.client_id = this.clientId;
     this.carService.updateCarById(this.car).subscribe(c => {
-      if (c === 'User Updated') {
+      if (c === 'Car Updated') {
         this.msgs = [];
         this.msgs.push({severity: 'success', detail: 'Zaktualizowano samochód'});
       } else {

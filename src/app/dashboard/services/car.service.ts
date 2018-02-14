@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Car, CarApi, CarArray} from '../interfaces/car';
+import {Car, CarApi} from '../interfaces/car';
 import {CAR} from '../resources/car-data';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import {ApiResponse} from "../interfaces/api-response";
 
 @Injectable()
 export class CarService {
@@ -22,11 +23,11 @@ export class CarService {
   }
 
   getCarsList(): Observable<CarApi[]> {
-    return this.http.get<CarArray>(this.baseUrl + '/cars', this.httpOptions).map(x => x.result);
+    return this.http.get<ApiResponse>(this.baseUrl + '/cars', this.httpOptions).map(x => x.result);
   }
 
   getCarById(car_id: number): Observable<CarApi> {
-    return this.http.get<CarArray>(this.baseUrl + '/cars/' + car_id, this.httpOptions).map(x => x.result);
+    return this.http.get<ApiResponse>(this.baseUrl + '/cars/' + car_id, this.httpOptions).map(x => x.result);
   }
 
   getCarsByClientId(client_id: number): Promise<Car[]> {
@@ -34,16 +35,16 @@ export class CarService {
   }
 
   updateCarById(car: Car): Observable<string> {
-    return this.http.put<CarArray>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)),
+    return this.http.put<ApiResponse>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)),
       this.httpOptions).map(res => res.status);
   }
 
   insertCar(car: Car): Observable<number> {
-    return this.http.post<CarArray>(this.baseUrl + '/cars', JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.id);
+    return this.http.post<ApiResponse>(this.baseUrl + '/cars', JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.id);
   }
 
   removeCarById(carId: number): Observable<string> {
-    return this.http.delete<CarArray>(this.baseUrl + '/cars/' + carId, this.httpOptions).map(res => res.status);
+    return this.http.delete<ApiResponse>(this.baseUrl + '/cars/' + carId, this.httpOptions).map(res => res.status);
   }
 
   private convertToCarApi(item: Car): CarApi {

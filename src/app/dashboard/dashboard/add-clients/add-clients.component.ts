@@ -1,7 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Client} from '../../interfaces/client';
+import {Client, ClientApi} from '../../interfaces/client';
 import {ClientService} from '../../services/client.service';
 import {ActivatedRoute, Params} from '@angular/router';
+import {CarApi} from "../../interfaces/car";
+import {Message} from "primeng/primeng";
+import {MessageService} from "primeng/components/common/messageservice";
+import {Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-clients',
@@ -13,12 +17,14 @@ export class AddClientsComponent implements OnInit {
   @Input() private editedField: string;
   @Input() private client: Client;
   @Input() private clientId: number;
+  msgs: Message[] = [];
 
-  constructor(private clientService: ClientService, private activatedRoute: ActivatedRoute) {
+  constructor(private clientService: ClientService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.clientId = +params['clientId'];
-      this.editedField = params['editedField'];
-      this.getClientById();
+      if (this.clientId) {
+        this.getClientById(this.clientId, params['editedField']);
+      }
     });
   }
 
@@ -26,10 +32,32 @@ export class AddClientsComponent implements OnInit {
 
   }
 
-
   private submitClient(name: Client) {
-    this.client = name;
+    if (typeof this.client !== 'undefined') {
+      this.client.firstName = name.firstName;
+      this.client.lastName = name.lastName;
+      this.client.zip = name.zip;
+      this.client.city= name.city;
+      this.client.street= name.street;
+      this.client.houseNumber = name.houseNumber;
+      this.client.apartmentNumber = name.apartmentNumber;
+      this.client.phone = name.phone;
+      this.client.email = name.email;
+    } else {
+      this.client = {
+        firstName: name.firstName,
+        lastName: name.lastName,
+        zip: name.zip,
+        city: name.city,
+        street: name.street,
+        houseNumber: name.houseNumber,
+        apartmentNumber: name.apartmentNumber,
+        phone: name.phone,
+        email: name.email
+      };
+    }
     this.resetEdit();
+    (this.client.client_id > 0) ? this.updateClientById() : this.insertClient();
   }
 
   private toggleEdit(field) {
@@ -40,9 +68,59 @@ export class AddClientsComponent implements OnInit {
     this.editedField = null;
   }
 
-  private getClientById() {
-    if (this.clientId > 0) { this.clientService.getClientById(this.clientId).then(c => this.client = c); }
+  private convertToClient(item: ClientApi) {
+    this.client = {
+      client_id: item.client_id,
+      firstName: item.firstname,
+      lastName: item.lastname,
+      zip: item.zip,
+      city: item.city,
+      street: item.street,
+      houseNumber: item.house_number,
+      apartmentNumber: item.apartment_number,
+      phone: item.phone,
+      email: item.email,
+      modificationDate: item.modification_date,
+      company: item.company,
+      nip: item.nip
+    };
+  }
+
+  private getClientById(clientId: number, editedField: string) {
+    this.clientService.getClientById(clientId).subscribe(c => {
+      this.convertToClient(c);
+      console.log(c);
+      this.editedField = editedField;
+    });
   }
 
 
+  private updateClientById() {
+    // this.car.client_id = this.clientId;
+    this.clientService.updateClientById(this.client).subscribe(c => {
+      if (c === 'Client Updated') {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Zaktualizowano dane klienta'});
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie zaktualizowano danych klienta'});
+      }
+    });
+  }
+
+  private insertClient() {
+    // this.car.client_id = this.clientId;
+    this.clientService.insertClient(this.client).subscribe(c => {
+      if (c > 0) {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Dodano dane klienta'});
+        this.client.client_id = c;
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie dodano danych klienta'});
+      }
+
+    });
+  }
 }
+

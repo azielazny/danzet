@@ -39,14 +39,14 @@
                    [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id, side_column:'menu/clients-management' }}]">Pokaż</a>
                 <a class="dropdown-item" href="#"
                    [routerLink]="['/dashboard/',{outlets:{primary:'add-client/'+client?.client_id+'/client', side_column:'menu/clients-management' }}]">Edytuj</a>
-                <a class="dropdown-item" href="#" (click)="removeClient(client?.client_id)">Usuń</a>
+                <a class="dropdown-item" [routerLink]="" (click)="removeClient(client?.client_id)">Usuń</a>
               </div>
             </div>
           </ng-template>
         </p-column>
 
         <ng-template pTemplate="paginatorLeft">
-          <button type="button" pButton icon="fas fa-sync-alt"></button>
+          <button type="button" pButton icon="fas fa-sync-alt" (click)="refreshTable()"></button>
           <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" icon="fa-list"
                   class="text-left"></button>
         </ng-template>
@@ -56,3 +56,4 @@
 </div>
 
 
+<p-growl [(value)]="msgs"></p-growl>
