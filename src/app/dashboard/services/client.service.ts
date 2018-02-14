@@ -45,10 +45,6 @@ export class ClientService {
     return this.http.get<ApiResponse>(this.baseUrl + '/clients/' + clientId, this.httpOptions).map(x => this.convertToClient(x.result));
   }
 
-  getClientsByCarId(car_id: number): Promise<Car[]> {
-    return Promise.resolve(CAR.filter(x => x.car_id === car_id));
-  }
-
   updateClientById(clientData: Client): Observable<string> {
     return this.http.put<ApiResponse>(this.baseUrl + '/clients/' + clientData.client_id,
       JSON.stringify(this.convertToClientApi(clientData)), this.httpOptions).map(res => res.status);
