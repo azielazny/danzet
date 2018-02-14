@@ -34,11 +34,16 @@ export class CarService {
   }
 
   updateCarById(car: Car): Observable<string> {
-    return this.http.put<CarArray>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(res => res.status);
+    return this.http.put<CarArray>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)),
+      this.httpOptions).map(res => res.status);
   }
 
   insertCar(car: Car): Observable<number> {
     return this.http.post<CarArray>(this.baseUrl + '/cars', JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.id);
+  }
+
+  removeCarById(carId: number): Observable<string> {
+    return this.http.delete<CarArray>(this.baseUrl + '/cars/' + carId, this.httpOptions).map(res => res.status);
   }
 
   private convertToCarApi(item: Car): CarApi {
@@ -61,9 +66,5 @@ export class CarService {
       client_id: item.client_id,
       modification_date: item.modificationDate
     };
-  }
-
-  removeCarById(carId: number): Observable<string> {
-    return this.http.delete<CarArray>(this.baseUrl + '/cars/' + carId, this.httpOptions).map(res => res.status);
   }
 }
