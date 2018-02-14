@@ -6,6 +6,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import {ActivatedRoute, Params} from '@angular/router';
+import {Message} from 'primeng/primeng';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 
 @Component({
@@ -20,8 +22,9 @@ export class AddCarsComponent implements OnInit {
   @Input() private car: Car;
   @Input() private carId: number;
   @Input() private clientId: number;
+  msgs: Message[] = [];
 
-  constructor(private carService: CarService, private activatedRoute: ActivatedRoute) {
+  constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.carId = +params['carId'];
       this.clientId = +params['clientId'];
@@ -29,6 +32,11 @@ export class AddCarsComponent implements OnInit {
         this.getCarById(this.carId, params['editedField']);
       }
     });
+  }
+
+
+  clear() {
+    this.messageService.clear();
   }
 
   ngOnInit(): void {
@@ -123,16 +131,28 @@ export class AddCarsComponent implements OnInit {
   private updateCarById() {
     this.car.client_id = this.clientId;
     this.carService.updateCarById(this.car).subscribe(c => {
-      this.convertToCar(c);
-      //message
+      if (c === 'User Updated') {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Zaktualizowano samochód'});
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie zaktualizowano samochodu'});
+      }
     });
   }
 
   private insertCar() {
     this.car.client_id = this.clientId;
     this.carService.insertCar(this.car).subscribe(c => {
-      this.car.car_id = c;
-//message
+      if (c > 0) {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Dodano samochód'});
+        this.car.car_id = c;
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie dodano samochodu'});
+      }
+
     });
   }
 }

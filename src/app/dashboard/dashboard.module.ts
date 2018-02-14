@@ -17,27 +17,28 @@ import {AddCarsComponent} from './dashboard/add-cars/add-cars.component';
 import {AddCarsEditComponent} from './dashboard/add-cars/add-cars-edit/add-cars-edit.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
-import {ButtonModule, DataTableModule, DropdownModule, PanelModule, SharedModule} from 'primeng/primeng';
+import {ButtonModule, DataTableModule, DropdownModule, GrowlModule, PanelModule, SharedModule} from 'primeng/primeng';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AddCarsEdit2Component } from './dashboard/add-cars/add-cars-edit2/add-cars-edit2.component';
-import { AddCarsClientSearchComponent } from './dashboard/add-cars/add-cars-client-search/add-cars-client-search.component';
+import {AddCarsEdit2Component} from './dashboard/add-cars/add-cars-edit2/add-cars-edit2.component';
+import {AddCarsClientSearchComponent} from './dashboard/add-cars/add-cars-client-search/add-cars-client-search.component';
 import {ClientService} from './services/client.service';
 import {HttpClientModule} from '@angular/common/http';
-import { AddClientsComponent } from './dashboard/add-clients/add-clients.component';
-import { ClientsManagementComponent } from './dashboard/clients-management/clients-management.component';
-import { AddClientEditComponent } from './dashboard/add-clients/add-client-edit/add-client-edit.component';
-import { AddClientCarListComponent } from './dashboard/add-clients/add-client-car-list/add-client-car-list.component';
-import { ServicesManagementComponent } from './dashboard/services-management/services-management.component';
-import { AddServicesComponent } from './dashboard/add-services/add-services.component';
+import {AddClientsComponent} from './dashboard/add-clients/add-clients.component';
+import {ClientsManagementComponent} from './dashboard/clients-management/clients-management.component';
+import {AddClientEditComponent} from './dashboard/add-clients/add-client-edit/add-client-edit.component';
+import {AddClientCarListComponent} from './dashboard/add-clients/add-client-car-list/add-client-car-list.component';
+import {ServicesManagementComponent} from './dashboard/services-management/services-management.component';
+import {AddServicesComponent} from './dashboard/add-services/add-services.component';
 import {ServiceService} from './services/service.service';
-import { AddServicesEditComponent } from './dashboard/add-services/add-services-edit/add-services-edit.component';
-import { AddProductsComponent } from './dashboard/add-products/add-products.component';
-import { WarehouseComponent } from './dashboard/warehouse/warehouse.component';
+import {AddServicesEditComponent} from './dashboard/add-services/add-services-edit/add-services-edit.component';
+import {AddProductsComponent} from './dashboard/add-products/add-products.component';
+import {WarehouseComponent} from './dashboard/warehouse/warehouse.component';
 import {ProductService} from './services/product.service';
 import {WarehouseService} from './services/warehouse.service';
-import { AddProductEditComponent } from './dashboard/add-products/add-product-edit/add-product-edit.component';
-import { AddProductEdit2Component } from './dashboard/add-products/add-product-edit2/add-product-edit2.component';
-import { RepairedCarsManagementComponent } from './dashboard/repaired-cars-management/repaired-cars-management.component';
+import {AddProductEditComponent} from './dashboard/add-products/add-product-edit/add-product-edit.component';
+import {AddProductEdit2Component} from './dashboard/add-products/add-product-edit2/add-product-edit2.component';
+import {RepairedCarsManagementComponent} from './dashboard/repaired-cars-management/repaired-cars-management.component';
+import {MessageService} from "primeng/components/common/messageservice";
 
 @NgModule({
   imports: [
@@ -53,7 +54,9 @@ import { RepairedCarsManagementComponent } from './dashboard/repaired-cars-manag
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    SharedModule, DataTableModule
+    SharedModule,
+    DataTableModule,
+    GrowlModule
   ],
   declarations: [
     DashboardComponent,
@@ -85,7 +88,8 @@ import { RepairedCarsManagementComponent } from './dashboard/repaired-cars-manag
     ClientService,
     ServiceService,
     ProductService,
-    WarehouseService
+    WarehouseService,
+    MessageService
     // FormBuilder
   ],
 })

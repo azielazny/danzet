@@ -33,11 +33,11 @@ export class CarService {
     return Promise.resolve(CAR.filter(x => x.client_id === client_id));
   }
 
-  updateCarById(car: Car): Observable<CarApi> {
-    return this.http.put<CarArray>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.result);
+  updateCarById(car: Car): Observable<string> {
+    return this.http.put<CarArray>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(res => res.status);
   }
 
-  insertCar(car: Car): Observable<CarApi> {
+  insertCar(car: Car): Observable<number> {
     return this.http.post<CarArray>(this.baseUrl + '/cars', JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.id);
   }
 
