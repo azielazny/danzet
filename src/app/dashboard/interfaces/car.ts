@@ -42,7 +42,7 @@ export interface CarApi {
 
 export interface CarArray {
   result: any;
-  status: boolean | number;
+  status: any;
   id?: number;
   error?: any;
 }

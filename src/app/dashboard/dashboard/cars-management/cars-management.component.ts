@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Car, CarApi} from '../../interfaces/car';
 import {CarService} from '../../services/car.service';
+import {Message} from 'primeng/primeng';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 
 @Component({
@@ -13,8 +15,13 @@ export class CarsManagementComponent implements OnInit {
   cols: any[];
   private cars: Car[] = [];
   private stacked: boolean;
+  msgs: Message[] = [];
 
-  constructor(private carService: CarService) {
+  constructor(private carService: CarService, private messageService: MessageService) {
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 
   ngOnInit() {
@@ -63,9 +70,21 @@ export class CarsManagementComponent implements OnInit {
     );
   }
 
-
   private removeCar(carId: number) {
-    // usunięcie samochodu z listy
+    this.carService.removeCarById(carId).subscribe(c => {
+      if (c === 'Car Deleted') {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Usunięto samochód'});
+        this.cars = this.cars.filter((val, i) => val.car_id !== carId);
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie usunięto samochodu'});
+      }
+    });
+  }
+
+  private refreshTable() {
+    this.getCarsList();
   }
 }
 

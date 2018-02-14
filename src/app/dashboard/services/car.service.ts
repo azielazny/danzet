@@ -62,4 +62,8 @@ export class CarService {
       modification_date: item.modificationDate
     };
   }
+
+  removeCarById(carId: number): Observable<string> {
+    return this.http.delete<CarArray>(this.baseUrl + '/cars/' + carId, this.httpOptions).map(res => res.status);
+  }
 }
