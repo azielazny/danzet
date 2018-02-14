@@ -1,13 +1,6 @@
-import {
-  AfterViewChecked,
-  AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output,
-  Renderer2, SimpleChange, SimpleChanges
-} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Car, CarApi} from '../../interfaces/car';
 import {CarService} from '../../services/car.service';
-import {Client} from '../../interfaces/client';
-import {CLIENT} from '../../resources/client-data';
-import {Validators} from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
@@ -32,7 +25,9 @@ export class AddCarsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.carId = +params['carId'];
       this.clientId = +params['clientId'];
-      this.getCarById(this.carId, params['editedField']);
+      if (this.carId) {
+        this.getCarById(this.carId, params['editedField']);
+      }
     });
   }
 
@@ -42,19 +37,38 @@ export class AddCarsComponent implements OnInit {
   private getClientId(evt) {
     // this.car.client_id = evt;
     this.clientId = evt;
+    (this.car.car_id > 0) ? this.updateCarById() : this.insertCar();
   }
 
   private submitCar(name: Car) {
-    this.car.brand = name.brand;
-    this.car.model = name.model;
-    this.car.registrationNumber = name.registrationNumber;
-    this.car.productionYear = name.productionYear;
-    this.car.vin = name.vin;
-    this.car.capacity = name.capacity;
+    if (typeof this.car !== 'undefined') {
+      this.car.brand = name.brand;
+      this.car.model = name.model;
+      this.car.registrationNumber = name.registrationNumber;
+      this.car.productionYear = name.productionYear;
+      this.car.vin = name.vin;
+      this.car.capacity = name.capacity;
+    } else {
+      this.car = {
+        brand: name.brand,
+        model: name.model,
+        registrationNumber: name.registrationNumber,
+        productionYear: name.productionYear,
+        vin: name.vin,
+        capacity: name.capacity
+      };
+    }
     this.resetEdit();
+    (this.car.car_id > 0) ? this.updateCarById() : this.insertCar();
   }
 
   private submitCar2(name: Car) {
+    if (typeof this.car === 'undefined') {
+      this.car = {
+        brand: '',
+        model: ''
+      };
+    }
     this.car.carVersion = name.carVersion;
     this.car.registrationDate = name.registrationDate;
     this.car.enginePower = name.enginePower;
@@ -63,7 +77,9 @@ export class AddCarsComponent implements OnInit {
     this.car.course = name.course;
     this.car.dateAdded = name.dateAdded;
     this.car.info = name.info;
+
     this.resetEdit();
+    (this.car.car_id > 0) ? this.updateCarById() : this.insertCar();
   }
 
   private toggleEdit(field) {
@@ -74,8 +90,7 @@ export class AddCarsComponent implements OnInit {
     this.editedField = null;
   }
 
-  convertToCar(item: CarApi) {
-
+  private convertToCar(item: CarApi) {
     this.car = {
       car_id: item.car_id,
       brand: item.brand,
@@ -102,8 +117,22 @@ export class AddCarsComponent implements OnInit {
       this.convertToCar(c);
       this.editedField = editedField;
     });
-
   }
 
 
+  private updateCarById() {
+    this.car.client_id = this.clientId;
+    this.carService.updateCarById(this.car).subscribe(c => {
+      this.convertToCar(c);
+      //message
+    });
+  }
+
+  private insertCar() {
+    this.car.client_id = this.clientId;
+    this.carService.insertCar(this.car).subscribe(c => {
+      this.car.car_id = c;
+//message
+    });
+  }
 }

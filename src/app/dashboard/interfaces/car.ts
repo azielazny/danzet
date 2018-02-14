@@ -1,7 +1,7 @@
 import {Client} from "./client";
 
 export interface Car {
-  car_id: number;
+  car_id?: number;
   brand: string; // MarkaPojazdu;
   model: string; //  ModelPojazdu;
   productionYear?: number;
@@ -43,4 +43,6 @@ export interface CarApi {
 export interface CarArray {
   result: any;
   status: boolean | number;
+  id?: number;
+  error?: any;
 }

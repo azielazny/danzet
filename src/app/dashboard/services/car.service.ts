@@ -13,7 +13,9 @@ export class CarService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'my-auth-token'
-    })
+    }),
+    // params: _params,
+    withCredentials: true
   };
 
   constructor(private http: HttpClient) {
@@ -23,7 +25,7 @@ export class CarService {
     return this.http.get<CarArray>(this.baseUrl + '/cars', this.httpOptions).map(x => x.result);
   }
 
-  getCarById(car_id: number): Observable<Car> {
+  getCarById(car_id: number): Observable<CarApi> {
     return this.http.get<CarArray>(this.baseUrl + '/cars/' + car_id, this.httpOptions).map(x => x.result);
   }
 
@@ -31,4 +33,33 @@ export class CarService {
     return Promise.resolve(CAR.filter(x => x.client_id === client_id));
   }
 
+  updateCarById(car: Car): Observable<CarApi> {
+    return this.http.put<CarArray>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.result);
+  }
+
+  insertCar(car: Car): Observable<CarApi> {
+    return this.http.post<CarArray>(this.baseUrl + '/cars', JSON.stringify(this.convertToCarApi(car)), this.httpOptions).map(x => x.id);
+  }
+
+  private convertToCarApi(item: Car): CarApi {
+    return {
+      car_id: item.car_id,
+      brand: item.brand,
+      model: item.model,
+      production_year: item.productionYear,
+      vin: item.vin,
+      registration_number: item.registrationNumber,
+      registration_date: item.registrationDate,
+      car_version: item.carVersion,
+      capacity: item.capacity,
+      engine_power: item.enginePower,
+      fuel: item.fuel,
+      dr_series: item.drSeries,
+      course: item.course,
+      date_added: item.dateAdded,
+      info: item.info,
+      client_id: item.client_id,
+      modification_date: item.modificationDate
+    };
+  }
 }
