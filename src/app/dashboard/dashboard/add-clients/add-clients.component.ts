@@ -37,8 +37,8 @@ export class AddClientsComponent implements OnInit {
       this.client.firstName = name.firstName;
       this.client.lastName = name.lastName;
       this.client.zip = name.zip;
-      this.client.city= name.city;
-      this.client.street= name.street;
+      this.client.city = name.city;
+      this.client.street = name.street;
       this.client.houseNumber = name.houseNumber;
       this.client.apartmentNumber = name.apartmentNumber;
       this.client.phone = name.phone;
@@ -68,35 +68,15 @@ export class AddClientsComponent implements OnInit {
     this.editedField = null;
   }
 
-  private convertToClient(item: ClientApi) {
-    this.client = {
-      client_id: item.client_id,
-      firstName: item.firstname,
-      lastName: item.lastname,
-      zip: item.zip,
-      city: item.city,
-      street: item.street,
-      houseNumber: item.house_number,
-      apartmentNumber: item.apartment_number,
-      phone: item.phone,
-      email: item.email,
-      modificationDate: item.modification_date,
-      company: item.company,
-      nip: item.nip
-    };
-  }
-
   private getClientById(clientId: number, editedField: string) {
     this.clientService.getClientById(clientId).subscribe(c => {
-      this.convertToClient(c);
-      console.log(c);
+      this.client = c;
       this.editedField = editedField;
     });
   }
 
 
   private updateClientById() {
-    // this.car.client_id = this.clientId;
     this.clientService.updateClientById(this.client).subscribe(c => {
       if (c === 'Client Updated') {
         this.msgs = [];
@@ -109,7 +89,6 @@ export class AddClientsComponent implements OnInit {
   }
 
   private insertClient() {
-    // this.car.client_id = this.clientId;
     this.clientService.insertClient(this.client).subscribe(c => {
       if (c > 0) {
         this.msgs = [];

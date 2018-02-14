@@ -45,7 +45,9 @@ export class AddCarsComponent implements OnInit {
   private getClientId(evt) {
     // this.car.client_id = evt;
     this.clientId = evt;
-    (this.car.car_id > 0) ? this.updateCarById() : this.insertCar();
+    if (typeof this.car !== 'undefined') {
+      (this.car.car_id > 0) ? this.updateCarById() : this.insertCar();
+    }
   }
 
   private submitCar(name: Car) {

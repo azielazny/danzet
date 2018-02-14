@@ -22,17 +22,20 @@ export class CarService {
   constructor(private http: HttpClient) {
   }
 
-  getCarsList(): Observable<CarApi[]> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/cars', this.httpOptions).map(x => x.result);
+  getCarsList(): Observable<Car[]> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/cars', this.httpOptions).map(x => this.convertToMultiCar(x.result) );
   }
 
   getCarById(car_id: number): Observable<CarApi> {
     return this.http.get<ApiResponse>(this.baseUrl + '/cars/' + car_id, this.httpOptions).map(x => x.result);
   }
 
-  getCarsByClientId(client_id: number): Promise<Car[]> {
-    return Promise.resolve(CAR.filter(x => x.client_id === client_id));
+  getCarsByClientId(client_id: number): Observable<Car[]> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/cars/client/' + client_id, this.httpOptions).map(x => this.convertToMultiCar(x.result) );
   }
+  // getCarsByClientId(client_id: number): Promise<Car[]> {
+  //   return Promise.resolve(CAR.filter(x => x.client_id === client_id));
+  // }
 
   updateCarById(car: Car): Observable<string> {
     return this.http.put<ApiResponse>(this.baseUrl + '/cars/' + car.car_id, JSON.stringify(this.convertToCarApi(car)),
@@ -67,5 +70,26 @@ export class CarService {
       client_id: item.client_id,
       modification_date: item.modificationDate
     };
+  }
+  private convertToMultiCar(field: CarApi[]): Car[] {
+    return field.map(item => ({
+      car_id: item.car_id,
+      brand: item.brand,
+      model: item.model,
+      productionYear: item.production_year,
+      vin: item.vin,
+      registrationNumber: item.registration_number,
+      registrationDate: item.registration_date,
+      carVersion: item.car_version,
+      capacity: item.capacity,
+      enginePower: item.engine_power,
+      fuel: item.fuel,
+      drSeries: item.dr_series,
+      course: item.course,
+      dateAdded: item.date_added,
+      info: item.info,
+      client_id: item.client_id,
+      modificationDate: item.modification_date
+    }));
   }
 }

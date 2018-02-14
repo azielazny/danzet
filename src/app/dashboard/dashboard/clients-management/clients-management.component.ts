@@ -32,23 +32,6 @@ export class ClientsManagementComponent implements OnInit {
 
   }
 
-  convertToMultiClient(field: ClientApi[]): Client[] {
-    return field.map(item => ({
-      client_id: item.client_id,
-      firstName: item.firstname,
-      lastName: item.lastname,
-      zip: item.zip,
-      city: item.city,
-      street: item.street,
-      houseNumber: item.house_number,
-      apartmentNumber: item.apartment_number,
-      phone: item.phone,
-      email: item.email,
-      company: item.company,
-      nip: item.nip,
-      modificationDate: item.modification_date
-    }));
-  }
 
   removeClient(client_id: number) {
     this.clientService.removeClientById(client_id).subscribe(c => {
@@ -73,7 +56,7 @@ export class ClientsManagementComponent implements OnInit {
 
   private getClientsList(): void {
     this.clientService.getClientList().subscribe(x =>
-      this.clients = this.convertToMultiClient(x)
+      this.clients = x
     );
 
   }

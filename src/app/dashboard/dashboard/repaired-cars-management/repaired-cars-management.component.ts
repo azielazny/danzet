@@ -34,36 +34,15 @@ export class RepairedCarsManagementComponent implements OnInit {
 
   }
 
-  convertToMultiCar(field: CarApi[]): Car[] {
-    return field.map(item => ({
-      car_id: item.car_id,
-      brand: item.brand,
-      model: item.model,
-      productionYear: item.production_year,
-      vin: item.vin,
-      registrationNumber: item.registration_number,
-      registrationDate: item.registration_date,
-      carVersion: item.car_version,
-      capacity: item.capacity,
-      enginePower: item.engine_power,
-      fuel: item.fuel,
-      drSeries: item.dr_series,
-      course: item.course,
-      dateAdded: item.date_added,
-      info: item.info,
-      client_id: item.client_id,
-      modificationDate: item.modification_date
-    }));
-  }
+
 
   private toggle() {
     this.stacked = !this.stacked;
   }
 
   private getCarsList(): void {
-    this.carService.getCarsList().subscribe(x =>
-      this.cars = this.convertToMultiCar(x)
-    );
+    this.carService.getCarsList().subscribe(x => this.cars = x);
+
   }
 
   private removeCar(carId: number) {

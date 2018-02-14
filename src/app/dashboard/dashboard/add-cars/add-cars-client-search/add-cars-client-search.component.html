@@ -7,7 +7,8 @@
         <div class="dropinfo col-12">
           <ul *ngIf="clientsList" class="">
             <li *ngFor="let client of clientsList | slice:0:5" class="" (click)="choiceClient(client.client_id)">
-              <span class="far fa-check-square text-primary"></span> {{ client.name }}
+              <span class="far fa-check-square text-primary"></span> {{ client.firstName }} {{ client.lastName }} {{
+              client.city }} {{ client.phone }}
             </li>
           </ul>
         </div>
@@ -20,8 +21,13 @@
     <div class="row  mb-3">
       <div class="col-3"><strong>Klient</strong></div>
       <div class="col-9">
-        {{client?.name}} {{client?.firstName}} {{client?.lastName}}, {{client?.city}}, {{client?.street}}
-        {{client?.houseNumber}}/{{client?.apartmentNumber}}, tel. {{client?.phone}}
+        {{client?.firstName}} {{client?.lastName}}
+        <span *ngIf="client?.city">, {{client?.city}}</span>
+        <span *ngIf="client?.street">, {{client?.street}}</span>
+        <span *ngIf="client?.houseNumber">, {{client?.houseNumber}}</span>
+        <span *ngIf="client?.apartmentNumber">/ {{client?.city}}</span>
+        <span *ngIf="client?.phone">, tel. {{client?.phone}}</span>
+
       </div>
     </div>
   </div>

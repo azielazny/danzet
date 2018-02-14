@@ -19,7 +19,9 @@ export class AddCarsClientSearchComponent implements OnInit {
 
   @Input()
   public set clientNumber(clientNr: number) {
-    this.getClientById(clientNr);
+    if (clientNr > 0) {
+      this.getClientById(clientNr);
+    }
   }
 
   constructor(private clientService: ClientService) {
@@ -29,19 +31,19 @@ export class AddCarsClientSearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  private getClientById(client_id: number) {
-    this.clientService.getClientById(client_id).then(c => this.client = c);
+  private getClientById(clientId: number) {
+    this.clientService.getClientById(clientId).subscribe(c => this.client = c);
+    // this.clientService.getClientById(client_id).then(c => this.client = c);
   }
 
   private getClientByString() {
     this.clientService.search(this.searchTerm).subscribe(r => {
-      this.clientsList = r.results;
+      this.clientsList = r;
     });
   }
 
   private choiceClient(client_id: number) {
     this.clientsList = [];
-    this.searchTerm = null;
     this.selectedClient.emit(client_id);
   }
 }

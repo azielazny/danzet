@@ -3,9 +3,9 @@ import {Client, ClientApi} from '../interfaces/client';
 import {CLIENT} from '../resources/client-data';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {ApiResponse} from "../interfaces/api-response";
-import {Car, CarApi} from "../interfaces/car";
-import {CAR} from "../resources/car-data";
+import {ApiResponse} from '../interfaces/api-response';
+import {Car, CarApi} from '../interfaces/car';
+import {CAR} from '../resources/car-data';
 
 @Injectable()
 export class ClientService {
@@ -27,26 +27,22 @@ export class ClientService {
   search(terms: Observable<string>): Observable<Client[]> {
     return terms.debounceTime(400)
       .distinctUntilChanged()
-      .switchMap((term) => this.searchEntries(term)).map(x => x.result);
+      .switchMap((term) => this.searchEntries(term)).map(x => this.convertToMultiClient(x.result));
   }
 
   searchEntries(term) {
     if (term.length === 0) {
       return null;
     }
-    return this.http.get<ApiResponse>(this.baseUrl + this.queryUrl + term);
+    return this.http.get<ApiResponse>(this.baseUrl + '/clients/search/' + term);
   }
 
-  getClientList(): Observable<ClientApi[]> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/clients', this.httpOptions).map(x => x.result);
+  getClientList(): Observable<Client[]> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/clients', this.httpOptions).map(x => this.convertToMultiClient(x.result));
   }
 
-  // getClientById(client_id: number): Promise<Client> {
-  //   return Promise.resolve(CLIENT.filter(c => c.client_id === client_id)[0]);
-  // }
-
-  getClientById(clientId: number): Observable<ClientApi> {
-    return this.http.get<ApiResponse>(this.baseUrl + '/clients/' + clientId, this.httpOptions).map(x => x.result);
+  getClientById(clientId: number): Observable<Client> {
+    return this.http.get<ApiResponse>(this.baseUrl + '/clients/' + clientId, this.httpOptions).map(x => this.convertToClient(x.result));
   }
 
   getClientsByCarId(car_id: number): Promise<Car[]> {
@@ -67,6 +63,24 @@ export class ClientService {
     return this.http.delete<ApiResponse>(this.baseUrl + '/clients/' + clientId, this.httpOptions).map(res => res.status);
   }
 
+  convertToMultiClient(field: ClientApi[]): Client[] {
+    return field.map(item => ({
+      client_id: item.client_id,
+      firstName: item.firstname,
+      lastName: item.lastname,
+      zip: item.zip,
+      city: item.city,
+      street: item.street,
+      houseNumber: item.house_number,
+      apartmentNumber: item.apartment_number,
+      phone: item.phone,
+      email: item.email,
+      company: item.company,
+      nip: item.nip,
+      modificationDate: item.modification_date
+    }));
+  }
+
   private convertToClientApi(item: Client): ClientApi {
     return {
       client_id: item.client_id,
@@ -82,6 +96,24 @@ export class ClientService {
       company: item.company,
       nip: item.nip,
       modification_date: item.modificationDate
+    };
+  }
+
+  private convertToClient(item: ClientApi) {
+    return {
+      client_id: item.client_id,
+      firstName: item.firstname,
+      lastName: item.lastname,
+      zip: item.zip,
+      city: item.city,
+      street: item.street,
+      houseNumber: item.house_number,
+      apartmentNumber: item.apartment_number,
+      phone: item.phone,
+      email: item.email,
+      modificationDate: item.modification_date,
+      company: item.company,
+      nip: item.nip
     };
   }
 }
