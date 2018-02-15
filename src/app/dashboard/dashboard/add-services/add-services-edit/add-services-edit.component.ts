@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Car} from "../../../interfaces/car";
-import {Service} from "../../../interfaces/service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Service} from '../../../interfaces/service';
 
 @Component({
   selector: 'app-add-services-edit',
@@ -27,7 +26,7 @@ export class AddServicesEditComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       name: [this.defaultName, Validators.required],
-      code: [this.defaultCode, Validators.required],
+      code: [this.defaultCode],
       netPrice: [this.defaultNetPrice],
       vat: [this.defaultVat],
       grossPrice: [this.defaultGrossPrice],

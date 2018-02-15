@@ -37,14 +37,14 @@
               <div class="dropdown-menu" aria-labelledby="dropdownAction">
                 <a class="dropdown-item" href="#"
                    [routerLink]="['/dashboard/',{outlets:{primary:'add-product/'+product?.product_id+'/'+product?.warehouse_id, side_column:'menu/services-management' }}]">Pokaż</a>
-                <a class="dropdown-item" href="#" (click)="removeProduct(product?.product_id)">Usuń</a>
+                <a class="dropdown-item" [routerLink]="" (click)="removeProduct(product?.product_id)">Usuń</a>
               </div>
             </div>
           </ng-template>
         </p-column>
 
         <ng-template pTemplate="paginatorLeft">
-          <button type="button" pButton icon="fas fa-sync-alt"></button>
+          <button type="button" pButton icon="fas fa-sync-alt" (click)="refreshTable()"></button>
           <button pButton type="button" (click)="toggle()" style="margin-bottom:10px" icon="fa-list"
                   class="text-left"></button>
         </ng-template>
@@ -53,5 +53,6 @@
     </div>
   </div>
 </div>
+<p-growl [(value)]="msgs"></p-growl>
 
 

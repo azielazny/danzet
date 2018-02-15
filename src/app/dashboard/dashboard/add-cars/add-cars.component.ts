@@ -26,10 +26,10 @@ export class AddCarsComponent implements OnInit {
 
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.carId = +params['carId'];
+      // this.carId = +params['carId'];
       this.clientId = +params['clientId'];
-      if (this.carId) {
-        this.getCarById(this.carId, params['editedField']);
+      if (params['carId']) {
+        this.getCarById(+params['carId'], params['editedField']);
       }
     });
   }
@@ -105,6 +105,7 @@ export class AddCarsComponent implements OnInit {
     this.carService.getCarById(carId).subscribe(c => {
       this.car = c;
       this.editedField = editedField;
+      this.carId = carId;
     });
   }
 

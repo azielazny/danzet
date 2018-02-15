@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Service} from '../../interfaces/service';
 import {ServiceService} from '../../services/service.service';
+import {Message} from "primeng/primeng";
+import {MessageService} from "primeng/components/common/messageservice";
 
 @Component({
   selector: 'app-services-management',
@@ -12,8 +14,13 @@ export class ServicesManagementComponent implements OnInit {
   cols: any[];
   private services: Service[] = [];
   private stacked: boolean;
+  msgs: Message[] = [];
 
-  constructor(private serviceService: ServiceService) {
+  constructor(private serviceService: ServiceService, private messageService: MessageService) {
+  }
+
+  private clear() {
+    this.messageService.clear();
   }
 
   ngOnInit() {
@@ -33,11 +40,24 @@ export class ServicesManagementComponent implements OnInit {
   }
 
   private getServicesList(): void {
-    this.serviceService.getServicesList().then(c => this.services = c);
+    this.serviceService.getServicesList().subscribe(c => this.services = c);
   }
 
-  private removeService(carId: number) {
-    // usunięcie samochodu z listy
+  private removeService(serviceId: number) {
+    this.serviceService.removeServiceById(serviceId).subscribe(c => {
+      if (c === 'Service Deleted') {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Usunięto usługę'});
+        this.services = this.services.filter((val, i) => val.service_id !== serviceId);
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie usunięto usługi'});
+      }
+    });
+  }
+
+  private refreshTable() {
+    this.getServicesList();
   }
 }
 

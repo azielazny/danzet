@@ -13,8 +13,7 @@
           <div class="col-7">{{product?.name}}</div>
           <div class="col-2 text-right">
             <button pButton type="button" icon="far fa-trash-alt" title="usuń produkt"
-                    class="ui-button-secondary"
-                    (click)="removeProduct(product?.product_id)"></button>
+                    class="ui-button-secondary" (click)="removeProduct(product?.product_id)"></button>
           </div>
         </div>
         <div class="row mb-3">
@@ -22,8 +21,7 @@
           <div class="col-sm-7">{{product?.code}}</div>
           <div class="col-2 text-right">
             <button pButton type="button" icon="fas fa-edit" title="edytuj produkt"
-                    class="ui-button-secondary"
-                    (click)="toggleEdit('product')"></button>
+                    class="ui-button-secondary" (click)="toggleEdit('product')"></button>
           </div>
         </div>
         <div class="row mb-3">
@@ -119,3 +117,4 @@
     </p-panel>
   </div>
 </div>
+<p-growl [(value)]="msgs"></p-growl>

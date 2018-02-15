@@ -21,9 +21,9 @@ export class AddClientsComponent implements OnInit {
 
   constructor(private clientService: ClientService, private activatedRoute: ActivatedRoute, private messageService: MessageService) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.clientId = +params['clientId'];
-      if (this.clientId) {
-        this.getClientById(this.clientId, params['editedField']);
+      // this.clientId = +params['clientId'];
+      if (params['clientId']) {
+        this.getClientById(+params['clientId'], params['editedField']);
       }
     });
   }
@@ -72,6 +72,7 @@ export class AddClientsComponent implements OnInit {
     this.clientService.getClientById(clientId).subscribe(c => {
       this.client = c;
       this.editedField = editedField;
+      this.clientId = clientId;
     });
   }
 

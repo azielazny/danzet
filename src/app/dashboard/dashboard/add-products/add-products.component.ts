@@ -4,6 +4,8 @@ import {Product, ProductInventory} from '../../interfaces/product';
 import {ProductService} from '../../services/product.service';
 import {WarehouseService} from '../../services/warehouse.service';
 import {Warehouse} from '../../interfaces/warehouse';
+import {Message} from 'primeng/primeng';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-add-products',
@@ -18,20 +20,19 @@ export class AddProductsComponent implements OnInit {
   private warehouses: Warehouse[];
   private warehouseSelected: number;
   private filtredProductList: ProductInventory[] = [];
+  msgs: Message[] = [];
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private warehouseService: WarehouseService) {
+
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
+              private warehouseService: WarehouseService, private messageService: MessageService) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.productId = +params['productId'];
       this.warehouseSelected = (+params['warehouseId']) ? +params['warehouseId'] : 1;
-      this.editedField = params['editedField'];
-      this.getProductById();
+      if (params['productId']) {
+        this.getProductById(+params['productId'], params['editedField']);
+      }
       this.getWarehouseList();
-
     });
-    // this.warehouseSelected = 1;
-
   }
-
 
   ngOnInit(): void {
     if (this.product.productInventory !== undefined) {
@@ -39,9 +40,31 @@ export class AddProductsComponent implements OnInit {
     }
   }
 
-  private submitProduct(name: Product) {
-    this.product = name;
+  private submitProduct(item: Product) {
+    if (typeof this.product !== 'undefined') {
+      this.product.name = item.name;
+      this.product.code = item.code;
+      this.product.info = item.info;
+      this.product.unit = item.unit;
+      this.product.productInventory = item.productInventory;
+      this.product.warehouseName = item.warehouseName;
+      this.product.warehouse_id = item.warehouse_id;
+      this.product.warehouseQuantity = item.warehouseQuantity;
+    } else {
+      this.product = {
+        product_id: item.product_id,
+        name: item.name,
+        code: item.code,
+        info: item.info,
+        unit: item.unit,
+        productInventory: item.productInventory,
+        warehouseName: item.warehouseName,
+        warehouse_id: item.warehouse_id,
+        warehouseQuantity: item.warehouseQuantity
+      };
+    }
     this.resetEdit();
+    (this.product.product_id > 0) ? this.updateProductById() : this.insertProduct();
   }
 
   private toggleEdit(field) {
@@ -52,14 +75,44 @@ export class AddProductsComponent implements OnInit {
     this.editedField = null;
   }
 
-  private getProductById() {
-    if (this.productId > 0) {
-      this.productService.getProductById(this.productId).then(c => this.product = c);
+  private getProductById(productId: number, editedField: string) {
+    if (productId > 0) {
+      this.productService.getProductById(productId).subscribe(c => {
+        this.product = c;
+        this.editedField = editedField;
+        this.productId = productId;
+      });
     }
   }
 
+  private updateProductById() {
+    this.productService.updateProductById(this.product).subscribe(c => {
+      if (c === 'Product Updated') {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Zaktualizowano dane produktu'});
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie zaktualizowano danych produktu'});
+      }
+    });
+  }
+
+  private insertProduct() {
+    this.productService.insertProduct(this.product).subscribe(c => {
+      if (c > 0) {
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Dodano dane klienta'});
+        this.product.product_id = c;
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie dodano danych klienta'});
+      }
+
+    });
+  }
+
   private getWarehouseList() {
-    this.warehouseService.getWarehouseList().then(w => this.warehouses = w);
+    this.warehouseService.getWarehouseList().subscribe(w => this.warehouses = w);
   }
 
   private ChangeWarehouseValue(event) {
@@ -72,6 +125,20 @@ export class AddProductsComponent implements OnInit {
   }
 
   private removeWarehousePosition(s: string) {
-    //remove warehouse product data
+    // remove warehouse product data
+  }
+
+  private removeProduct(productId: number) {
+    this.productService.removeProductById(productId).subscribe(c => {
+      if (c === 'Product Deleted') {
+        this.product = {};
+        this.productId = null;
+        this.msgs = [];
+        this.msgs.push({severity: 'success', detail: 'Usunięto produkt'});
+      } else {
+        this.msgs = [];
+        this.msgs.push({severity: 'error', detail: 'Nie usunięto produktu'});
+      }
+    });
   }
 }

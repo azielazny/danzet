@@ -56,6 +56,6 @@ export class AddProductEdit2Component implements OnInit {
   }
 
   private getWarehouseList() {
-    this.warehouseService.getWarehouseList().then(w => this.warehouses = w);
+    this.warehouseService.getWarehouseList().subscribe(w => this.warehouses = w);
   }
 }
